@@ -116,7 +116,17 @@ const MyComponent = () => {
         </div>
       </div>
     </div>
-
+    <div
+            className="banner"
+            style={{
+                backgroundImage: 'url(image/slider3.png)', // Update the path to your image
+                backgroundSize: 'cover', // Cover the entire area
+                backgroundPosition: 'center', // Center the image
+            }}
+        >
+           
+           
+        </div>
     <div className="service-overview-container">
       <div className="service-details">
         <h2>Over <span className="highlight">28 Years</span> of Excellence in the automotive service industry</h2>

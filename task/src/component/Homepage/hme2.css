@@ -923,6 +923,47 @@ body {
   margin-left: 10px;
   cursor: pointer;
 }
+.banner {
+/* Text color */
+  text-align: center; /* Center text */
+  padding: 50px 20px; /* Padding for spacing */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+  position: relative; /* Position for absolute elements if needed */
+  height: 200px; /* Set a height for the banner */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Arrange children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
+.banner h1 {
+  font-size: 2.5rem; /* Header font size */
+  margin-bottom: 20px; /* Space below header */
+}
+
+.banner p {
+  font-size: 1.2rem; /* Paragraph font size */
+  margin-bottom: 30px; /* Space below paragraph */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slider-container {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+
+  .slide img {
+    height: 200px; /* Fixed height for smaller screens */
+  }
+
+  .slick-dots {
+    bottom: 5px; /* Adjust dot position for mobile */
+  }
+}
+
+
 
 .footer-bottom {
   background: linear-gradient(to right, #393838, #fefeff);;
