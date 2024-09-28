@@ -1,0 +1,79 @@
+.task-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center cards */
+}
+
+.task-card {
+    border: 1px solid #ddd;
+    border-radius: 10px; /* More rounded corners */
+    padding: 20px; /* More padding for a spacious feel */
+    width: 250px; /* Increased width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Added transform for scaling effect */
+    position: relative; /* To position elements like priority indicator */
+}
+
+.task-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px); /* Slight upward movement on hover */
+}
+
+.task-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.4em; /* Increased font size */
+    color: #34495e; /* Darker title color */
+}
+
+.task-card p {
+    margin: 5px 0;
+    color: #7f8c8d; /* Gray text color */
+}
+
+.priority-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.priority-indicator.high {
+    background-color: #e74c3c; /* Red for high priority */
+}
+
+.priority-indicator.medium {
+    background-color: #f39c12; /* Orange for medium priority */
+}
+
+.priority-indicator.low {
+    background-color: #2ecc71; /* Green for low priority */
+}
+.progress-container {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #76c7c0; /* Change to any color you prefer */
+    border-radius: 5px;
+}
+.completed-task-cards {
+    margin-top: 20px;
+}
+
+.completed-task-card {
+    background-color: #e8f5e9; /* Light green background */
+    border: 1px solid #c8e6c9; /* Darker green border */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
