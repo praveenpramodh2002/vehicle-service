@@ -92,14 +92,14 @@ const Sidebar = () => {
                 <div className="logo">
                     <img src="image/logo2.jpeg" alt="Micro Automotive" />
                 </div>
-                <nav className="navigation">
+                <div className="navigation">
                     <ul>
                         <li><HomeOutlined /> <a href="main">Home </a></li>
                         <li><FileSearchOutlined /> <a href="tracking">Tracking</a></li>
                         <li><BarChartOutlined /> <a href="report">Reports</a></li>
                         <li><FileSearchOutlined /> <a href="task"> Add Task </a></li>
                     </ul>
-                </nav>
+                </div>
                 <div className="tools">
                     <p>Tools</p>
                     <ul>
