@@ -1,0 +1,135 @@
+.form-container {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-buttons .cancel,
+.form-buttons .save {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.cancel {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.save {
+    background-color: #007bff;
+    color: white;
+}
+
+.sidebar {
+    width: 200px; 
+    background-color: #007AFF;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    transition: width 0.3s ease;
+}
+
+
+.sidebar .logo img {
+    width: 80%;
+    height: 100%;
+    border-radius: 70%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.sidebar .navigation ul,
+.sidebar .tools ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.sidebar .navigation ul li,
+.sidebar .tools ul li {
+    margin: 20px 0;
+    border: 2px solid #000000; 
+    border-radius: 10px; 
+    padding: 10px;
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar .navigation ul li:hover,
+.sidebar .tools ul li:hover {
+    transform: translateX(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.sidebar .navigation ul li a,
+.sidebar .tools ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.sidebar .navigation ul li a:hover,
+.sidebar .tools ul li a:hover {
+    color: #FFD700;
+}
+
+.sidebar .tools p {
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+
+.sidebar .user-profile:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}

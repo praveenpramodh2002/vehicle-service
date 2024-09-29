@@ -12,9 +12,12 @@ import Main from './component/taksManagement/main';
 import Alltask from './component/taksManagement/tasks';
 import KanbanBoard from './component/taksManagement/tracking';
 import Home from './component/Homepage/hme';
-
-
-
+import Home1 from './component/AccountManagement/home';
+import Modal from './component/AccountManagement/Modal';
+import VehicleManagement from './component/AccountManagement/vehicleAddInterface';
+import AddVehicleForm from './component/AccountManagement/vehicleForm';
+import VehicleTable from './component/AccountManagement/vehicleTable';
+import VehicleUpdate from './component/AccountManagement/vehicleUpdateInterface';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +31,12 @@ root.render(
         <Route path='/main' element={<Main/>}></Route>
         <Route path='/alltask' element={<Alltask/>}></Route>
         <Route path='/tracking' element={<KanbanBoard/>}></Route>
+        <Route path='/Home1' element={<Home1/>}></Route>
+        <Route path='/Modal' element={<Modal/>}></Route>
+        <Route path='/VehicleManagement' element={<VehicleManagement/>}></Route>
+        <Route path='/AddVehicleForm' element={<AddVehicleForm/>}></Route>
+        <Route path='/VehicleTable' element={<VehicleTable/>}></Route>
+        <Route path='/VehicleUpdate' element={<VehicleUpdate/>}></Route>
       </Routes>
   </BrowserRouter>
 );
