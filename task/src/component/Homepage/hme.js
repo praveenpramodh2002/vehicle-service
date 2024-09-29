@@ -46,32 +46,23 @@ const MyComponent = () => {
 
 
 {/* Slider Section */}
-<section
-  className="service-center-section"
-  style={{
-    backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/carousel-bg-2.jpg')", // Replace with your image path
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
+<section className="service-center-section">
+  <div className="service-center-video">
+    <video autoPlay loop muted>
+      <source src="video.mp4" type="video/mp4" /> {/* Update with your video path */}
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
   <div className="service-center-container">
     <div className="service-center-content">
-    <h1 className="service-center-title1">#1</h1>
+      <h1 className="service-center-title1">#1</h1>
       <h1 className="service-center-title">CAR SERVICE</h1>
       <h2 className="service-center-subtitle">CHAIN IN SRI LANKA</h2>
       <button className="service-center-button">Learn more</button>
     </div>
-    <div className="service-center-banner">
-      <div className="service-center-banner-content">
-        <p className="service-center-guarantee">GUARANTEED</p>
-        <p className="service-center-percentage">100%</p>
-        <p className="service-center-satisfaction">SATISFACTION</p>
-        <p className="service-center-excellence">UNMATCHED EXCELLENCE OF</p>
-        <p className="service-center-years">28 YEARS</p>
-        <p className="service-center-since">SINCE 1994</p>
-      </div>
-    </div>
+    
+    
   </div>
 </section>
 
@@ -127,6 +118,7 @@ const MyComponent = () => {
            
            
         </div>
+
     <div className="service-overview-container">
       <div className="service-details">
         <h2>Over <span className="highlight">28 Years</span> of Excellence in the automotive service industry</h2>
@@ -259,9 +251,9 @@ const MyComponent = () => {
   </div>
 </section>
 
-{/* Promotional Slider Section */}
+{/* Promotional Section */}
 <section
-  className="slider-section1"
+  className="promo-section1"
   style={{
     backgroundImage: "url('image/white.jpg')",
     backgroundSize: "cover",
@@ -270,17 +262,18 @@ const MyComponent = () => {
     padding: "20px 0", // Adjust padding as needed
   }}
 >
-  <div className="slider-content">
-    <p className="slider-contact">Contact Us</p>
-    <h1 className="slider-header">Experience Premier Vehicle Care in Sri Lanka</h1>
-    <p className="slider-description">
+  <div className="promo-content">
+    <p className="promo-contact">Contact Us</p>
+    <h1 className="promo-header">Experience Premier Vehicle Care in Sri Lanka</h1>
+    <p className="promo-description">
       Discover unmatched service quality and precision care at Micro Service Center Sri Lanka. Your vehicle deserves the best – let us make it feel brand new again.
     </p>
-    <div className="slider-buttons">
+    <div className="promo-buttons">
       <button className="btn btn-contact">Contact Us</button>
     </div>
   </div>
 </section>
+
 
 
 
