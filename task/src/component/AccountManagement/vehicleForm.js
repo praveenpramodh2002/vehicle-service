@@ -1,9 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import './vehicleForm.css';  
+// src/components/VehicleForm.js
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddVehicleForm = ({ vehicle, isEditMode, refreshVehicles, onCancel }) => {
-    const [vehicleData, setVehicleData] = useState({
+const VehicleForm = () => {
+  const [formData, setFormData] = useState({
+    vehicleid: '',
+    userid: '',
+    fullname: '',
+    nic: '',
+    contact: '',
+    email: '',
+    address: '',
+    brand: '',
+    model: '',
+    year: '',
+    vehicleno: '',
+    engineno: '',
+    chassisno: '',
+    condition: '',
+  });
+
+  const [message, setMessage] = useState('');
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Form Data:', formData); // Log form data
+
+    try {
+        const response = await axios.post('http://localhost:3001/api/submit-vehicle-data', formData);
+
+      setMessage(response.data.message);
+      // Clear the form
+      setFormData({
         vehicleid: '',
         userid: '',
         fullname: '',
@@ -17,264 +51,65 @@ const AddVehicleForm = ({ vehicle, isEditMode, refreshVehicles, onCancel }) => {
         vehicleno: '',
         engineno: '',
         chassisno: '',
-        condition: ''
-    });
+        condition: '',
+      });
+    } catch (error) {
+      console.error('Error submitting vehicle data:', error);
+      setMessage(error.response?.data?.message || 'An error occurred while submitting the form.');
+    }
+  };
 
-    useEffect(() => {
-        if (isEditMode && vehicle) {
-            setVehicleData({
-                vehicleid: vehicle.vehicleid || '',
-                userid: vehicle.userid || '',
-                fullname: vehicle.fullname || '',
-                nic: vehicle.nic || '',
-                contact: vehicle.contact || '',
-                email: vehicle.email || '',
-                address: vehicle.address || '',
-                brand: vehicle.brand || '',
-                model: vehicle.model || '',
-                year: vehicle.year || '',
-                vehicleno: vehicle.vehicleno || '',
-                engineno: vehicle.engineno || '',
-                chassisno: vehicle.chassisno || '',
-                condition: vehicle.condition || ''
-            });
-        }
-    }, [isEditMode, vehicle]);
+  return (
+    <div>
+      <h2>Submit Vehicle Data</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Vehicle ID:</label>
+        <input type="text" name="vehicleid" value={formData.vehicleid} onChange={handleChange} required /><br />
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setVehicleData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+        <label>User ID:</label>
+        <input type="text" name="userid" value={formData.userid} onChange={handleChange} required /><br />
 
-    const validateForm = () => {
-        const { fullname, nic, email } = vehicleData;
-        if (!fullname || !nic || !email) {
-            alert("Please fill in all required fields.");
-            return false;
-        }
-        return true;
-    };
+        <label>Full Name:</label>
+        <input type="text" name="fullname" value={formData.fullname} onChange={handleChange} required /><br />
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        if (!validateForm()) return; // Call validateForm
+        <label>NIC:</label>
+        <input type="text" name="nic" value={formData.nic} onChange={handleChange} required /><br />
 
-        const isConfirmed = window.confirm("Are you sure you want to Update the form?");
-        if (!isConfirmed) return;
-    
-        try {
-            const formData = new FormData();
-            Object.keys(vehicleData).forEach(key => {
-                formData.append(key, vehicleData[key]);
-            });
-    
-            if (isEditMode && vehicle) {
-                await axios.put(`http://localhost:3004/api/vehicles/${vehicle._id}`, formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                });
-                alert("Account Updated successfully!"); 
-            } else {
-                await axios.post('http://localhost:3004/api/vehicles', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                });
-                alert("Account added successfully!"); 
-            }
-    
-            refreshVehicles(); 
-            handleCancel(); 
-    
-        } catch (error) {
-            console.error('Error submitting vehicle data:', error);
-            alert("An error occurred while submitting the form.");
-        }
-    };
+        <label>Contact:</label>
+        <input type="text" name="contact" value={formData.contact} onChange={handleChange} required /><br />
 
-    const handleCancel = () => {
-        setVehicleData({
-            vehicleid: '',
-            userid: '',
-            fullname: '',
-            nic: '',
-            contact: '',
-            email: '',
-            address: '',
-            brand: '',
-            model: '',
-            year: '',
-            vehicleno: '',
-            engineno: '',
-            chassisno: '',
-            condition: ''
-        });
-        onCancel();
-    };
+        <label>Email:</label>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required /><br />
 
-    return (
-        <div className="main-content">
-            <h1>{isEditMode ? 'Update Account' : 'Add New Account'}</h1>
+        <label>Address:</label>
+        <input type="text" name="address" value={formData.address} onChange={handleChange} required /><br />
 
-            <div className="form-container">
-                <form onSubmit={handleSubmit}>
+        <label>Brand:</label>
+        <input type="text" name="brand" value={formData.brand} onChange={handleChange} required /><br />
 
-                    <label htmlFor="vehicleid">Vehicle ID:</label>
-                    <input 
-                        type="text" 
-                        id="vehicleid" 
-                        name="vehicleid" 
-                        value={vehicleData.vehicleid} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const charCode = e.charCode;
-                            if (!/[0-9]/.test(String.fromCharCode(charCode))) {
-                                e.preventDefault(); 
-                            }
-                        }} />
+        <label>Model:</label>
+        <input type="text" name="model" value={formData.model} onChange={handleChange} required /><br />
 
-                    <label htmlFor="userid">User ID:</label>
-                    <input 
-                        type="text" 
-                        id="userid" 
-                        name="userid" 
-                        value={vehicleData.userid} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const charCode = e.charCode;
-                            if (!/[0-9]/.test(String.fromCharCode(charCode))) {
-                                e.preventDefault(); 
-                            }
-                        }} />  
+        <label>Year:</label>
+        <input type="number" name="year" value={formData.year} onChange={handleChange} required /><br />
 
-                    <label htmlFor="fullname">Full Name:</label>
-                    <input 
-                        type="text" 
-                        id="fullname" 
-                        name="fullname" 
-                        value={vehicleData.fullname} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const charCode = e.charCode;
-                            if (!/[a-zA-Z\s]/.test(String.fromCharCode(charCode))) {
-                                e.preventDefault();
-                            }
-                        }}/>
+        <label>Vehicle No:</label>
+        <input type="text" name="vehicleno" value={formData.vehicleno} onChange={handleChange} required /><br />
 
-                    <label htmlFor="nic">NIC:</label>
-                    <input 
-                        type="text" 
-                        id="nic" 
-                        name="nic" 
-                        value={vehicleData.nic} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const nic = e.target.value;
-                            const nicRegex = /^[a-zA-Z0-9]{12}$/;
-                            if (!nicRegex.test(nic)) {
-                                e.preventDefault(); 
-                            }
-                        }} />
+        <label>Engine No:</label>
+        <input type="text" name="engineno" value={formData.engineno} onChange={handleChange} required /><br />
 
-                    <label htmlFor="contact">Contact:</label>
-                    <input 
-                        type="text" 
-                        id="contact" 
-                        name="contact" 
-                        value={vehicleData.contact} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const charCode = e.charCode;
-                            if (!/[0-9]/.test(String.fromCharCode(charCode))) {
-                                e.preventDefault();  
-                            }
-                        }} />
+        <label>Chassis No:</label>
+        <input type="text" name="chassisno" value={formData.chassisno} onChange={handleChange} required /><br />
 
-                    <label htmlFor="email">Email:</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        value={vehicleData.email} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const email = e.target.value;
-                            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                            if (!emailRegex.test(email)) {
-                                e.preventDefault(); 
-                            }
-                        }} />
+        <label>Condition:</label>
+        <input type="text" name="condition" value={formData.condition} onChange={handleChange} required /><br />
 
-                    <label htmlFor="address">Address:</label>
-                    <input type="text" id="address" name="address" value={vehicleData.address} onChange={handleChange} />
-
-                    <label htmlFor="brand">Brand:</label>
-                    <input type="text" id="brand" name="brand" value={vehicleData.brand} onChange={handleChange} />
-
-                    <label htmlFor="model">Model:</label>
-                    <input type="text" id="model" name="model" value={vehicleData.model} onChange={handleChange} />
-
-                    <label htmlFor="year">Year:</label>
-                    <input 
-                        type="text" 
-                        id="year" 
-                        name="year" 
-                        value={vehicleData.year} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const charCode = e.charCode;
-                            if (!/[0-9]/.test(String.fromCharCode(charCode))) {
-                                e.preventDefault();
-                            }
-                        }} />
-
-                    <label htmlFor="vehicleno">Vehicle No:</label>
-                    <input type="text" id="vehicleno" name="vehicleno" value={vehicleData.vehicleno} onChange={handleChange} />
-
-                    <label htmlFor="engineno">Engine No:</label>
-                    <input 
-                        type="text" 
-                        id="engineno" 
-                        name="engineno" 
-                        value={vehicleData.engineno} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const charCode = e.charCode;
-                            if (!/[A-Z0-9]/.test(String.fromCharCode(charCode))) {
-                                e.preventDefault();
-                            }
-                        }} />
-
-                    <label htmlFor="chassisno">Chassis No:</label>
-                    <input 
-                        type="text" 
-                        id="chassisno" 
-                        name="chassisno" 
-                        value={vehicleData.chassisno} 
-                        onChange={handleChange} 
-                        onKeyPress={(e) => {
-                            const charCode = e.charCode;
-                            if (!/[A-Z0-9]/.test(String.fromCharCode(charCode))) {
-                                e.preventDefault();
-                            }
-                        }} />
-                    
-                    <label htmlFor="condition">Service Records:</label>
-                    <input type="text" id="condition" name="condition" value={vehicleData.condition} onChange={handleChange} />
-
-                    <div className="form-buttons">
-                        <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
-                        <button type="submit" className="save">{isEditMode ? 'Update' : 'Save'}</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
+        <button type="submit">Submit</button>
+      </form>
+      {message && <p>{message}</p>}
+    </div>
+  );
 };
 
-export default AddVehicleForm;
+export default VehicleForm;

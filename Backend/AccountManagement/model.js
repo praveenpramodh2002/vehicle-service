@@ -1,3 +1,4 @@
+// models/Vehicle.js
 const mongoose = require('mongoose');
 
 const vehicleSchema = new mongoose.Schema({
@@ -6,11 +7,11 @@ const vehicleSchema = new mongoose.Schema({
   fullname: { type: String, required: true },
   nic: { type: String, required: true },
   contact: { type: String, required: true },
-  email: { type: String, required: true, },
+  email: { type: String, required: true },
   address: { type: String, required: true },
   brand: { type: String, required: true },
   model: { type: String, required: true },
-  year: { type: String, required: true },
+  year: { type: Number, required: true }, // Use Number for year
   vehicleno: { type: String, required: true },
   engineno: { type: String, required: true },
   chassisno: { type: String, required: true },

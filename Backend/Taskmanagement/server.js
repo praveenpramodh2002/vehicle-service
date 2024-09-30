@@ -2,11 +2,11 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const router = require('./router');
+const vehicleRouter = require('./routes/router');
 
 const app = express();
-const PORT = 3001;
-const MONGO_URI = 'mongodb://localhost:27017/TaskDB';
+const PORT = process.env.PORT || 5000;
+const MONGO_URI = 'mongodb://localhost:27017/vehicles'; // Ensure the database name matches your configuration
 
 // Middleware
 app.use(cors());
@@ -20,7 +20,7 @@ mongoose
   .catch((error) => console.error('MongoDB connection error:', error));
 
 // Routes
-app.use('/api', router);
+app.use('/api', vehicleRouter);
 
 // Start server
 app.listen(PORT, () => {
