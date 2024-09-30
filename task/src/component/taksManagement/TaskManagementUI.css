@@ -42,7 +42,7 @@ body {
 }
 
 .sidebar .logo img {
-    width: 90%;
+    width: 100%;
     height: 90%;
     border-radius: 50%;
     object-fit: cover;
