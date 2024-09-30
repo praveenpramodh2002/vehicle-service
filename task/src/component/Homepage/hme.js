@@ -49,7 +49,7 @@ const MyComponent = () => {
 <section className="service-center-section">
   <div className="service-center-video">
     <video autoPlay loop muted>
-      <source src="video.mp4" type="video/mp4" /> {/* Update with your video path */}
+      <source src="videonew.mp4" type="video/mp4" /> {/* Update with your video path */}
       Your browser does not support the video tag.
     </video>
   </div>
