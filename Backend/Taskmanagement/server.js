@@ -6,7 +6,7 @@ const router = require('./router');
 
 const app = express();
 const PORT = 3001;
-const MONGO_URI = 'mongodb://localhost:27017/TaskDB';
+const uri = 'mongodb+srv://praveenpramodh2002:Praveengamage@cluster0.oxfpe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 // Middleware
 app.use(cors());
