@@ -9,8 +9,7 @@ import {
     MenuFoldOutlined,
     QuestionCircleOutlined,
     CheckCircleOutlined,
-    ExclamationCircleOutlined,
-    FileTextOutlined
+    ExclamationCircleOutlined
 } from '@ant-design/icons';
 import './tracking.css';
 import Axios from 'axios';
@@ -84,13 +83,13 @@ const KanbanBoard = () => {
                                     <ExclamationCircleOutlined style={{ color: 'orange', fontSize: '24px' }} />
                                 </div>
                                 <h3 className="task-title">{task.title}</h3>
-                                <p><strong>Assignee:</strong> {task.assignee || 'Not assigned'}</p>
+                                <p><strong>Assignee:</strong> {task.assignee ? task.assignee.name : 'Not assigned'}</p>
                                 <p><strong>Status:</strong> {task.status}</p>
                                 <p><strong>Due Date:</strong> {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No due date'}</p>
                                 <p><strong>Description:</strong> {task.description}</p>
 
                                 {/* Email Button */}
-                                {task.assignee && (
+                                {task.assignee && task.assignee.email && ( // Check if email exists
                                     <a 
                                         href={`mailto:${task.assignee.email}`} 
                                         className="email-button"
@@ -122,12 +121,10 @@ const KanbanBoard = () => {
                                     <CheckCircleOutlined style={{ color: 'green', fontSize: '24px' }} />
                                 </div>
                                 <h3 className="task-title">{task.title}</h3>
-                                <p><strong>Assignee:</strong> {task.assignee || 'Not assigned'}</p>
+                                <p><strong>Assignee:</strong> {task.assignee ? task.assignee.name : 'Not assigned'}</p>
                                 <p><strong>Status:</strong> {task.status}</p>
                                 <p><strong>Completed On:</strong> {task.completedDate ? new Date(task.completedDate).toLocaleDateString() : 'N/A'}</p>
                                 <p><strong>Description:</strong> {task.description}</p>
-
-                               
                             </div>
                         ))
                     ) : (

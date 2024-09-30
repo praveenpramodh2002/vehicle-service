@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { 
+import React, { useState, useEffect } from 'react';
+import {
     HomeOutlined,
     FileSearchOutlined,
     BarChartOutlined,
@@ -11,11 +11,10 @@ import {
     MenuFoldOutlined,
     QuestionCircleOutlined
 } from '@ant-design/icons';
-import { Bar, Pie } from 'react-chartjs-2';
-import jsPDF from 'jspdf';
-import 'chart.js/auto'; // Ensure Chart.js is imported
-import './home1.css';
+import Plot from 'react-plotly.js';
+
 import Axios from 'axios';
+import './home1.css';
 
 const Dashboard = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -24,10 +23,6 @@ const Dashboard = () => {
     const [inProgressTasks, setInProgressTasks] = useState(0);
     const [completedTasks, setCompletedTasks] = useState(0);
     const [currentDate, setCurrentDate] = useState(new Date());
-
-    // Create refs for chart components
-    const barChartRef = useRef(null);
-    const pieChartRef = useRef(null);
 
     useEffect(() => {
         // Fetch tasks from the server
@@ -40,14 +35,6 @@ const Dashboard = () => {
             .catch(error => {
                 console.error("Axios error:", error);
             });
-    }, []);
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentDate(new Date());
-        }, 60000); // Update every minute
-
-        return () => clearInterval(intervalId); // Clean up the interval on component unmount
     }, []);
 
     const calculateTaskStats = (tasksData) => {
@@ -68,95 +55,9 @@ const Dashboard = () => {
         console.log('User logged out');
     };
 
-    const generatePDFReport = async () => {
-        const doc = new jsPDF();
-
-        // Add text to PDF
-        doc.text('Report - Task Overview', 10, 10);
-        doc.text(`Total Tasks: ${totalTasks}`, 10, 20);
-        doc.text(`In Progress: ${inProgressTasks}`, 10, 30);
-        doc.text(`Completed: ${completedTasks}`, 10, 40);
-
-        // Capture and add bar chart image
-        if (barChartRef.current) {
-            const barChartImage = barChartRef.current.toBase64Image();
-            doc.addImage(barChartImage, 'PNG', 10, 50, 180, 90); // Adjust position and size as needed
-        }
-
-        // Capture and add pie chart image
-        if (pieChartRef.current) {
-            const pieChartImage = pieChartRef.current.toBase64Image();
-            doc.addImage(pieChartImage, 'PNG', 10, 150, 180, 90); // Adjust position and size as needed
-        }
-
-        doc.text('Employee Performance', 10, 250);
-        doc.text('Details on performance data would be here.', 10, 260);
-
-        doc.save('task_report.pdf');
-    };
-
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return date.toLocaleDateString('en-US', options);
-    };
-
-    const barChartData = {
-        labels: ['Total Tasks', 'In Progress', 'Completed'],
-        datasets: [{
-            label: 'Task Summary',
-            data: [totalTasks, inProgressTasks, completedTasks],
-            backgroundColor: [
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
-            ],
-            borderColor: [
-                'rgba(75, 192, 192, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(153, 102, 255, 1)'
-            ],
-            borderWidth: 1
-        }]
-    };
-
-    const barChartOptions = {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    };
-
-    const pieChartData = {
-        labels: ['In Progress', 'Completed'],
-        datasets: [{
-            data: [inProgressTasks, completedTasks],
-            backgroundColor: [
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 159, 64, 1)',
-                'rgba(153, 102, 255, 1)'
-            ],
-            borderWidth: 1
-        }]
-    };
-
-    const pieChartOptions = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            tooltip: {
-                callbacks: {
-                    label: function(tooltipItem) {
-                        return `${tooltipItem.label}: ${tooltipItem.raw}`;
-                    }
-                }
-            }
-        }
     };
 
     return (
@@ -224,23 +125,49 @@ const Dashboard = () => {
                             <p>Completed</p>
                         </div>
                     </div>
-                    
-                    <button onClick={generatePDFReport} className="generate-report-btn">Generate PDF Report</button>
                 </section>
 
                 <section className="charts-section">
-                    <div className="tasks-chart">
-                        <h4>Task Summary</h4>
-                        <div className="chart-content">
-                            <Bar ref={barChartRef} data={barChartData} options={barChartOptions} />
-                        </div>
-                    </div>
-                    <div className="employee-performance">
-                        <h4>Employee Performance</h4>
-                        <div className="performance-chart">
-                            <Pie ref={pieChartRef} data={pieChartData} options={pieChartOptions} />
-                        </div>
-                    </div>
+                    <h4> Task Summary</h4>
+                    <Plot
+                        data={[
+                            {
+                                x: ['Total Tasks', 'In Progress', 'Completed'],
+                                y: [totalTasks, inProgressTasks, completedTasks],
+                                z: [0, 0, 0], // Customize the z-axis if needed
+                                type: 'bar3d',
+                                opacity: 0.8,
+                                marker: { color: '#8c0073' } // Use your specific color
+                            }
+                        ]}
+                        layout={{
+                            title: 'Task Overview',
+                            scene: {
+                                xaxis: { title: 'Task Types' },
+                                yaxis: { title: 'Count' },
+                                zaxis: { title: 'Depth' }
+                            },
+                            width: 700,
+                            height: 500,
+                        }}
+                    />
+
+                    <h4>Task Completion </h4>
+                    <Plot
+                        data={[
+                            {
+                                values: [inProgressTasks, completedTasks],
+                                labels: ['In Progress', 'Completed'],
+                                type: 'pie',
+                                hole: 0.4,
+                            }
+                        ]}
+                        layout={{
+                            title: 'Task Completion',
+                            height: 400,
+                            width: 500,
+                        }}
+                    />
                 </section>
             </main>
         </div>

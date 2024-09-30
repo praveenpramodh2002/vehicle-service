@@ -233,27 +233,6 @@
     border-radius: 10px;
 }
 
-.generate-report-btn {
-    background: linear-gradient(to right, #0056b3, #8e44ad);
-    border: none; 
-    height: auto;
-    width: auto;
-    color: white; 
-    padding: 15px 32px; 
-    text-align: center; 
-    text-decoration: none; 
-    display: inline-block;
-    font-size: 16px; 
-    margin: 10px 2px; 
-    cursor: pointer; 
-    border-radius: 5px; 
-    transition: background-color 0.3s ease;
-}
-
-.generate-report-btn:hover {
-    background-color: #5b7ed7; /* Darker green on hover */
-}
-
 .right-sidebar {
     width: 300px;
     padding: 20px;
@@ -295,7 +274,26 @@
 
 .completed-tasks {
     background-color: rgba(153, 102, 255, 0.1); /* Color for completed tasks */
+}.charts-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the charts */
+    margin-top: 20px;   /* Add space above the charts */
 }
+
+.charts-section h4 {
+    margin: 10px 0;     /* Adjust margin for chart titles */
+}
+
+.chart-container {
+    width: 400px;       /* Set the width of the chart */
+    height: 300px;      /* Set the height of the chart */
+    margin-bottom: 20px; /* Add space between charts */
+    display: flex;      /* Ensure flexbox layout */
+    justify-content: center; /* Center the chart */
+}
+
+
 
 /* Optional: Make cards responsive */
 @media (max-width: 768px) {
