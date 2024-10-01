@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './taskForm.css';
 
 // Form Input Component
-const FormInput = ({ label, type, name, value, onChange, error, placeholder, required, min }) => (
+const FormInput = ({ label, type, name, value, onChange, error, placeholder, required, min, onInput, maxLength }) => (
     <div className="form-group">
         {label && <label>{label}</label>}
         <input
@@ -10,9 +10,11 @@ const FormInput = ({ label, type, name, value, onChange, error, placeholder, req
             name={name}
             value={value}
             onChange={onChange}
+            onInput={onInput}
             placeholder={placeholder}
             required={required}
             min={min}
+            maxLength={maxLength} // Added maxLength prop
         />
         {error && <div className="error">{error}</div>}
     </div>
@@ -39,6 +41,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
         description: '',
         employee: '',
         email: '',
+        phoneNumber: '', // New field for employee phone number
         type: '',
         date: '',
         status: ''
@@ -47,7 +50,9 @@ const TaskForm = ({ addTask, data, isEdit }) => {
     const [errors, setErrors] = useState({
         email: '',
         title: '',
-        employee: ''
+        employee: '',
+        phoneNumber: '', // Error state for phone number
+        tId: '' // Error state for task ID
     });
 
     const [isMinimized, setIsMinimized] = useState(false);
@@ -76,8 +81,20 @@ const TaskForm = ({ addTask, data, isEdit }) => {
         return email;
     };
 
-    const preventNumbersAndSpecialChars = (value) => {
-        return value.replace(/[^a-zA-Z ]/g, '');
+    const validatePhoneNumber = (phoneNumber) => {
+        if (phoneNumber.length !== 10) {
+            setErrors((prevState) => ({ ...prevState, phoneNumber: 'Phone number must be exactly 10 digits' }));
+        } else {
+            setErrors((prevState) => ({ ...prevState, phoneNumber: '' }));
+        }
+    };
+
+    const validateTaskId = (tId) => {
+        if (tId < 0) {
+            setErrors((prevState) => ({ ...prevState, tId: 'Task ID must be a positive number' }));
+        } else {
+            setErrors((prevState) => ({ ...prevState, tId: '' }));
+        }
     };
 
     const handleChange = (e) => {
@@ -87,20 +104,41 @@ const TaskForm = ({ addTask, data, isEdit }) => {
         if (name === 'email') {
             filteredValue = validateEmailInput(value);
         }
-        if (name === 'title' || name === 'employee' || name === 'type') {
-            filteredValue = preventNumbersAndSpecialChars(value);
-        }
+        if (name === 'phoneNumber') {
+            if (value.length <= 10) {
+                setFormState((prevState) => ({
+                    ...prevState,
+                    [name]: value.replace(/[^0-9]/g, '') // Allow only digits
+                }));
+            }
+        } else if (name === 'tId') {
+            if (value >= 0) {
+                setFormState((prevState) => ({
+                    ...prevState,
+                    [name]: value
+                }));
+                validateTaskId(value);
+            }
+        } else {
+            if (name === 'title' || name === 'employee' || name === 'type') {
+                filteredValue = value.replace(/[^a-zA-Z ]/g, ''); // Prevent numbers in text fields
+            }
 
-        setFormState((prevState) => ({
-            ...prevState,
-            [name]: filteredValue
-        }));
+            setFormState((prevState) => ({
+                ...prevState,
+                [name]: filteredValue
+            }));
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!errors.email) {
+        // Validate phone number and task ID before submission
+        validatePhoneNumber(formState.phoneNumber);
+        validateTaskId(formState.tId);
+
+        if (!errors.email && !errors.phoneNumber && !errors.tId && formState.phoneNumber.length === 10) {
             try {
                 await addTask(formState);
                 setNotification(isEdit ? 'Task updated successfully!' : 'Task added successfully!');
@@ -111,6 +149,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                     description: '',
                     employee: '',
                     email: '',
+                    phoneNumber: '', // Reset phone number after submission
                     type: '',
                     date: '',
                     status: ''
@@ -136,6 +175,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
             description: '',
             employee: '',
             email: '',
+            phoneNumber: '',
             type: '',
             date: '',
             status: ''
@@ -166,6 +206,8 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                             onChange={handleChange}
                             placeholder="Task ID"
                             required
+                            error={errors.tId}
+                            min="0" // Ensures no negative number input
                         />
                         <FormInput
                             label="Task Title"
@@ -204,6 +246,17 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                             placeholder="Employee Email"
                             required
                             error={errors.email}
+                        />
+                        <FormInput
+                            label="Employee Phone Number" // New field
+                            type="text"
+                            name="phoneNumber"
+                            value={formState.phoneNumber}
+                            onChange={handleChange}
+                            placeholder="Employee Phone Number"
+                            required
+                            maxLength={10} // Limit input to 10 digits
+                            error={errors.phoneNumber}
                         />
                         <FormInput
                             label="Task Type"

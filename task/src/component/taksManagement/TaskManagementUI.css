@@ -13,7 +13,7 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    height: 200vh;
+    height: 300vh;
     width: 250px;
     background: linear-gradient(to right, #14dccb, #3036ea);
     color: white;
