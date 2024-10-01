@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './taskForm.css';
 
 // Form Input Component
-const FormInput = ({ label, type, name, value, onChange, error, placeholder, required, min, onInput, maxLength }) => (
+const FormInput = ({ label, type, name, value, onChange, error, placeholder, required, min, maxLength }) => (
     <div className="form-group">
         {label && <label>{label}</label>}
         <input
@@ -10,7 +10,6 @@ const FormInput = ({ label, type, name, value, onChange, error, placeholder, req
             name={name}
             value={value}
             onChange={onChange}
-            onInput={onInput}
             placeholder={placeholder}
             required={required}
             min={min}
@@ -21,7 +20,7 @@ const FormInput = ({ label, type, name, value, onChange, error, placeholder, req
 );
 
 // Form TextArea Component
-const FormTextArea = ({ label, name, value, onChange, placeholder, required }) => (
+const FormTextArea = ({ label, name, value, onChange, placeholder, required, error }) => (
     <div className="form-group">
         {label && <label>{label}</label>}
         <textarea
@@ -31,6 +30,7 @@ const FormTextArea = ({ label, name, value, onChange, placeholder, required }) =
             placeholder={placeholder}
             required={required}
         />
+        {error && <div className="error">{error}</div>}
     </div>
 );
 
@@ -40,19 +40,17 @@ const TaskForm = ({ addTask, data, isEdit }) => {
         title: '',
         description: '',
         employee: '',
-        email: '',
-        phoneNumber: '', // New field for employee phone number
+        designation: '',
+        phoneNumber: '',
         type: '',
         date: '',
         status: ''
     });
 
     const [errors, setErrors] = useState({
-        email: '',
-        title: '',
-        employee: '',
-        phoneNumber: '', // Error state for phone number
-        tId: '' // Error state for task ID
+        phoneNumber: '',
+        tId: '',
+        description: '' // Added for description error
     });
 
     const [isMinimized, setIsMinimized] = useState(false);
@@ -70,16 +68,6 @@ const TaskForm = ({ addTask, data, isEdit }) => {
             });
         }
     }, [data]);
-
-    const validateEmailInput = (email) => {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            setErrors((prevState) => ({ ...prevState, email: 'Invalid email address' }));
-        } else {
-            setErrors((prevState) => ({ ...prevState, email: '' }));
-        }
-        return email;
-    };
 
     const validatePhoneNumber = (phoneNumber) => {
         if (phoneNumber.length !== 10) {
@@ -99,11 +87,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        let filteredValue = value;
 
-        if (name === 'email') {
-            filteredValue = validateEmailInput(value);
-        }
         if (name === 'phoneNumber') {
             if (value.length <= 10) {
                 setFormState((prevState) => ({
@@ -119,14 +103,45 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                 }));
                 validateTaskId(value);
             }
-        } else {
-            if (name === 'title' || name === 'employee' || name === 'type') {
-                filteredValue = value.replace(/[^a-zA-Z ]/g, ''); // Prevent numbers in text fields
+        } else if (name === 'title') {
+            // Allow only letters and spaces in title
+            if (/^[a-zA-Z\s]*$/.test(value) || value === '') {
+                setFormState((prevState) => ({
+                    ...prevState,
+                    [name]: value
+                }));
             }
-
+        } else if (name === 'employee') {
+            // Prevent numbers and special characters in employee name
+            if (/^[a-zA-Z\s]*$/.test(value) || value === '') {
+                setFormState((prevState) => ({
+                    ...prevState,
+                    [name]: value
+                }));
+            } else {
+                alert('Employee name cannot contain numbers or special characters.');
+            }
+        } else if (name === 'description') {
+            // Prevent numbers in task description
+            if (!/\d/.test(value) || value === '') {
+                setFormState((prevState) => ({
+                    ...prevState,
+                    [name]: value
+                }));
+                setErrors((prevState) => ({
+                    ...prevState,
+                    description: ''
+                }));
+            } else {
+                setErrors((prevState) => ({
+                    ...prevState,
+                    description: 'Task description cannot contain numerical values'
+                }));
+            }
+        } else {
             setFormState((prevState) => ({
                 ...prevState,
-                [name]: filteredValue
+                [name]: value
             }));
         }
     };
@@ -134,11 +149,10 @@ const TaskForm = ({ addTask, data, isEdit }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validate phone number and task ID before submission
         validatePhoneNumber(formState.phoneNumber);
         validateTaskId(formState.tId);
 
-        if (!errors.email && !errors.phoneNumber && !errors.tId && formState.phoneNumber.length === 10) {
+        if (!errors.phoneNumber && !errors.tId && !errors.description && formState.phoneNumber.length === 10) {
             try {
                 await addTask(formState);
                 setNotification(isEdit ? 'Task updated successfully!' : 'Task added successfully!');
@@ -148,8 +162,8 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                     title: '',
                     description: '',
                     employee: '',
-                    email: '',
-                    phoneNumber: '', // Reset phone number after submission
+                    designation: '',
+                    phoneNumber: '',
                     type: '',
                     date: '',
                     status: ''
@@ -174,7 +188,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
             title: '',
             description: '',
             employee: '',
-            email: '',
+            designation: '',
             phoneNumber: '',
             type: '',
             date: '',
@@ -226,6 +240,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                             onChange={handleChange}
                             placeholder="Task Description"
                             required
+                            error={errors.description} // Show error for description
                         />
                         <FormInput
                             label="Assigned Employee"
@@ -237,25 +252,36 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                             required
                             error={errors.employee}
                         />
+                        <div className="form-group">
+                            <label>Employee Designation</label>
+                            <select
+                                name="designation"
+                                value={formState.designation}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Select Designation</option>
+                                <option value="Service Manager">Service Manager</option>
+                                <option value="Service Advisor">Service Advisor</option>
+                                <option value="Automotive Technician">Automotive Technician</option>
+                                <option value="Parts Specialist">Parts Specialist</option>
+                                <option value="Customer Service Representative">Customer Service Representative</option>
+                                <option value="Detailing Specialist">Detailing Specialist</option>
+                                <option value="Alignment Specialist">Alignment Specialist</option>
+                                <option value="Diagnostic Specialist">Diagnostic Specialist</option>
+                                <option value="Service Consultant">Service Consultant</option>
+                                <option value="Fleet Manager">Fleet Manager</option>
+                                <option value="General Manager">General Manager</option>
+                            </select>
+                        </div>
                         <FormInput
-                            label="Employee Email"
-                            type="email"
-                            name="email"
-                            value={formState.email}
-                            onChange={handleChange}
-                            placeholder="Employee Email"
-                            required
-                            error={errors.email}
-                        />
-                        <FormInput
-                            label="Employee Phone Number" // New field
-                            type="text"
+                            label="Phone Number"
+                            type="tel"
                             name="phoneNumber"
                             value={formState.phoneNumber}
                             onChange={handleChange}
-                            placeholder="Employee Phone Number"
+                            placeholder="Phone Number"
                             required
-                            maxLength={10} // Limit input to 10 digits
                             error={errors.phoneNumber}
                         />
                         <FormInput
@@ -268,13 +294,13 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                             required
                         />
                         <FormInput
-                            label="Date"
+                            label="Due Date"
                             type="date"
                             name="date"
                             value={formState.date}
                             onChange={handleChange}
-                            required
                             min={minDate}
+                            required
                         />
                         <div className="form-group">
                             <label>Status</label>
@@ -288,9 +314,12 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                                 <option value="Pending">Pending</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Completed">Completed</option>
+                                <option value="On Hold">On Hold</option>
                             </select>
                         </div>
-                        <button type="submit">{isEdit ? 'Update Task' : 'Add Task'}</button>
+                        <button type="submit" className="submit-btn">
+                            {isEdit ? 'Update Task' : 'Add Task'}
+                        </button>
                     </form>
                 </>
             )}
