@@ -1,7 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import './taskForm.css';
 
-const TaskForm = ({ addTask, submitted, data, isEdit }) => {
+// Form Input Component
+const FormInput = ({ label, type, name, value, onChange, error, placeholder, required, min }) => (
+    <div className="form-group">
+        {label && <label>{label}</label>}
+        <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            required={required}
+            min={min}
+        />
+        {error && <div className="error">{error}</div>}
+    </div>
+);
+
+// Form TextArea Component
+const FormTextArea = ({ label, name, value, onChange, placeholder, required }) => (
+    <div className="form-group">
+        {label && <label>{label}</label>}
+        <textarea
+            name={name}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            required={required}
+        />
+    </div>
+);
+
+const TaskForm = ({ addTask, data, isEdit }) => {
     const [formState, setFormState] = useState({
         tId: '',
         title: '',
@@ -18,6 +49,7 @@ const TaskForm = ({ addTask, submitted, data, isEdit }) => {
         title: '',
         employee: ''
     });
+
     const [isMinimized, setIsMinimized] = useState(false);
     const [notification, setNotification] = useState('');
     const [minDate, setMinDate] = useState('');
@@ -34,9 +66,8 @@ const TaskForm = ({ addTask, submitted, data, isEdit }) => {
         }
     }, [data]);
 
-    // Function to handle the allowed characters for email
     const validateEmailInput = (email) => {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             setErrors((prevState) => ({ ...prevState, email: 'Invalid email address' }));
         } else {
@@ -45,21 +76,17 @@ const TaskForm = ({ addTask, submitted, data, isEdit }) => {
         return email;
     };
 
-    // Function to prevent numbers and special characters in text fields
     const preventNumbersAndSpecialChars = (value) => {
-        return value.replace(/[^a-zA-Z ]/g, ''); // Only allows letters (a-z, A-Z) and spaces
+        return value.replace(/[^a-zA-Z ]/g, '');
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         let filteredValue = value;
 
-        // Validate email to allow only valid email format
         if (name === 'email') {
             filteredValue = validateEmailInput(value);
         }
-
-        // Prevent numbers and special characters in task title, employee name, and task type
         if (name === 'title' || name === 'employee' || name === 'type') {
             filteredValue = preventNumbersAndSpecialChars(value);
         }
@@ -70,28 +97,29 @@ const TaskForm = ({ addTask, submitted, data, isEdit }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!errors.email) {
-            addTask(formState);
+            try {
+                await addTask(formState);
+                setNotification(isEdit ? 'Task updated successfully!' : 'Task added successfully!');
 
-            setNotification(isEdit ? 'Task updated successfully!' : 'Task added successfully!');
+                setFormState({
+                    tId: '',
+                    title: '',
+                    description: '',
+                    employee: '',
+                    email: '',
+                    type: '',
+                    date: '',
+                    status: ''
+                });
 
-            setTimeout(() => {
-                setNotification('');
-            }, 3000);
-
-            setFormState({
-                tId: '',
-                title: '',
-                description: '',
-                employee: '',
-                email: '',
-                type: '',
-                date: '',
-                status: ''
-            });
+                window.location.reload();
+            } catch (err) {
+                console.error("Failed to add task", err);
+            }
         } else {
             alert("Please fix errors before submitting.");
         }
@@ -121,7 +149,7 @@ const TaskForm = ({ addTask, submitted, data, isEdit }) => {
                 <span>Task Form</span>
                 <div className="form-controls">
                     <button type="button" onClick={handleMinimize} className="minimize-btn">
-                        {isMinimized ? '+' : '-' }
+                        {isMinimized ? '+' : '-'}
                     </button>
                     <button type="button" onClick={handleClose} className="close-btn">x</button>
                 </div>
@@ -130,77 +158,73 @@ const TaskForm = ({ addTask, submitted, data, isEdit }) => {
                 <>
                     {notification && <div className="notification">{notification}</div>}
                     <form onSubmit={handleSubmit} className="form-content">
+                        <FormInput
+                            label="Task ID"
+                            type="number"
+                            name="tId"
+                            value={formState.tId}
+                            onChange={handleChange}
+                            placeholder="Task ID"
+                            required
+                        />
+                        <FormInput
+                            label="Task Title"
+                            type="text"
+                            name="title"
+                            value={formState.title}
+                            onChange={handleChange}
+                            placeholder="Task Title"
+                            required
+                            error={errors.title}
+                        />
+                        <FormTextArea
+                            label="Task Description"
+                            name="description"
+                            value={formState.description}
+                            onChange={handleChange}
+                            placeholder="Task Description"
+                            required
+                        />
+                        <FormInput
+                            label="Assigned Employee"
+                            type="text"
+                            name="employee"
+                            value={formState.employee}
+                            onChange={handleChange}
+                            placeholder="Assigned Employee"
+                            required
+                            error={errors.employee}
+                        />
+                        <FormInput
+                            label="Employee Email"
+                            type="email"
+                            name="email"
+                            value={formState.email}
+                            onChange={handleChange}
+                            placeholder="Employee Email"
+                            required
+                            error={errors.email}
+                        />
+                        <FormInput
+                            label="Task Type"
+                            type="text"
+                            name="type"
+                            value={formState.type}
+                            onChange={handleChange}
+                            placeholder="Task Type"
+                            required
+                        />
+                        <FormInput
+                            label="Date"
+                            type="date"
+                            name="date"
+                            value={formState.date}
+                            onChange={handleChange}
+                            required
+                            min={minDate}
+                        />
                         <div className="form-group">
-                            <input
-                                type="number"
-                                name="tId"
-                                value={formState.tId}
-                                onChange={handleChange}
-                                placeholder="Task ID"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="title"
-                                value={formState.title}
-                                onChange={handleChange}
-                                placeholder="Task Title"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <textarea
-                                name="description"
-                                value={formState.description}
-                                onChange={handleChange}
-                                placeholder="Task Description"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="employee"
-                                value={formState.employee}
-                                onChange={handleChange}
-                                placeholder="Assigned Employee"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="email"
-                                name="email"
-                                value={formState.email}
-                                onChange={handleChange}
-                                placeholder="Employee Email"
-                                required
-                            />
-                            {errors.email && <div className="error">{errors.email}</div>}
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="type"
-                                value={formState.type}
-                                onChange={handleChange}
-                                placeholder="Task Type"
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="date"
-                                name="date"
-                                value={formState.date}
-                                onChange={handleChange}
-                                required
-                                min={minDate}
-                            />
-                        </div>
-                        <div className="form-group">
+                            <label>Status</label>
                             <select
                                 name="status"
                                 value={formState.status}
