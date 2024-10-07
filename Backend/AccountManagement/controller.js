@@ -1,3 +1,6 @@
+// controllers/vehicleController.js
+const Vehicle = require('../AccountManagement/model');
+
 import React, { useState, useEffect } from 'react';
 import './vehicleForm.css';  
 import axios from 'axios';
@@ -56,14 +59,14 @@ const AddVehicleForm = ({ vehicle, isEditMode, refreshVehicles, onCancel }) => {
 
             if (isEditMode && vehicle) {
                 // Update the vehicle
-                await axios.put(`http://localhost:3002/api/vehicles/${vehicle._id}`, formData, {
+                await axios.put(`http://localhost:3001/api/vehicles/${vehicle._id}`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
             } else {
                 // Add a new vehicle
-                await axios.post('http://localhost:3002/api/vehicles', formData, {
+                await axios.post('http://localhost:3001/api/vehicles', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

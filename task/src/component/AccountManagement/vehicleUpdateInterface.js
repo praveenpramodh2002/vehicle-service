@@ -75,7 +75,6 @@ const VehicleUpdate = () => {
         console.log("Deleting vehicle with ID:", id);
         Axios.delete(`http://localhost:3001/api/vehicles/${id}`)
             .then(() => {
-                // Fetch updated vehicles and deleted vehicles immediately
                 getVehicles();
                 getDeletedVehicles();
             })
@@ -94,11 +93,11 @@ const VehicleUpdate = () => {
         <div className="container">
             <aside className="sidebar">
                 <div className="logo">
-                    <img src="image/logo1.jpeg" alt="Micro Automotive" />
+                    <img src="images/logo1.jpeg" alt="Micro Automotive" />
                 </div>
                 <nav className="navigation">
                     <ul>
-                        <li><a href="home">Dashboard</a></li>
+                        <li><a href="home1">Dashboard</a></li>
                         <li><a href="serviceManager">Account</a></li>
                         <li><a href="#">Inbox</a></li>
                         <li><a href="#">Help</a></li>

@@ -33,10 +33,10 @@ root.render(
         <Route path='/tracking' element={<KanbanBoard/>}></Route>
         <Route path='/Home1' element={<Home1/>}></Route>
         <Route path='/Modal' element={<Modal/>}></Route>
-        <Route path='/VehicleManagement' element={<VehicleManagement/>}></Route>
-        <Route path='/AddVehicleForm' element={<AddVehicleForm/>}></Route>
-        <Route path='/VehicleTable' element={<VehicleTable/>}></Route>
-        <Route path='/VehicleUpdate' element={<VehicleUpdate/>}></Route>
+        <Route path='/VehicleForm' element={<AddVehicleForm />} />
+      <Route path='/VehicleTable' element={<VehicleTable />} />
+      <Route path='/VehicleAddInterface' element={<VehicleManagement />} />
+      <Route path='/VehicleUpdateInterface' element={<VehicleUpdate />} />
       </Routes>
   </BrowserRouter>
 );
