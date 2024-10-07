@@ -13,7 +13,7 @@ const FormInput = ({ label, type, name, value, onChange, error, placeholder, req
             placeholder={placeholder}
             required={required}
             min={min}
-            maxLength={maxLength} // Added maxLength prop
+            maxLength={maxLength}
         />
         {error && <div className="error">{error}</div>}
     </div>
@@ -44,13 +44,14 @@ const TaskForm = ({ addTask, data, isEdit }) => {
         phoneNumber: '',
         type: '',
         date: '',
+        completionTime: '',
         status: ''
     });
 
     const [errors, setErrors] = useState({
         phoneNumber: '',
         tId: '',
-        description: '' // Added for description error
+        description: ''
     });
 
     const [isMinimized, setIsMinimized] = useState(false);
@@ -64,7 +65,8 @@ const TaskForm = ({ addTask, data, isEdit }) => {
         if (data) {
             setFormState({
                 ...data,
-                date: data.date ? data.date.split('T')[0] : ''
+                date: data.date ? data.date.split('T')[0] : '',
+                completionTime: data.completionTime || '' // Ensure to load completionTime
             });
         }
     }, [data]);
@@ -92,7 +94,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
             if (value.length <= 10) {
                 setFormState((prevState) => ({
                     ...prevState,
-                    [name]: value.replace(/[^0-9]/g, '') // Allow only digits
+                    [name]: value.replace(/[^0-9]/g, '')
                 }));
             }
         } else if (name === 'tId') {
@@ -104,7 +106,6 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                 validateTaskId(value);
             }
         } else if (name === 'title') {
-            // Allow only letters and spaces in title
             if (/^[a-zA-Z\s]*$/.test(value) || value === '') {
                 setFormState((prevState) => ({
                     ...prevState,
@@ -112,7 +113,6 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                 }));
             }
         } else if (name === 'employee') {
-            // Prevent numbers and special characters in employee name
             if (/^[a-zA-Z\s]*$/.test(value) || value === '') {
                 setFormState((prevState) => ({
                     ...prevState,
@@ -122,7 +122,6 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                 alert('Employee name cannot contain numbers or special characters.');
             }
         } else if (name === 'description') {
-            // Prevent numbers in task description
             if (!/\d/.test(value) || value === '') {
                 setFormState((prevState) => ({
                     ...prevState,
@@ -166,6 +165,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                     phoneNumber: '',
                     type: '',
                     date: '',
+                    completionTime: '',
                     status: ''
                 });
 
@@ -192,6 +192,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
             phoneNumber: '',
             type: '',
             date: '',
+            completionTime: '',
             status: ''
         });
         setErrors({});
@@ -211,7 +212,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
             {!isMinimized && (
                 <>
                     {notification && <div className="notification">{notification}</div>}
-                    <form onSubmit={handleSubmit} className="form-content">
+                    <form onSubmit={handleSubmit} className="form-content" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '30px' }}>
                         <FormInput
                             label="Task ID"
                             type="number"
@@ -221,7 +222,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                             placeholder="Task ID"
                             required
                             error={errors.tId}
-                            min="0" // Ensures no negative number input
+                            min="0"
                         />
                         <FormInput
                             label="Task Title"
@@ -240,7 +241,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                             onChange={handleChange}
                             placeholder="Task Description"
                             required
-                            error={errors.description} // Show error for description
+                            error={errors.description}
                         />
                         <FormInput
                             label="Assigned Employee"
@@ -294,12 +295,20 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                             required
                         />
                         <FormInput
-                            label="Due Date"
+                            label="Completion Date"
                             type="date"
                             name="date"
                             value={formState.date}
                             onChange={handleChange}
                             min={minDate}
+                            required
+                        />
+                        <FormInput
+                            label="Completion Time"
+                            type="time"
+                            name="completionTime"
+                            value={formState.completionTime}
+                            onChange={handleChange}
                             required
                         />
                         <div className="form-group">
@@ -314,12 +323,10 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                                 <option value="Pending">Pending</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Completed">Completed</option>
-                                <option value="On Hold">On Hold</option>
+                                <option value="Cancelled">Cancelled</option>
                             </select>
                         </div>
-                        <button type="submit" className="submit-btn">
-                            {isEdit ? 'Update Task' : 'Add Task'}
-                        </button>
+                        <button type="submit" className="submit-btn">{isEdit ? 'Update Task' : 'Add Task'}</button>
                     </form>
                 </>
             )}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Dropdown, Menu, Input, Button, Tooltip } from 'antd';
-import { FilterOutlined, DownloadOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { FilterOutlined, DownloadOutlined } from '@ant-design/icons';
 import './Tasktable.css';
 
 
@@ -165,13 +165,15 @@ const Tasktable = ({ rows, onEditTask, onDeleteTask }) => {
                                     <Button
                                         className='updateBtn'
                                         onClick={() => onEditTask(row)}
-                                        icon={<EditOutlined />} // Using the edit icon
-                                    />
+                                    >
+                                        Update
+                                    </Button>
                                     <Button
                                         className='deleteBtn'
                                         onClick={() => handleDeleteTask(row._id)}
-                                        icon={<DeleteOutlined />} // Using the delete icon
-                                    />
+                                    >
+                                        Delete
+                                    </Button>
                                 </td>
                             </tr>
                         ))

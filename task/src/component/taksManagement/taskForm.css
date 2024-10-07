@@ -1,7 +1,3 @@
-
-
-
-
 .form-frame {
     max-width: 500px; /* Set the frame width to 500px */
     margin: 20px auto;
@@ -82,6 +78,7 @@ button {
 button:hover {
     background: #0056b3;
 }
+
 .notification {
     background-color: #d4edda;
     color: #155724;
@@ -90,40 +87,6 @@ button:hover {
     border: 1px solid #c3e6cb;
     border-radius: 4px;
     text-align: center;
-}.form-frame {
-    width: 500px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: height 0.3s ease-in-out;
-    overflow: hidden;
-}
-
-.form-frame.minimized {
-    height: 50px; /* Adjust this value for the minimized form height */
-}
-
-.form-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.minimize-btn, .close-btn {
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.form-content {
-    padding: 20px;
-    animation: slideDown 0.3s ease-in-out;
 }
 
 @keyframes slideDown {
@@ -136,45 +99,3 @@ button:hover {
         opacity: 1;
     }
 }
-
-.notification {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out 2.5s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #45a049;
-}
-
