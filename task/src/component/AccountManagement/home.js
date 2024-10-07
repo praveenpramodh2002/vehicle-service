@@ -12,7 +12,14 @@ function Home1({ vehicles = [] }) {
     };
 
     const navigateToVehicleDatabase = () => {
-        navigate('/VehicleUpdateInterface'); // Navigation for Vehicle Database
+        navigate('/VehicleUpdateInterface'); 
+    };
+
+    const handlePrintReport = () => {
+        const userId = prompt("Please enter User ID:");
+        if (userId) {
+            navigate(`/PrintReport/${userId}`);
+        }
     };
 
     useEffect(() => {
@@ -31,7 +38,7 @@ function Home1({ vehicles = [] }) {
         <div className="container">
             <aside className="sidebar">
                 <div className="logo">
-                    <img src="images/logo1.jpeg" alt="Micro Automotive" />
+                    <img src="image/logo1.jpeg" alt="Micro Automotive" />
                 </div>
                 <nav className="navigation">
                     <ul>
@@ -51,6 +58,8 @@ function Home1({ vehicles = [] }) {
                     <button className="signoutbtn">Sign Out</button>
                 </div>
             </aside>
+            <br>
+            </br>
             <div className="main-content">
                 <div className="date-time">
                     <div className="current-date-time">{currentDateTime}</div>
@@ -61,15 +70,18 @@ function Home1({ vehicles = [] }) {
                 <section className="dashboard-cardsss">
                     <div className="card123">
                         <div className="circle-chart">{vehicles.length}</div> 
-                        <p>Total Vehicles</p>
+                        <p>Total Accounts</p>
                     </div>
                     <div className="card123" onClick={navigateToVehicleManagement} style={{ cursor: 'pointer' }}>
-                        <img src="images/add.png" alt="Add Vehicle" className="img" />
+                        <img src="image/add.png" alt="Add Vehicle" className="img" />
                         <p>Add New User Account</p>
                     </div>
                     <div className="card123" onClick={navigateToVehicleDatabase} style={{ cursor: 'pointer' }}>
-                        <img src="images/edit.png" alt="Update Vehicles" className="img" />
+                        <img src="image/edit.png" alt="Update Vehicles" className="img" />
                         <p>Update User Account</p>
+                    </div>
+                    <div className="card123" onClick={handlePrintReport} style={{ cursor: 'pointer' }}>
+                        <button className="btn">Print Report</button>
                     </div>
                 </section>
             </div>

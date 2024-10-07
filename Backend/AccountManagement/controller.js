@@ -1,39 +1,101 @@
 // controllers/vehicleController.js
 const Vehicle = require('../AccountManagement/model');
 
-// Function to handle vehicle data submission
-const submitVehicleData = async (req, res) => {
-  const { vehicleid, userid, fullname, nic, contact, email, address, brand, model, year, vehicleno, engineno, chassisno, condition } = req.body;
+import React, { useState, useEffect } from 'react';
+import './vehicleForm.css';  
+import axios from 'axios';
 
-  try {
-    // Validate the input
-    if (!vehicleid || !userid || !fullname || !nic || !contact || !email || !address || !brand || !model || !year || !vehicleno || !engineno || !chassisno || !condition) {
-      return res.status(400).json({ message: 'All fields are required' });
-    }
+const AddVehicleForm = ({ vehicle, isEditMode, refreshVehicles, onCancel }) => {
+    const [vehicleData, setVehicleData] = useState({
+        brand: 'Toyota',
+        model: '',
+        year: '',
+        vehicleno: '',
+        engineno: '',
+        chassisno: '',
+        vehicleid: '',
+        userid: '001',
+        vehicleimage: null,
+        condition: ''
+    });
 
-    // Save the new vehicle to the database
-    const newVehicle = new Vehicle(req.body);
-    await newVehicle.save();
+    // Populate the form with the existing vehicle data when in edit mode
+    useEffect(() => {
+        if (isEditMode && vehicle) {
+            setVehicleData({
+                brand: vehicle.brand || '',
+                model: vehicle.model || '',
+                year: vehicle.year || '',
+                vehicleno: vehicle.vehicleno || '',
+                engineno: vehicle.engineno || '',
+                chassisno: vehicle.chassisno || '',
+                vehicleid: vehicle.vehicleid || '',
+                userid: vehicle.userid || '',
+                condition: vehicle.condition || ''
+            });
+        }
+    }, [isEditMode, vehicle]);
 
-    res.status(201).json({ message: 'Vehicle data saved successfully', vehicle: newVehicle });
-  } catch (error) {
-    console.error('Error saving vehicle data:', error);
-    res.status(500).json({ message: 'Server error while saving vehicle data' });
-  }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setVehicleData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const formData = new FormData();
+            Object.keys(vehicleData).forEach(key => {
+                if (key === 'vehicleimage' && vehicleData[key]) {
+                    formData.append('vehicleimage', vehicleData[key]);
+                } else {
+                    formData.append(key, vehicleData[key]);
+                }
+            });
+
+            if (isEditMode && vehicle) {
+                // Update the vehicle
+                await axios.put(`http://localhost:3001/api/vehicles/${vehicle._id}`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+            } else {
+                // Add a new vehicle
+                await axios.post('http://localhost:3001/api/vehicles', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+            }
+
+            refreshVehicles(); // Refresh the vehicle list
+            handleCancel(); // Reset form data or close the form
+        } catch (error) {
+            console.error('Error submitting vehicle data:', error);
+            // Handle the error state here to show feedback to the user
+        }
+    };
+
+    const handleCancel = () => {
+        setVehicleData({
+            vehicleid: '',
+            userid: '',
+            brand: '',
+            model: '',
+            year: '',
+            vehicleno: '',
+            engineno: '',
+            chassisno: '',
+            condition: ''
+        });
+        onCancel(); // Call the onCancel prop to close or reset the form
+    };
+
 };
 
-// Function to get all vehicles
-const getAllVehicles = async (req, res) => {
-  try {
-    const vehicles = await Vehicle.find();
-    res.json(vehicles);
-  } catch (error) {
-    console.error('Error fetching vehicles:', error);
-    res.status(500).json({ message: 'Server error while fetching vehicles' });
-  }
-};
-
-module.exports = {
-  submitVehicleData,
-  getAllVehicles,
-};
+export default AddVehicleForm;
