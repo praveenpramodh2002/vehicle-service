@@ -122,13 +122,6 @@ color:#ee0e0e;
 .dropdown:hover .dropdown-content {
   display: block;
 }
-.book-now-btn {
-  background-color: #ee0e0e; 
-  color: rgb(255, 255, 255); /* White text */
-  padding: 10px 15px; /* Padding */
-  border-radius: 2px; /* Rounded corners */
-  text-decoration: none; /* Remove underline */
-}
 
 .book-now-btn:hover {
   background-color: #c8cdc9; 
