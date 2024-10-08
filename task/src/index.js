@@ -12,12 +12,18 @@ import Main from './component/taksManagement/main';
 import Alltask from './component/taksManagement/tasks';
 import KanbanBoard from './component/taksManagement/tracking';
 import Home from './component/Homepage/hme';
+
+
 import Home1 from './component/AccountManagement/home';
 import Modal from './component/AccountManagement/Modal';
 import VehicleManagement from './component/AccountManagement/vehicleAddInterface';
 import AddVehicleForm from './component/AccountManagement/vehicleForm';
 import VehicleTable from './component/AccountManagement/vehicleTable';
 import VehicleUpdate from './component/AccountManagement/vehicleUpdateInterface';
+
+
+import Hrmdb from './component/SalaryMgt/hrmdb/hrmdb';
+import AddEmployee from './component/SalaryMgt/addemployee/addemployee';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -32,11 +38,20 @@ root.render(
         <Route path='/alltask' element={<Alltask/>}></Route>
         <Route path='/tracking' element={<KanbanBoard/>}></Route>
         <Route path='/Home1' element={<Home1/>}></Route>
+
+
         <Route path='/Modal' element={<Modal/>}></Route>
         <Route path='/VehicleForm' element={<AddVehicleForm />} />
       <Route path='/VehicleTable' element={<VehicleTable />} />
       <Route path='/VehicleAddInterface' element={<VehicleManagement />} />
       <Route path='/VehicleUpdateInterface' element={<VehicleUpdate />} />
+
+
+      <Route path='/hrmdb' element={<Hrmdb/>}/>
+      <Route path='/addemployee' element={<AddEmployee/>}/>
+
+
+
       </Routes>
   </BrowserRouter>
 );
