@@ -19,6 +19,10 @@ import AddVehicleForm from './component/AccountManagement/vehicleForm';
 import VehicleTable from './component/AccountManagement/vehicleTable';
 import VehicleUpdate from './component/AccountManagement/vehicleUpdateInterface';
 
+import Sidebar from './component/Inventorymanagement/inventory';
+import InventoryForm from './component/Inventorymanagement/inventoryForm';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -37,6 +41,10 @@ root.render(
       <Route path='/VehicleTable' element={<VehicleTable />} />
       <Route path='/VehicleAddInterface' element={<VehicleManagement />} />
       <Route path='/VehicleUpdateInterface' element={<VehicleUpdate />} />
+      <Route path='/addinventory' element={<Sidebar />} />
+      <Route path='/inventory' element={<InventoryForm />} />
+      
+      
       </Routes>
   </BrowserRouter>
 );
