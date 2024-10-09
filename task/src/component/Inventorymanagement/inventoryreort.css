@@ -1,0 +1,172 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: #fff;
+    transition: width 0.3s;
+    padding: 20px;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    color: #ecf0f1;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navigation li {
+    margin: 15px 0;
+}
+
+.navigation a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.tools {
+    margin-top: 30px;
+}
+
+.tools p {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.user-profile {
+    margin-top: auto;
+    text-align: center;
+}
+
+.user-profile img {
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.logout-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ecf0f1;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    border: 1px solid #bdc3c7;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.header-icons .date-display {
+    margin-left: 20px;
+}
+
+/* Inventory Report Styles */
+.inventory-report-section {
+    margin-top: 20px;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.inventory-table th, .inventory-table td {
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Inventory Statistics Styles */
+.inventory-stats {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-stats h4 {
+    margin-bottom: 10px;
+}
+
+/* Low Stock Warning Styles */
+.low-stock-warning {
+    margin-top: 20px;
+    background-color: #dc2612;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.low-stock-warning h4 {
+    margin-bottom: 10px;
+}
+
+.low-stock-warning ul {
+    list-style: none;
+    padding: 0;
+}

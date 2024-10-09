@@ -8,8 +8,8 @@ import {
     SettingOutlined 
 } from '@ant-design/icons';
 
-import TaskForm from './inventoryForm'; // Ensure the path is correct
-import TaskTable from './inventoryTable'; // Ensure the path is correct
+import InventoryForm from './inventoryForm'; // Ensure the path is correct
+import InventoryTable from './inventoryTable'; // Ensure the path is correct
 import Axios from 'axios';
 
 const Sidebar = () => {
@@ -36,12 +36,12 @@ const Sidebar = () => {
         setSubmitted(true);
 
         const payload = {
-            iId: data.iId, // Make sure these keys match your model
+            itemId: data.itemId, // Updated keys to match your inventory model
             itemName: data.itemName,
-            description: data.description,
-            employee: data.employee,
-            type: data.type,
-            date: data.date,
+            quantity: data.quantity,
+            supplier: data.supplier,
+            reorderLevel: data.reorderLevel,
+            dateAdded: data.dateAdded,
             status: data.status,
         };
 
@@ -94,8 +94,8 @@ const Sidebar = () => {
                     <ul>
                         <li><HomeOutlined /> <a href="main">Home </a></li>
                         <li><FileSearchOutlined /> <a href="tracking">Tracking</a></li>
-                        <li><BarChartOutlined /> <a href="report">Reports</a></li>
-                        <li><FileSearchOutlined /> <a href="task"> Add Task </a></li>
+                        <li><BarChartOutlined /> <a href="inventoryreport">inventoryReports</a></li>
+                        <li><FileSearchOutlined /> <a href="inventory"> Add Inventory </a></li> {/* Updated navigation */}
                     </ul>
                 </div>
                 <div className="tools">
@@ -113,19 +113,19 @@ const Sidebar = () => {
                 </div>
             </aside>
             <div className="main-content">
-                <div className="task-section">
-                    <div className="add-task-header">
-                        <button className="add-task-button">
-                            <span className="add-icon">+</span> Add new task
+                <div className="inventory-section"> {/* Updated section name */}
+                    <div className="add-inventory-header">
+                        <button className="add-inventory-button">
+                            <span className="add-icon">+</span> Add new inventory item
                         </button>
                     </div>
-                    <TaskForm
+                    <InventoryForm
                         addInventory={addInventory}
                         submitted={submitted}
                         data={selectedInventory}
                         isEdit={isEdit}
                     />
-                    <TaskTable
+                    <InventoryTable
                         rows={inventory}
                         onEditInventory={(inventory) => {
                             setSelectedInventory(inventory);
