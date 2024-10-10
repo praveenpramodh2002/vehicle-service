@@ -12,6 +12,7 @@ import {
     QuestionCircleOutlined,
     ExclamationCircleOutlined // Import the warning icon
 } from '@ant-design/icons';
+import Plot from 'react-plotly.js'; // Import Plotly for charts
 import Axios from 'axios';
 import './inventoryreort.css'; // Make sure the filename matches your CSS file
 
@@ -40,7 +41,6 @@ const InventoryReport = () => {
 
     const calculateUsageStats = (items) => {
         // Assuming items have a usage field for this calculation
-        // Replace with actual logic to calculate used items
         const dailyUsed = items.filter(item => item.usage === 'daily').length;
         const monthlyUsed = items.filter(item => item.usage === 'monthly').length;
         const yearlyUsed = items.filter(item => item.usage === 'yearly').length;
@@ -82,7 +82,7 @@ const InventoryReport = () => {
                         <li><HomeOutlined /> <a href="main">Home</a></li>
                         <li><FileSearchOutlined /> <a href="tracking">Tracking</a></li>
                         <li><BarChartOutlined /> <a href="report">Reports</a></li>
-                        <li><FileSearchOutlined /><a href="task"> Add Task </a></li>
+                        <li><FileSearchOutlined /><a href="Addinventory"> Add Inventory </a></li>
                     </ul>
                 </nav>
                 <div className="tools">
@@ -165,6 +165,48 @@ const InventoryReport = () => {
                         <p>Daily Used Items: {dailyUsedItems}</p>
                         <p>Monthly Used Items: {monthlyUsedItems}</p>
                         <p>Yearly Used Items: {yearlyUsedItems}</p>
+                    </div>
+
+                    {/* Add Bar Chart for Inventory Stocks */}
+                    <div className="chart-section">
+                        <h4>Inventory Stock Overview</h4>
+                        <Plot
+                            data={[
+                                {
+                                    x: inventoryItems.map(item => item.itemName), // X-axis: Item names
+                                    y: inventoryItems.map(item => item.quantity), // Y-axis: Quantities
+                                    type: 'bar',
+                                    marker: { color: '#007acc' } // Customize bar color
+                                }
+                            ]}
+                            layout={{
+                                title: 'Stock Quantities by Item',
+                                xaxis: { title: 'Item Name', tickangle: -45 }, // Rotate item names for better readability
+                                yaxis: { title: 'Stock Quantity' },
+                                width: 800,
+                                height: 500,
+                            }}
+                        />
+                    </div>
+
+                    {/* Add Pie Chart for Low Stock vs In Stock Items */}
+                    <div className="chart-section">
+                        <h4>Low Stock vs In Stock Items</h4>
+                        <Plot
+                            data={[
+                                {
+                                    values: [lowStockItems.length, inventoryItems.length - lowStockItems.length],
+                                    labels: ['Low Stock', 'In Stock'],
+                                    type: 'pie',
+                                    hole: 0.4,
+                                }
+                            ]}
+                            layout={{
+                                title: 'Stock Distribution',
+                                height: 400,
+                                width: 500,
+                            }}
+                        />
                     </div>
                 </section>
             </main>

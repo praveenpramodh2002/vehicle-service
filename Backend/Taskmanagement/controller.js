@@ -5,7 +5,7 @@ const twilio = require('twilio');
 const accountSid = 'ACa22c5d28a8261851ac66f0084e510c2f';  // Replace with your Twilio Account SID
 const authToken = '77547315909a02d15de880783741b965';    // Replace with your Twilio Auth Token
 const client = new twilio(accountSid, authToken);
-const whatsappFrom = '+13342928195'; // Replace with your Twilio WhatsApp number
+const whatsappFrom = `whatsapp:+14155238886`; // Replace with your Twilio WhatsApp number
 
 // Get all tasks
 const getTasks = async (req, res) => {
@@ -32,7 +32,7 @@ await client.messages.create({
   👨‍💼 *Assigned to*: ${savedTask.employee}\n\n
   Let's get to work and make progress! 🚀`,
   from: whatsappFrom,
-  to: '+94714531805'
+  to: `whatsapp:+94714531805`
 }).catch(err => console.error(`Failed to send WhatsApp message: ${err.message}`));
 
 res.status(201).json({ message: 'Task added successfully, notification sent', response: savedTask });

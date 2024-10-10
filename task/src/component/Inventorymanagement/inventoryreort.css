@@ -156,7 +156,7 @@ body {
 /* Low Stock Warning Styles */
 .low-stock-warning {
     margin-top: 20px;
-    background-color: #dc2612;
+    background-color: #ff2108;
     color: white;
     padding: 15px;
     border-radius: 5px;
@@ -169,4 +169,100 @@ body {
 .low-stock-warning ul {
     list-style: none;
     padding: 0;
+}
+/* CSS for Inventory Report */
+
+/* Style the table */
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+.inventory-table th, .inventory-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Header styling */
+.inventory-table th {
+    background-color: #007acc;
+    color: white;
+}
+
+/* Row hover effect */
+.inventory-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Column-specific coloring */
+
+/* 1st column: Item ID */
+.inventory-table td:nth-child(1) {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* 2nd column: Item Name */
+.inventory-table td:nth-child(2) {
+    background-color: #e6f7ff;
+    color: #007acc;
+}
+
+/* 3rd column: Quantity */
+.inventory-table td:nth-child(3) {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* 4th column: Supplier */
+.inventory-table td:nth-child(4) {
+    background-color: #e6f7ff;
+    color: #69af1d;
+}
+
+/* 5th column: Reorder Level */
+.inventory-table td:nth-child(5) {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* 6th column: Date Added */
+.inventory-table td:nth-child(6) {
+    background-color: #e6f7ff;
+    color: #007acc;
+}
+
+/* 7th column: Status */
+.inventory-table td:nth-child(7) {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Styling for low stock warning */
+.low-stock-warning {
+    background-color: #ff0409;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+/* Style for chart section */
+.chart-section {
+    margin-top: 30px;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .inventory-table {
+        font-size: 14px;
+    }
+
+    .chart-section {
+        width: 100%;
+        overflow-x: auto;
+    }
 }

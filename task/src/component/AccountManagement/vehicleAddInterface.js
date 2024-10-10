@@ -26,7 +26,7 @@ const VehicleManagement = () => {
         <div className="container">
             <aside className="sidebar">
                 <div className="logo">
-                <img src="images/logo1.jpeg" alt="Micro Automotive" />
+                <img src="image/logo2.jpeg" alt="Micro Automotive" />
                 </div>
                 <nav className="navigation">
                     <ul>
