@@ -1,5 +1,5 @@
 .form-frame {
-    max-width: 500px; /* Set the frame width to 500px */
+    max-width: 800px; /* Set the frame width to 500px */
     margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -87,7 +87,28 @@ button:hover {
     border: 1px solid #c3e6cb;
     border-radius: 4px;
     text-align: center;
+}.form-group label {
+    /* Change this to 'underline', 'line-through', 'overline', or 'none' as needed */
+    color: #100f0f; /* Optional: change the color of the label */
+    font-weight: bold; /* Optional: make the label bold */
+    margin-bottom: 5px; /* Optional: add space below the label */
 }
+
+/* You may want to adjust these styles if they conflict with existing ones */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%; /* Ensure inputs take the full width */
+    padding: 10px; /* Optional: add padding for better spacing */
+    border: 1px solid #ccc; /* Optional: add a border */
+    border-radius: 4px; /* Optional: round corners */
+}
+
+.error {
+    color: red; /* Style for error messages */
+    font-size: 12px; /* Optional: make error messages smaller */
+}
+
 
 @keyframes slideDown {
     from {

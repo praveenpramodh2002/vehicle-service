@@ -1,0 +1,8 @@
+.inventory-form-box {
+    border: 1px solid #ccc; /* Border around the box */
+    border-radius: 5px; /* Rounded corners */
+    padding: 20px; /* Space inside the box */
+    margin: 20px; /* Space outside the box */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #f9f9f9; /* Light background color */
+}

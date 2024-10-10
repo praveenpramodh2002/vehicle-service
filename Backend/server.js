@@ -6,6 +6,8 @@ const host = 'localhost';
 const mongoose = require('mongoose');
 const router1 = require('./Taskmanagement/router'); // Ensure the path is correct
 const router2 = require('./AccountManagement/router'); 
+const router3=require('./Inventorymanagement/router');
+const twilio = require('twilio');
 
 // Middleware for CORS
 app.use(cors({
@@ -34,7 +36,8 @@ connect();
 
 // Use Routers
 app.use('/api', router1); // Routes for task management
-app.use('/api', router2); // Routes for account management
+app.use('/api', router2);
+app.use('/api',router3) // Routes for account management
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
