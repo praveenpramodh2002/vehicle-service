@@ -1,0 +1,79 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './Login.css';
+
+// Utility to set a cookie
+const setCookie = (name, value, days) => {
+  const expires = new Date(Date.now() + days * 86400000).toUTCString();
+  document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+};
+
+// Utility to store JWT token in localStorage
+const storeToken = (token) => {
+  localStorage.setItem('token', token);
+};
+
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrorMessage(''); // Clear error message on new login attempt
+
+    try {
+      const response = await axios.post('http://localhost:3001/customer/login', {
+        email,
+        password,
+      });
+
+      const { token, customerId } = response.data;
+
+      // Save token and customerId
+      storeToken(token);
+      setCookie('customerId', customerId, 7); // Set customerId cookie with a 7-day expiration
+
+      // Redirect to home page
+      navigate('/');
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setErrorMessage('Invalid email or password');
+      } else {
+        setErrorMessage('An error occurred. Please try again later.');
+      }
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
