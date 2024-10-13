@@ -6,46 +6,41 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
         itemId: '',
         itemName: '',
         quantity: '',
+        unitPrice: '',  // New Unit Price field
+        totalPrice: '', // New Total Price field (auto-calculated)
         supplier: '',
         reorderLevel: '',
         dateAdded: '',
         status: '',
-        category: '', // Add category field
+        category: '', 
     });
 
+    // Set initial form data if in edit mode
     useEffect(() => {
         if (isEdit && data) {
             setInventoryData({
-                itemId: data.itemId,
-                itemName: data.itemName,
-                quantity: data.quantity,
-                supplier: data.supplier,
-                reorderLevel: data.reorderLevel,
-                dateAdded: data.dateAdded,
-                status: data.status,
-                category: data.category || '', // Include category if editing
+                ...data,
+                category: data.category || '',
             });
         }
     }, [data, isEdit]);
 
-    // Prevent negative values and non-numeric input for numbers
+    // Prevent negative or invalid input for numeric fields
     const preventInvalidNumbers = (e) => {
         if (e.key === '-' || e.key === '+' || e.key === 'e') {
             e.preventDefault();
         }
     };
 
-    // Prevent numbers and special characters for supplier
     const preventInvalidSupplierChars = (e) => {
-        const regex = /^[0-9]+$/; // Only digits are not allowed
+        const regex = /^[0-9]+$/; // Block numeric input for supplier name
         if (regex.test(e.key)) {
             e.preventDefault();
         }
     };
 
-    // Prevent numbers and special characters for itemName
     const preventInvalidNameChars = (e) => {
-        const regex = /[^a-zA-Z\s]/;
+        const regex = /[^a-zA-Z\s]/; // Block numbers and special characters
         if (regex.test(e.key)) {
             e.preventDefault();
         }
@@ -53,7 +48,18 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setInventoryData({ ...inventoryData, [name]: value });
+        setInventoryData((prevData) => {
+            const updatedData = { ...prevData, [name]: value };
+
+            // Auto-calculate total price whenever quantity or unit price changes
+            if (name === 'quantity' || name === 'unitPrice') {
+                const quantity = parseFloat(updatedData.quantity) || 0;
+                const unitPrice = parseFloat(updatedData.unitPrice) || 0;
+                updatedData.totalPrice = (quantity * unitPrice).toFixed(2);
+            }
+
+            return updatedData;
+        });
     };
 
     const handleSubmit = (e) => {
@@ -61,11 +67,10 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
         addInventory(inventoryData);
     };
 
-    // Get today's date in YYYY-MM-DD format
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split('T')[0]; // Get today's date
 
     return (
-        <div className="inventory-form-box"> {/* Add a box around the form */}
+        <div className="inventory-form-box">
             <form onSubmit={handleSubmit}>
                 <div>
                     <input
@@ -76,7 +81,7 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
                         onKeyDown={preventInvalidNumbers}
                         placeholder="Inventory ID"
                         required
-                        min="1" // Ensure it's a positive number
+                        min="1"
                     />
                 </div>
 
@@ -86,7 +91,7 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
                         name="itemName"
                         value={inventoryData.itemName}
                         onChange={handleChange}
-                        onKeyDown={preventInvalidNameChars} // Prevent numbers or special characters
+                        onKeyDown={preventInvalidNameChars}
                         placeholder="Item Name"
                         required
                     />
@@ -101,7 +106,31 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
                         onKeyDown={preventInvalidNumbers}
                         placeholder="Quantity"
                         required
-                        min="1" // Ensure quantity is greater than zero
+                        min="1"
+                    />
+                </div>
+
+                <div>
+                    <input
+                        type="number"
+                        name="unitPrice"
+                        value={inventoryData.unitPrice}
+                        onChange={handleChange}
+                        onKeyDown={preventInvalidNumbers}
+                        placeholder="Unit Price"
+                        required
+                        min="0"
+                        step="0.01"
+                    />
+                </div>
+
+                <div>
+                    <input
+                        type="text"
+                        name="totalPrice"
+                        value={inventoryData.totalPrice}
+                        readOnly // Total price is calculated automatically
+                        placeholder="Total Price"
                     />
                 </div>
 
@@ -111,7 +140,7 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
                         name="supplier"
                         value={inventoryData.supplier}
                         onChange={handleChange}
-                        onKeyDown={preventInvalidSupplierChars} // Prevent numbers
+                        onKeyDown={preventInvalidSupplierChars}
                         placeholder="Supplier"
                         required
                     />
@@ -126,7 +155,7 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
                         onKeyDown={preventInvalidNumbers}
                         placeholder="Reorder Level"
                         required
-                        min="1" // Ensure it's a positive number
+                        min="1"
                     />
                 </div>
 
@@ -137,8 +166,8 @@ const InventoryForm = ({ addInventory, submitted, data, isEdit }) => {
                         value={inventoryData.dateAdded}
                         onChange={handleChange}
                         required
-                        min={today} // Prevent selecting past dates
-                        max={today} // Prevent selecting tomorrow's date
+                        min={today}
+                        max={today}
                     />
                 </div>
 
