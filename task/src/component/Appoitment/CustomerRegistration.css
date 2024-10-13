@@ -1,0 +1,95 @@
+.customer-registration {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 5vw;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.customer-registration h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.customer-registration form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.customer-registration label {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-registration input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.customer-registration input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.customer-registration .error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.customer-registration fieldset {
+  border: 1px solid #ddd;
+  padding: 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  grid-column: span 2;
+}
+
+.customer-registration legend {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.customer-registration button {
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  grid-column: span 2;
+}
+
+.customer-registration button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.customer-registration input[type="date"] {
+  background-color: #f9f9f9;
+}
+
+.customer-registration input[type="email"] {
+  background-color: #f9f9f9;
+}
+
+.customer-registration input[type="text"],
+.customer-registration input[type="tel"],
+.customer-registration input[type="password"] {
+  background-color: #f9f9f9;
+}
