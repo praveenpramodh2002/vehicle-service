@@ -1,0 +1,123 @@
+/* PDetails.css */
+
+/* Hero Section */
+.hero-section {
+  border: none;
+  height: 100vh; /* Full-screen height */
+  background-size: cover; /* Ensure the background covers the entire section */
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white; /* White text for contrast */
+  margin: 0; /* No margin */
+  padding: 0; /* No padding */
+}
+
+/* Hero Content */
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a dark overlay for better text visibility */
+  padding: 20px; /* Add some padding around the content */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.hero-title {
+  font-size: 3rem; /* Large title font size */
+  margin-bottom: 10px; /* Space below title */
+}
+
+.hero-subtitle {
+  font-size: 1.5rem; /* Subtitle font size */
+  margin-bottom: 20px; /* Space below subtitle */
+}
+
+.hero-btn {
+  background-color: #f39c12; /* Button color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding for button */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Button font size */
+  transition: background-color 0.3s; /* Transition effect for hover */
+}
+
+.hero-btn:hover {
+  background-color: #e67e22; /* Darker button color on hover */
+}
+
+/* Packages Section */
+.packages-section {
+  padding: 40px 20px; /* Padding for packages section */
+}
+
+.packages-header-container {
+  text-align: center; /* Center align the header */
+  margin-bottom: 30px; /* Space below header */
+}
+
+.packages-header1, .packages-header2 {
+  font-size: 2.5rem; /* Header font size */
+  margin: 10px 0; /* Space above and below headers */
+}
+
+.packages-list {
+  display: flex;
+  flex-direction: column; /* Stack packages vertically */
+  align-items: center; /* Center align items */
+}
+
+.package-name {
+  background-color: #ecf0f1; /* Package name background color */
+  padding: 15px 30px; /* Padding for package name */
+  margin: 10px; /* Space between package names */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  width: 80%; /* Width of the package name */
+  text-align: center; /* Center align text */
+  transition: background-color 0.3s; /* Transition effect for hover */
+}
+
+.package-name:hover {
+  background-color: #bdc3c7; /* Darker background on hover */
+}
+
+/* Introduction Section */
+.introduction-section {
+  padding: 40px 20px; /* Padding for introduction section */
+  text-align: center; /* Center align text */
+  background-color: #f8f9fa; /* Light background color */
+  border-radius: 10px; /* Rounded corners */
+  margin: 20px 0; /* Margin above and below section */
+}
+
+.introduction-section h2 {
+  font-size: 2.5rem; /* Section title font size */
+  margin-bottom: 20px; /* Space below section title */
+}
+
+/* Footer Section */
+.footer-section {
+  background-color: #333; /* Dark background color */
+  color: white; /* White text color */
+  padding: 20px; /* Padding for footer */
+  text-align: center; /* Center align text */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around; /* Space columns evenly */
+  flex-wrap: wrap; /* Wrap columns on smaller screens */
+}
+
+.footer-column {
+  width: 30%; /* Width of each footer column */
+  margin-bottom: 20px; /* Space below footer columns */
+}
+
+.footer-bottom {
+  margin-top: 20px; /* Space above footer bottom */
+  font-size: 0.9rem; /* Smaller font size for footer text */
+}

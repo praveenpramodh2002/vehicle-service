@@ -1,0 +1,103 @@
+.creation-container8 {
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container8 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.creation-title8 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.creation-form8 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-field8 {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.flex-wrap-container8 {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.flex-item8 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: start;
+}
+
+.upload-container8{
+  margin-top: 15px;
+}
+
+.upload-label8 {
+  font-weight: 600;
+}
+
+.upload-hint8 {
+  font-weight: 400;
+  color: #666;
+}
+
+.file-upload8 {
+  display: flex;
+  gap: 10px;
+}
+
+.upload-button8 {
+  padding: 10px;
+  background-color: #38a169;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.upload-button:hover8 {
+  background-color: #2f855a;
+}
+
+.submit-button8 {
+  padding: 15px;
+  background-color: #000000;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.submit-button:hover8 {
+  background-color: #ffffff;
+}
+

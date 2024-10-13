@@ -1,0 +1,147 @@
+
+.maintenance-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 180px;
+}
+
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ccc;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+
+.packages-table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.packages-table th, 
+.packages-table td {
+  padding: 20px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.packages-table th {
+  background-color: #f2f2f2;
+  font-size: 1.2rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  border-bottom: 3px solid #ddd;
+}
+
+.packages-table td {
+  font-size: 1rem;
+  color: #666;
+}
+
+.packages-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+
+.edit-button, .delete-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button {
+  background-color: #000000;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #474c47;
+}
+
+.delete-button {
+  background-color: #ff0000;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #f68080;
+}
+
+
+
+
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.confirm-button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #f44336; /* Red */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.confirm-button:hover, .cancel-button:hover {
+  opacity: 0.8;
+}
