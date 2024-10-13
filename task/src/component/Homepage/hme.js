@@ -38,7 +38,7 @@ const MyComponent = () => {
             </div>
             <a href="appointments.html">About Us</a>
           <a href="employees.html">Packages</a>
-          <a href="reports.html">Contact</a>
+          <a href="#contact-us">Contact</a>
           <a href="book-now.html" className="book-now-btn">Book Now ></a>
           <a href="login.html" className="login-btn">
             <FontAwesomeIcon icon={faUser} /> Login {/* Add the icon here */}
@@ -198,7 +198,7 @@ const MyComponent = () => {
     
    
 {/* Contact Us Section */}
-<section className="contact-us-section">
+<section className="contact-us-section" id = "contact-us">
   <h2 className="contact-us-title">Contact Us</h2>
   <p className="contact-us-description">
     At Micro Service Center Sri Lanka, we are dedicated to providing top-quality service and support for your vehicle's needs. Contact us to learn more about our services or to schedule an appointment.
