@@ -40,7 +40,6 @@ import NavBar from './component/Appoitment/SideNav';
 import UpdateBooking from './component/Appoitment/updateBooking';
 
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -71,12 +70,12 @@ root.render(
       <Route path='/Booking' element={<Booking />} />
       <Route path='/Bookings' element={<Bookings />} />
       <Route path='/CreateBooking' element={<CreateBooking />} />
-      <Route path='/CustomerRegistration' element={<CustomerRegistration />} />
+      <Route path='/newCustomer' element={<CustomerRegistration />} />
       <Route path='/Login' element={<Login />} />
       <Route path='/PrivateRoute' element={<PrivateRoute />} />
       <Route path='/Register' element={<Register />} />
       <Route path='/NavBar' element={<NavBar />} />
-      <Route path='/UpdateBooking' element={<UpdateBooking />} />
+      <Route path='/UpdateBooking/:id' element={<UpdateBooking />} />
      
 
       </Routes>

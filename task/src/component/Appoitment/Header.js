@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <img src="images/lnew.jpeg" alt="Vehicle Service Station Logo" />
+        <img src="image/lnew.jpeg" alt="Vehicle Service Station Logo" />
       </div>
       <nav className="navbar">
         {/* Regular header for the "/" route */}

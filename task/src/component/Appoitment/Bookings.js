@@ -13,7 +13,7 @@ const Bookings = () => {
   const [nextFourMonths, setNextFourMonths] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8070/booking')
+    axios.get('http://localhost:3001/booking')
       .then(response => {
         setBookings(response.data);
         setFilteredBookings(response.data); // Initially display all bookings
@@ -39,7 +39,7 @@ const Bookings = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this booking?");
     
     if (confirmDelete) {
-      axios.delete(`http://localhost:8070/booking/${bookingId}`)
+      axios.delete(`http://localhost:3001/booking/${bookingId}`)
         .then(response => {
           setBookings(bookings.filter((booking) => booking._id !== bookingId));
           filterByMonth(selectedMonth, bookings.filter((booking) => booking._id !== bookingId));

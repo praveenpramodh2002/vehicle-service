@@ -23,7 +23,7 @@ const Booking = () => {
 
   const fetchAvailableTimes = async (date) => {
     try {
-      const response = await axios.get(`http://localhost:8070/booking/available-times?date=${date}`);
+      const response = await axios.get(`http://localhost:3001/booking/available-times?date=${date}`);
       setAvailableTimes(response.data);
     } catch (error) {
       console.error("Error fetching available times:", error);
@@ -46,7 +46,7 @@ const Booking = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8070/booking", {
+      const response = await axios.post("http://localhost:3001/booking", {
         services: selectedServices.map(service => ({
           serviceId: service.serviceId,
           name: service.name,

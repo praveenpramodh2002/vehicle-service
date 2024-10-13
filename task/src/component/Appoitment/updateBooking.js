@@ -18,7 +18,7 @@ const UpdateBooking = () => {
   useEffect(() => {
     const fetchBooking = async () => {
       try {
-        const response = await axios.get(`http://localhost:8070/booking/${id}`);
+        const response = await axios.get(`http://localhost:3001/booking/${id}`);
         setBooking(response.data);
         setFormData({
           bookingDate: new Date(response.data.bookingDate).toISOString().split("T")[0],
@@ -50,7 +50,7 @@ const UpdateBooking = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost:8070/booking/available-times?date=${date}`);
+      const response = await axios.get(`http://localhost:3001/booking/available-times?date=${date}`);
       setAvailableTimes(response.data); // Assuming the response contains available times
       setError("");
     } catch (error) {
@@ -82,7 +82,7 @@ const UpdateBooking = () => {
     }
 
     try {
-      await axios.put(`http://localhost:8070/booking/${id}`, formData);
+      await axios.put(`http://localhost:3001/booking/${id}`, formData);
       navigate("/bookings");
     } catch (error) {
       console.error("Error updating booking:", error);

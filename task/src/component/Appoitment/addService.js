@@ -20,7 +20,7 @@ function AddService() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8070/service', formData)
+        axios.post('http://localhost:3001/service', formData)
             .then(response => {
                 alert('Service added successfully!');
                 setFormData({

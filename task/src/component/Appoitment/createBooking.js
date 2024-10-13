@@ -24,7 +24,7 @@ const CreateBooking = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here
-    axios.post('http://localhost:8070/bookings', {
+    axios.post('http://localhost:3001/bookings', {
       customerName: form.customerName,
       date: form.date,
       time: form.time,

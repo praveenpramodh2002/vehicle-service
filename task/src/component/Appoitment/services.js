@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Header from "./Header"
 import { faSearch, faCalendarPlus, faCheckCircle } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
 import './Services.css';
 
@@ -13,7 +14,7 @@ const Services = () => {
   
   useEffect(() => {
     axios
-      .get("http://localhost:8070/service")
+      .get("http://localhost:3001/service")
       .then((response) => {
         setServices(response.data);
       })
@@ -54,6 +55,8 @@ const Services = () => {
   );
 
   return (
+    <>
+    <Header/>
     <div
       className="services-container"
       style={{
@@ -115,6 +118,7 @@ const Services = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
