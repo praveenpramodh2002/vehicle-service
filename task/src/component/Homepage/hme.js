@@ -39,8 +39,9 @@ const MyComponent = () => {
             <a href="appointments.html">About Us</a>
           <a href="employees.html">Packages</a>
           <a href="#contact-us">Contact</a>
-          <a href="book-now.html" className="book-now-btn">Book Now </a>
-          <a href="login.html" className="login-btn">
+          <a href="services" className="book-now-btn">Book Now </a>
+          <a href="Login
+          " className="login-btn">
             <FontAwesomeIcon icon={faUser} /> Login {/* Add the icon here */}
           </a>
          
