@@ -1,0 +1,64 @@
+/* updemp.css */
+
+/* Container to hold sidebar and form */
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 15%;
+    height: 100%;
+    background-color: #429DFF;
+    padding: 20px;
+    color: white;
+    position: fixed; /* Fix the sidebar to the left side */
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Allows scrolling if the content is too long */
+  }
+  
+  .update-employee {
+    margin-left: 30vw;
+    width: 50vw;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .update-employee h1 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #429DFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-group button:hover {
+    background-color: #357ae8;
+  }
+  

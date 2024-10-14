@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./addemp.css"; // Import the CSS file
+import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "../sidebar/sidebar";
-import { useNavigate } from "react-router-dom";
+import "./updemp.css"; // Ensure this path is correct
 
-
+const URL = "http://localhost:5000/employees"; // Ensure this URL matches your backend route
 
 const positions = [
   "Engineer",
@@ -15,6 +15,7 @@ const positions = [
   "Mechanic",
   "Clerk",
 ];
+
 const departments = [
   "Service",
   "Mechanical",
@@ -24,8 +25,9 @@ const departments = [
   "Parts",
 ];
 
-const AddEmployee = () => {
-  const [employeeData, setEmployeeData] = useState({
+const UpdateEmployee = () => {
+  const { id } = useParams(); // Get the employee ID from the URL
+  const [employee, setEmployee] = useState({
     first_name: "",
     last_name: "",
     nic: "",
@@ -41,6 +43,20 @@ const AddEmployee = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // For navigation
+
+  useEffect(() => {
+    const fetchEmployee = async () => {
+      try {
+        const response = await axios.get(`${URL}/${id}`);
+        setEmployee(response.data.employee || {});
+      } catch (error) {
+        console.error("Error fetching employee data:", error);
+      }
+    };
+
+    fetchEmployee();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,16 +64,16 @@ const AddEmployee = () => {
     // Restrict input for name fields to letters and spaces only
     if (name === "first_name" || name === "last_name") {
       const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, ""); // Remove non-letter characters
-      setEmployeeData({ ...employeeData, [name]: sanitizedValue });
+      setEmployee({ ...employee, [name]: sanitizedValue });
     } else {
-      setEmployeeData({ ...employeeData, [name]: value });
+      setEmployee({ ...employee, [name]: value });
     }
   };
 
   const validateForm = () => {
     const newErrors = {};
     const today = new Date();
-    const dob = new Date(employeeData.dateofbirth);
+    const dob = new Date(employee.dateofbirth);
     let age = today.getFullYear() - dob.getFullYear();
     const m = today.getMonth() - dob.getMonth();
 
@@ -72,61 +88,54 @@ const AddEmployee = () => {
 
     // Name Validation
     const nameRegex = /^[A-Za-z\s]+$/;
-    if (!nameRegex.test(employeeData.first_name))
+    if (!nameRegex.test(employee.first_name))
       newErrors.first_name = "First Name is required";
-    if (!nameRegex.test(employeeData.last_name))
+    if (!nameRegex.test(employee.last_name))
       newErrors.last_name = "Last Name is required";
 
     // NIC Validation
     const nicRegex = /^(?:\d{12}|\d{9}[vx])$/i;
-    if (!nicRegex.test(employeeData.nic))
-      newErrors.nic = "Valid NIC is required";
+    if (!nicRegex.test(employee.nic)) newErrors.nic = "Valid NIC is required";
 
     // Address Validation
-    if (!employeeData.address) newErrors.address = "Address is required";
+    if (!employee.address) newErrors.address = "Address is required";
 
     // Email Validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!employeeData.email) {
+    if (!employee.email) {
       newErrors.email = "Email is required";
-    } else if (!emailRegex.test(employeeData.email)) {
+    } else if (!emailRegex.test(employee.email)) {
       newErrors.email = "Please enter a valid email address";
     }
+
     // Gender Validation
-    if (!employeeData.gender) newErrors.gender = "Gender is required";
+    if (!employee.gender) newErrors.gender = "Gender is required";
 
     // Position Validation
-    if (!employeeData.position) newErrors.position = "Position is required";
+    if (!employee.position) newErrors.position = "Position is required";
 
     // Department Validation
-    if (!employeeData.department)
-      newErrors.department = "Department is required";
+    if (!employee.department) newErrors.department = "Department is required";
 
     // Salary and Hours Validation
-    if (!employeeData.basic_salary || employeeData.basic_salary <= 0)
+    if (!employee.basic_salary || employee.basic_salary <= 0)
       newErrors.basic_salary = "Valid Basic Salary is required";
-    if (!employeeData.working_hours || employeeData.working_hours <= 0)
+    if (!employee.working_hours || employee.working_hours <= 0)
       newErrors.working_hours = "Valid Working Hours are required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await axios.post(
-          "http://localhost:5000/employees",
-          employeeData
-        );
-        console.log(response.data);
-        alert("Employee added successfully");
-        navigate("/hrmdb");
-        // Optionally, redirect to the employee list or clear the form
+        await axios.put(`${URL}/${id}`, employee);
+        alert("Employee updated successfully.");
+        navigate("/employeelist"); // Redirect to the employee list page
       } catch (error) {
-        console.error("There was an error adding the employee!", error);
-        alert("Failed to add employee");
+        console.error("Error updating employee data:", error);
       }
     }
   };
@@ -136,52 +145,55 @@ const AddEmployee = () => {
       <div className="sidebar">
         <Sidebar />
       </div>
-      <div className="form-container">
-        <h2>Add Employee</h2>
-        <form onSubmit={handleSubmit} className="form_add">
+      <div className="update-employee">
+        <h1>Update Employee</h1>
+        <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="form-group">
-              <label>First Name</label>
+              <label>First Name:</label>
               <input
                 type="text"
                 name="first_name"
-                value={employeeData.first_name}
+                value={employee.first_name}
                 onChange={handleChange}
+                required
               />
               {errors.first_name && (
                 <p className="error">{errors.first_name}</p>
               )}
             </div>
             <div className="form-group">
-              <label>Last Name</label>
+              <label>Last Name:</label>
               <input
                 type="text"
                 name="last_name"
-                value={employeeData.last_name}
+                value={employee.last_name}
                 onChange={handleChange}
+                required
               />
               {errors.last_name && <p className="error">{errors.last_name}</p>}
             </div>
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label>NIC</label>
+              <label>NIC:</label>
               <input
                 type="text"
                 name="nic"
-                value={employeeData.nic}
+                value={employee.nic}
                 onChange={handleChange}
-                max={12}
+                required
               />
               {errors.nic && <p className="error">{errors.nic}</p>}
             </div>
             <div className="form-group">
-              <label>Date of Birth</label>
+              <label>Date of Birth:</label>
               <input
                 type="date"
                 name="dateofbirth"
-                value={employeeData.dateofbirth}
+                value={employee.dateofbirth}
                 onChange={handleChange}
+                required
               />
               {errors.dateofbirth && (
                 <p className="error">{errors.dateofbirth}</p>
@@ -189,31 +201,34 @@ const AddEmployee = () => {
             </div>
           </div>
           <div className="form-group">
-            <label>Address</label>
+            <label>Address:</label>
             <textarea
               name="address"
-              value={employeeData.address}
+              value={employee.address}
               onChange={handleChange}
-            ></textarea>
+              required
+            />
             {errors.address && <p className="error">{errors.address}</p>}
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label>Email</label>
+              <label>Email:</label>
               <input
                 type="email"
                 name="email"
-                value={employeeData.email}
+                value={employee.email}
                 onChange={handleChange}
+                required
               />
               {errors.email && <p className="error">{errors.email}</p>}
             </div>
             <div className="form-group">
-              <label>Gender</label>
+              <label>Gender:</label>
               <select
                 name="gender"
-                value={employeeData.gender}
+                value={employee.gender}
                 onChange={handleChange}
+                required
               >
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
@@ -224,11 +239,12 @@ const AddEmployee = () => {
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label>Position</label>
+              <label>Position:</label>
               <select
                 name="position"
-                value={employeeData.position}
+                value={employee.position}
                 onChange={handleChange}
+                required
               >
                 <option value="">Select Position</option>
                 {positions.map((pos) => (
@@ -240,11 +256,12 @@ const AddEmployee = () => {
               {errors.position && <p className="error">{errors.position}</p>}
             </div>
             <div className="form-group">
-              <label>Department</label>
+              <label>Department:</label>
               <select
                 name="department"
-                value={employeeData.department}
+                value={employee.department}
                 onChange={handleChange}
+                required
               >
                 <option value="">Select Department</option>
                 {departments.map((dept) => (
@@ -260,24 +277,26 @@ const AddEmployee = () => {
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label>Basic Salary</label>
+              <label>Basic Salary:</label>
               <input
                 type="number"
                 name="basic_salary"
-                value={employeeData.basic_salary}
+                value={employee.basic_salary}
                 onChange={handleChange}
+                required
               />
               {errors.basic_salary && (
                 <p className="error">{errors.basic_salary}</p>
               )}
             </div>
             <div className="form-group">
-              <label>Working Hours Per Week</label>
+              <label>Working Hours:</label>
               <input
                 type="number"
                 name="working_hours"
-                value={employeeData.working_hours}
+                value={employee.working_hours}
                 onChange={handleChange}
+                required
               />
               {errors.working_hours && (
                 <p className="error">{errors.working_hours}</p>
@@ -285,18 +304,18 @@ const AddEmployee = () => {
             </div>
           </div>
           <div className="form-group">
-            <label>Description</label> {/* Added Description label */}
+            <label>Description:</label>
             <textarea
               name="description"
-              value={employeeData.description}
+              value={employee.description}
               onChange={handleChange}
-            ></textarea>
+            />
             {errors.description && (
               <p className="error">{errors.description}</p>
             )}
           </div>
           <div className="form-group">
-            <button type="submit">Add Employee</button>
+            <button type="submit">Update Employee</button>
           </div>
         </form>
       </div>
@@ -304,4 +323,4 @@ const AddEmployee = () => {
   );
 };
 
-export default AddEmployee;
+export default UpdateEmployee;

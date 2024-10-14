@@ -1,0 +1,41 @@
+.employee-profile {
+  padding: 20px;
+  margin-left: 20%;
+  margin-top: 20px;
+  width: 75%;
+}
+
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.update-button, .delete-button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.update-button {
+  background-color: #4285F4;
+  color: white;
+}
+
+.update-button:hover {
+  background-color: #357ae8;
+}
+
+.delete-button {
+  background-color: #ea4335;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c1351d;
+}

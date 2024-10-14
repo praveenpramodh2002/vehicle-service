@@ -24,6 +24,13 @@ import VehicleUpdate from './component/AccountManagement/vehicleUpdateInterface'
 
 import Hrmdb from './component/SalaryMgt/hrmdb/hrmdb';
 import AddEmployee from './component/SalaryMgt/addemployee/addemployee';
+import EmployeeList from './component/SalaryMgt/employeelist/employeelist';
+import EmployeeProfile from './component/SalaryMgt/employeeprofile/employeeprofile';
+import UpdateEmployee from './component/SalaryMgt/updateemployee/updateemployee';
+import GeneratePayroll from './component/SalaryMgt/generatepayroll/generatepayroll'
+import DeletedEmployeeList from './component/SalaryMgt/deletedemployeelist/deletedemployeelist';
+import UploadAttendance from './component/SalaryMgt/uploadattendance/uploadattendance';
+import AttendanceSummary from './component/SalaryMgt/attendancesummary/attendancesummary';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -49,7 +56,14 @@ root.render(
 
       <Route path='/hrmdb' element={<Hrmdb/>}/>
       <Route path='/addemployee' element={<AddEmployee/>}/>
-
+      <Route path='/employeelist' element={<EmployeeList/>}/>
+      <Route path='/employee/:id' element={<EmployeeProfile/>}/>
+      <Route path="/update-employee/:id" element={<UpdateEmployee />} />
+      <Route path='/generatepayroll' element={<GeneratePayroll/>}/>
+      <Route path='/generatepayroll/:nic' element={<GeneratePayroll/>}/>
+      <Route path='/deletedemployees' element={<DeletedEmployeeList/>}/>
+      <Route path='/uploadattendance' element={<UploadAttendance/>}/>
+      <Route path='/attendancesummary' element={<AttendanceSummary/>}/>
 
 
       </Routes>

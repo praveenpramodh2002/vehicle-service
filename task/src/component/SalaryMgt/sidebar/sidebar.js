@@ -31,13 +31,13 @@ const NavigationSidebar = () => {
                         <Link to="/hrmdb" className='link'>Dashboard</Link>
                     </li>
                     <li>
-                        <Link to="/profile" className='link'>Your Account</Link>
+                        <Link to="/employeelist" className='link'>Employees</Link>
                     </li>
                     <li>
-                        <Link to="/settings" className='link'>Settings</Link>
+                        <Link to="/attendancesummary" className='link'>Attendance</Link>
                     </li>
                     <li>
-                        <Link to="/help" className='link'>Help</Link>
+                        <Link to="/salaryreports" className='link'>Salary Reports</Link>
                     </li>
                 </ul>
             </nav>

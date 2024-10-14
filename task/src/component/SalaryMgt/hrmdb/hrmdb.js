@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; // Import axios for API calls
 import './hrmdb.css';
-//import Sidebar from "../sidebar/sidebar.js";
+import Sidebar from "../sidebar/sidebar.js";
 
 const Hrmdb = () => {
   const [employeeCount, setEmployeeCount] = useState(0); // State to store number of employees
@@ -27,7 +27,7 @@ const Hrmdb = () => {
   return (
     <div className="container">
       <div className="sidebar">
-        {/*<Sidebar />*/}
+        <Sidebar />
       </div>
 
       <div className="content">
@@ -46,13 +46,13 @@ const Hrmdb = () => {
           </div>
           <div className="card">
             <Link to="/addemployee" className="link">
-              <img src="add.png" alt="Add Employee" />
+              <img src="image/add.png" alt="Add Employee" />
               <p>Add New Employee</p>
             </Link>
           </div>
           <div className="card">
             <Link to="/employeelist" className="link">
-              <img src="list.png" alt="Employee List" />
+              <img src="image/list.png" alt="Employee List" />
               <p>Employee List</p>
             </Link>
           </div>
@@ -62,18 +62,18 @@ const Hrmdb = () => {
         <div className="card-row">
           <div className="card">
             <Link to="/deletedemployees" className="link">
-              <img src="deleted.png" alt="Deleted Employees" />
+              <img src="image/deleted.png" alt="Deleted Employees" />
               <p>Deleted Employees</p>
             </Link>
           </div>
           <div className="card">
             <Link to="/generatepayroll" className="link">
-              <img src="payroll.jpg" alt="Generate Payrolls" />
+              <img src="image/payroll.jpg" alt="Generate Payrolls" />
               <p>Generate Payrolls</p>
             </Link>
           </div>
           <div className="card">
-            <img src="salary.jpg" alt="Generate Salary Reports" />
+            <img src="image/salary.jpg" alt="Generate Salary Reports" />
             <p>Generate Salary Reports</p>
           </div>
         </div>
@@ -81,18 +81,18 @@ const Hrmdb = () => {
         <div className="card-row">
           <div className="card">
             <Link to="/uploadattendance" className="link">
-              <img src="uploadattendance.png" alt="Upload Attendance" />
+              <img src="image/uploadattendance.png" alt="Upload Attendance" />
               <p>Add Attendance Record</p>
             </Link>
           </div>
           <div className="card">
             <Link to="/attendancesummary" className="link">
-              <img src="attendancesummary.png" alt="Attendance Summary" />
+              <img src="image/attendancesummary.png" alt="Attendance Summary" />
               <p>View Attendance Summary</p>
             </Link>
           </div>
           <div className="card">
-            <img src="salary.jpg" alt="Generate Salary Reports" />
+            <img src="image/salary.jpg" alt="Generate Salary Reports" />
             <p>Generate Salary Reports</p>
           </div>
         </div>

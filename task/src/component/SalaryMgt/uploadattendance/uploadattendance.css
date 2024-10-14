@@ -1,0 +1,105 @@
+/* Container for the upload page */
+.attendance-upload-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+/* Header styling */
+.attendance-upload-container h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    color: #333; /* Match text color with dashboard */
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for card-like feel */
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Label styling */
+label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    display: block;
+    text-align: left;
+    color: #2196F3;
+}
+
+/* File input styling */
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #2196F3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #1976D2;
+}
+
+/* Message styling */
+p {
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #333;
+    text-align: center;
+}
+
+/* Flex container adjustments */
+.attendance-upload-container .flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Aligning file input and button in the center */
+input, button {
+    width: 100%;
+}
+
+/* Error and success message styling */
+.error-message {
+    color: #f44336; /* Red color for error */
+}
+
+.success-message {
+    color: #4CAF50; /* Green color for success */
+}
