@@ -1,37 +1,150 @@
+/* Container for the whole page */
+.creation-page {
+  display: flex;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  height: 300vh;
+  width: 250px;
+  background: linear-gradient(to right, #14dccb, #3036ea);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+  width: 280px;
+}
+
+.sidebar .logo1 {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #e5e6e8f4, #258383);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.sidebar .logo1 img {
+  width: 100%;
+  height: 90%;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.sidebar:hover .logo1 img {
+  transform: scale(1.1);
+}
+
+.sidebar .navigation ul,
+.sidebar .tools ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.sidebar .navigation ul li,
+.sidebar .tools ul li {
+  margin: 20px 0;
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar .navigation ul li:hover,
+.sidebar .tools ul li:hover {
+  transform: translateX(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.sidebar .navigation ul li a,
+.sidebar .tools ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.sidebar .navigation ul li a:hover,
+.sidebar .tools ul li a:hover {
+  color: #FFD700;
+}
+
+.sidebar .user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .user-profile:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Main Content Layout */
+.layout {
+  display: flex;
+}
+
+.creation-container8 {
+  padding: 20px;
+  flex-grow: 1; /* Ensures that the content fills the remaining space next to the sidebar */
+}
+
+/* Adjust button styles to match the theme */
+.submit-button8 {
+  padding: 15px;
+  background-color: #14dccb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button8:hover {
+  background-color: #3036ea;
+}
+
+
+/* Creation form container */
 .creation-container8 {
   padding: 20px;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
 }
 
-.logo-container8 {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 200px;
-  height: auto;
-}
-
-.creation-title8 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.creation-form8 {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
+/* Form input fields */
 .input-field8 {
   padding: 12px;
   border: 1px solid #ccc;
@@ -46,58 +159,26 @@
   justify-content: space-between;
 }
 
-.flex-item8 {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: start;
-}
-
-.upload-container8{
-  margin-top: 15px;
-}
-
-.upload-label8 {
-  font-weight: 600;
-}
-
-.upload-hint8 {
-  font-weight: 400;
-  color: #666;
-}
-
-.file-upload8 {
-  display: flex;
-  gap: 10px;
-}
-
-.upload-button8 {
-  padding: 10px;
-  background-color: #38a169;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-.upload-button:hover8 {
-  background-color: #2f855a;
-}
-
+/* Submit Button */
 .submit-button8 {
   padding: 15px;
-  background-color: #000000;
-  color: rgb(0, 0, 0);
+  background: linear-gradient(to right, #14dccb, #3036ea); /* Match sidebar gradient */
+  color: white;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
   text-transform: uppercase;
   margin-top: 20px;
+  transition: background 0.3s ease;
 }
 
-.submit-button:hover8 {
-  background-color: #ffffff;
+.submit-button8:hover {
+  background: linear-gradient(to right, #0dbbb7, #282dca); /* Darker gradient on hover */
 }
 
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+}
