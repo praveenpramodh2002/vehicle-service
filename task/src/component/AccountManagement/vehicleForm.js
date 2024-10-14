@@ -191,7 +191,7 @@ const AddVehicleForm = ({ vehicle, isEditMode, refreshVehicles, onCancel }) => {
         <div className="main-content">
             <h1>{isEditMode ? 'Update Account' : 'Add New Account'}</h1>
 
-            <div className="form-container1">
+            <div className="form-container01">
                 <form onSubmit={step === 1 ? handleNext : handleSubmit}>
                     {step === 1 && (
                         <>
@@ -286,7 +286,7 @@ const AddVehicleForm = ({ vehicle, isEditMode, refreshVehicles, onCancel }) => {
                                 onChange={handleChange} 
                             />
                             
-                            <div className="form-buttons1">
+                            <div className="form-buttons01">
                                 <button type="button" className="cancelbtn" onClick={handleCancel}>Cancel</button>
                                 <button type="submit" className="savebtn">Next</button>
                             </div>
@@ -334,7 +334,7 @@ const AddVehicleForm = ({ vehicle, isEditMode, refreshVehicles, onCancel }) => {
                             <label htmlFor="condition">Services:</label>
                             <input type="text" id="condition" name="condition" value={vehicleData.condition} onChange={handleChange} />
 
-                            <div className="form-buttons1">
+                            <div className="form-buttons01">
                                 <button type="button" className="cancelbtn" onClick={() => setStep(1)}>Back</button>
                                 <button type="submit" className="savebtn">Save</button>
                             </div>
