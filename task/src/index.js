@@ -20,11 +20,19 @@ import VehicleTable from './component/AccountManagement/vehicleTable';
 import VehicleUpdate from './component/AccountManagement/vehicleUpdateInterface';
 
 
+
 import Sidebar from './component/Inventorymanagement/inventory';
 import InventoryForm from './component/Inventorymanagement/inventoryForm';
 import InventoryReport from './component/Inventorymanagement/inventoryreport';
+import ProductRequestForm from './component/SupplierManagement/ProductRequestForm';
 
-
+import AddSupplierForm from './component/SupplierManagement/add_sup';
+import EditSup from './component/SupplierManagement/edit_sup';
+import SupplierReports from  './component/SupplierManagement/SupplierReports';
+import SupplierPage from './component/SupplierManagement/SupplierPage';
+import ViewSup from './component/SupplierManagement/view_sup';
+import Home3 from './component/SupplierManagement/home';
+import ProductRequests from './component/SupplierManagement/ProductRequests';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -38,17 +46,26 @@ root.render(
         <Route path='/main' element={<Main/>}></Route>
         <Route path='/alltask' element={<Alltask/>}></Route>
         <Route path='/tracking' element={<KanbanBoard/>}></Route>
+      
         <Route path='/Home1' element={<Home1/>}></Route>
         <Route path='/Modal' element={<Modal/>}></Route>
         <Route path='/VehicleForm' element={<AddVehicleForm />} />
       <Route path='/VehicleTable' element={<VehicleTable />} />
       <Route path='/VehicleAddInterface' element={<VehicleManagement />} />
       <Route path='/VehicleUpdateInterface' element={<VehicleUpdate />} />
+
       <Route path='/addinventory' element={<Sidebar />} />
       <Route path='/inventory' element={<InventoryForm />} />
       <Route path='/InventoryReport' element={<InventoryReport />} />
+      <Route path='/requestproduct' element={<ProductRequestForm />} />
       
-
+      <Route path='/AddSupplierForm' element={<AddSupplierForm />} />;
+      <Route path='/EditSup' element={<EditSup />} />;
+      <Route path='/SupplierReports' element={<SupplierReports />} />;
+      <Route path='/SupplierPage' element={<SupplierPage />} />;
+      <Route path='/ViewSup' element={<ViewSup />} />;
+      <Route path='/Home3' element={<Home3 />} />;
+      <Route path='/ProductRequests' element={<ProductRequests />} />;
       </Routes>
   </BrowserRouter>
 );
