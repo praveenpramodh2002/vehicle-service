@@ -4,7 +4,7 @@ import axios from "axios";
 import Sidebar from "../sidebar/sidebar";
 import "./emplist.css"; // Ensure this path is correct
 
-const URL = "http://localhost:5000/employees"; // Ensure this URL matches your backend route
+const URL = "http://localhost:3001/employees"; // Ensure this URL matches your backend route
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);

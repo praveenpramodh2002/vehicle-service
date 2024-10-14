@@ -4,8 +4,6 @@ import "./addemp.css"; // Import the CSS file
 import Sidebar from "../sidebar/sidebar";
 import { useNavigate } from "react-router-dom";
 
-
-
 const positions = [
   "Engineer",
   "Supervisor",
@@ -37,7 +35,8 @@ const AddEmployee = () => {
     department: "",
     basic_salary: "",
     working_hours: "",
-    description: "", // Added Description field
+    description: "",
+    phone_no: "", // Added phone number field
   });
 
   const [errors, setErrors] = useState({});
@@ -45,9 +44,12 @@ const AddEmployee = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Restrict input for name fields to letters and spaces only
+    // Restrict input for specific fields
     if (name === "first_name" || name === "last_name") {
-      const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, ""); // Remove non-letter characters
+      const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, "");
+      setEmployeeData({ ...employeeData, [name]: sanitizedValue });
+    } else if (name === "phone_no") {
+      const sanitizedValue = value.replace(/[^0-9]/g, "");
       setEmployeeData({ ...employeeData, [name]: sanitizedValue });
     } else {
       setEmployeeData({ ...employeeData, [name]: value });
@@ -81,6 +83,8 @@ const AddEmployee = () => {
     const nicRegex = /^(?:\d{12}|\d{9}[vx])$/i;
     if (!nicRegex.test(employeeData.nic))
       newErrors.nic = "Valid NIC is required";
+    if (employeeData.nic.length > 12)
+      newErrors.nic = "NIC must be 12 digits or less";
 
     // Address Validation
     if (!employeeData.address) newErrors.address = "Address is required";
@@ -92,6 +96,15 @@ const AddEmployee = () => {
     } else if (!emailRegex.test(employeeData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
+
+    // Phone Number Validation
+    const phoneRegex = /^\d{10}$/;
+    if (!employeeData.phone_no) {
+      newErrors.phone_no = "Phone number is required";
+    } else if (!phoneRegex.test(employeeData.phone_no)) {
+      newErrors.phone_no = "Phone number must be exactly 10 digits";
+    }
+
     // Gender Validation
     if (!employeeData.gender) newErrors.gender = "Gender is required";
 
@@ -111,6 +124,7 @@ const AddEmployee = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -123,7 +137,6 @@ const AddEmployee = () => {
         console.log(response.data);
         alert("Employee added successfully");
         navigate("/hrmdb");
-        // Optionally, redirect to the employee list or clear the form
       } catch (error) {
         console.error("There was an error adding the employee!", error);
         alert("Failed to add employee");
@@ -138,7 +151,7 @@ const AddEmployee = () => {
       </div>
       <div className="form-container">
         <h2>Add Employee</h2>
-        <form onSubmit={handleSubmit} className="form_add">
+        <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="form-group">
               <label>First Name</label>
@@ -171,7 +184,7 @@ const AddEmployee = () => {
                 name="nic"
                 value={employeeData.nic}
                 onChange={handleChange}
-                max={12}
+                maxLength={12}
               />
               {errors.nic && <p className="error">{errors.nic}</p>}
             </div>
@@ -182,11 +195,24 @@ const AddEmployee = () => {
                 name="dateofbirth"
                 value={employeeData.dateofbirth}
                 onChange={handleChange}
+                max={new Date(new Date().setFullYear(new Date().getFullYear() - 18))
+                  .toISOString()
+                  .split("T")[0]}
               />
-              {errors.dateofbirth && (
-                <p className="error">{errors.dateofbirth}</p>
-              )}
+              {errors.dateofbirth && <p className="error">{errors.dateofbirth}</p>}
             </div>
+
+          </div>
+          <div className="form-group">
+            <label>Phone Number</label> {/* Added Phone Number label */}
+            <input
+              type="text"
+              name="phone_no"
+              value={employeeData.phone_no}
+              onChange={handleChange}
+              maxLength={10}
+            />
+            {errors.phone_no && <p className="error">{errors.phone_no}</p>}
           </div>
           <div className="form-group">
             <label>Address</label>
@@ -272,7 +298,7 @@ const AddEmployee = () => {
               )}
             </div>
             <div className="form-group">
-              <label>Working Hours Per Week</label>
+              <label>Working Hours</label>
               <input
                 type="number"
                 name="working_hours"
@@ -285,15 +311,12 @@ const AddEmployee = () => {
             </div>
           </div>
           <div className="form-group">
-            <label>Description</label> {/* Added Description label */}
+            <label>Description</label>
             <textarea
               name="description"
               value={employeeData.description}
               onChange={handleChange}
             ></textarea>
-            {errors.description && (
-              <p className="error">{errors.description}</p>
-            )}
           </div>
           <div className="form-group">
             <button type="submit">Add Employee</button>

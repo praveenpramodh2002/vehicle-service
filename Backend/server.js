@@ -6,6 +6,11 @@ const host = 'localhost';
 const mongoose = require('mongoose');
 const router1 = require('./Taskmanagement/router'); // Ensure the path is correct
 const router2 = require('./AccountManagement/router'); 
+const router10 = require("./SalaryMgt/Routes/EmployeeRoute");
+const router20 = require("./SalaryMgt/Routes/ManagerRoute");
+const router30 = require("./SalaryMgt/Routes/PaySheetRoute");
+const router40 = require("./SalaryMgt/Routes/AttendanceRoute");
+
 
 // Middleware for CORS
 app.use(cors({
@@ -46,3 +51,10 @@ app.use((err, req, res, next) => {
 app.listen(port, host, () => {
     console.log(`Node server is listening on http://${host}:${port}`);
 });
+
+
+//SalaryMGT routes
+app.use("/employees", router10);
+app.use("/managers", router20);
+app.use("/paysheet", router30);
+app.use('/attendance', router40);
