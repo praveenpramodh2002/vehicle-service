@@ -13,10 +13,6 @@ const productRequestRoutes = require("./SuppilerManagement/ProductRequestRoutes"
 const app = express();
 const port = 3001;
 const host = 'localhost';
-const mongoose = require('mongoose');
-const router1 = require('./Taskmanagement/router'); // Ensure the path is correct
-const router2 = require('./AccountManagement/router'); 
-const router3=require('./Inventorymanagement/router');
 const twilio = require('twilio');
 
 // Import routes from Appointment
