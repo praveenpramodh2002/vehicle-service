@@ -1,0 +1,59 @@
+/* ProductRequestStyles.css */
+
+/* Main container for the product request form */
+.product-request-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling */
+  .product-request-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Form styling */
+  .product-request-form {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Input field styling */
+  .product-request-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Button styling */
+  .product-request-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .product-request-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Error message styling */
+  .product-request-error {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  

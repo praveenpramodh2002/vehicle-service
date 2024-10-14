@@ -20,11 +20,16 @@ import AddVehicleForm from './component/AccountManagement/vehicleForm';
 import VehicleTable from './component/AccountManagement/vehicleTable';
 import VehicleUpdate from './component/AccountManagement/vehicleUpdateInterface';
 
-
 import Sidebar from './component/Inventorymanagement/inventory';
 import InventoryForm from './component/Inventorymanagement/inventoryForm';
 import InventoryReport from './component/Inventorymanagement/inventoryreport';
 
+import Home3 from './component/SupplierManagement/home';
+import AddSupplierForm from './component/SupplierManagement/add_sup';
+import EditSup from './component/SupplierManagement/edit_sup';
+import SupplierReport from './component/SupplierManagement/SupplierReports';
+import ViewSup from './component/SupplierManagement/view_sup';
+import ProductRequest from './component/SupplierManagement/ProductRequests';
 
 import Services from './component/Appoitment/services';
 import Header from './component/Appoitment/Header';
@@ -52,7 +57,6 @@ root.render(
         <Route path='/main' element={<Main/>}></Route>
         <Route path='/alltask' element={<Alltask/>}></Route>
         <Route path='/tracking' element={<KanbanBoard/>}></Route>
-
         <Route path='/Home1' element={<Home1/>}></Route>
         <Route path='/Modal' element={<Modal/>}></Route>
         <Route path='/VehicleForm' element={<AddVehicleForm />} />
@@ -63,6 +67,13 @@ root.render(
       <Route path='/addinventory' element={<Sidebar />} />
       <Route path='/inventory' element={<InventoryForm />} />
       <Route path='/InventoryReport' element={<InventoryReport />} />
+
+      <Route path='/Home3' element={<Home3 />} />
+      <Route path='/add_sup' element={<AddSupplierForm />} />
+      <Route path='/edit_sup' element={<EditSup />} />
+      <Route path='/view_sup' element={<ViewSup />} />
+      <Route path="/ProductRequests" element={<ProductRequest/>} />
+      <Route path="/report" element={<SupplierReport />} />
       
       <Route path='/Services' element={<Services />} />
       <Route path='/Header' element={<Header />} />
@@ -76,7 +87,8 @@ root.render(
       <Route path='/Register' element={<Register />} />
       <Route path='/NavBar' element={<NavBar />} />
       <Route path='/UpdateBooking/:id' element={<UpdateBooking />} />
-     
+
+
 
       </Routes>
   </BrowserRouter>

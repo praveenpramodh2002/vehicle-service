@@ -1,0 +1,569 @@
+/* Styles.css */
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #3f8ded;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    overflow-y: auto; /* Ensure the sidebar does not scroll */
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px; /* Ensures the photo remains circular */
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.edit-profile-btn,
+.signout-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.signout-btn {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: auto;
+    border-radius: 8px; /* Rounded corners for signout button */
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 20px;
+}
+
+.sidebar-menu li a {
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 2px solid #000000; /* Black border for all options */
+    border-radius: 12px; /* Rounded corners */
+    text-align: center;
+    color: #000000; /* Default text color */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #e6e6e6; /* Light gray background on hover */
+    color: #000000; /* Ensure text color changes on hover */
+}
+
+/* Specific styles for different menu items */
+.sidebar-menu li a:not(.active) {
+    color: #000000; /* Text color for Home, Supplier Details, and Supplier Reports */
+}
+
+.sidebar-menu li a.active {
+    color: #b30000; /* Darker red color for active menu item */
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    background-color: #f9f9f9;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+/* Global CSS */
+h1 {
+    margin-bottom: 20px; /* Adjust as needed */
+    padding-bottom: 30px; /* Adjust as needed */
+}
+
+/* Centering h1 element with class h1-home */
+.h1-home {
+    padding-top: 40px;
+    text-align: center; /* Centers the text horizontally */
+    margin: 0 auto; /* Ensures the element is centered within its container */
+    padding-bottom: 10px; /* Adds space below the heading */
+}
+
+/* Home Page */
+.dashboard-options {
+    display: flex;
+    justify-content: center; /* Centers the options horizontally */
+    gap: 40px; /* Space between options */
+    margin-top: 80px; /* Top margin */
+}
+
+.option {
+    width: 200px; /* Width closer to a square */
+    height: 200px; /* Adjust height */
+    text-align: center;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.option img {
+    width: 80px; /* Adjust image size */
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.option h2 {
+    font-size: 18px;
+    color: #333333;
+}
+
+.option:hover {
+    transform: scale(1.05);
+}
+
+/* Form Styles */
+.supplier-form {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.supplier-form label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.supplier-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    padding-right: 10px;
+}
+
+.submit-btn {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+/* View Suppliers Page */
+.search-bar2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between search bars */
+    margin: 20px 0;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.suppliers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.supplier-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+.supplier-info {
+    flex: 1;
+    color: #333; /* Default text color */
+}
+
+.supplier-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.update-btn,
+.delete-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #cc0000;
+}
+
+.update-btn:hover,
+.delete-btn:hover {
+    opacity: 0.8;
+}
+
+/* Error Message */
+.error-message {
+    color: #cc0000; /* Red color for error messages */
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Confirmation Overlay Styles */
+.confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex; /* Center the box */
+    align-items: center;
+    justify-content: center;
+    z-index: 999; /* Ensure it appears on top of other elements */
+}
+
+.confirmation-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px; /* Adjust width as needed */
+}
+
+.confirmation-box h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333333;
+}
+
+.confirmation-box p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #666666;
+}
+
+.confirm-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.save-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    background-color: #000000; /* Gray for cancel */
+    color: #ffffff;
+    margin-left: 710px; 
+}
+
+.confirm-btn {
+    background-color: #cc0000; /* Red for confirm */
+    color: #ffffff;
+}
+
+.cancel-btn {
+    background-color: #000000; /* Gray for cancel */
+    color: #ffffff;
+}
+
+.confirm-btn:hover,
+.cancel-btn:hover {
+    opacity: 0.8;
+}
+
+/* Supplier Reports Page */
+.reports-container {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.reports-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tables-container1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between tables */
+}
+
+/* Table Container */
+.table-container1 {
+    background-color: #ffffff; /* White background for tables */
+    border-radius: 12px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Table styles */
+.table1 {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Merge borders */
+}
+
+.table1 th,
+.table1 td {
+    border: 1px solid #ddd; /* Border for cells */
+    padding: 10px; /* Cell padding */
+    text-align: left; /* Align text to the left */
+}
+
+.table1 th {
+    background-color: #f4f4f4; /* Header background */
+    font-weight: bold; /* Bold header text */
+}
+
+.table1 tbody tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+/* Centering Print Button */
+.print-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+
+/* Additional Styles */
+body {
+    background-color: #f4f4f4; /* Light gray background for body */
+}
+
+h1 {
+    color: #333333; /* Darker color for headings */
+}
+
+/* Confirmation Overlay Styles for Edit */
+.edit-confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex; /* Center the box */
+    align-items: center;
+    justify-content: center;
+    z-index: 999; /* Ensure it appears on top of other elements */
+}
+
+.edit-confirmation-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px; /* Adjust width as needed */
+}
+
+.edit-confirmation-box h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333333;
+}
+
+.edit-confirmation-box p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #666666;
+}
+
+.edit-confirm-btn, .edit-cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.edit-confirm-btn {
+    background-color: #000000; /* Black for confirm */
+    color: #ffffff;
+}
+
+.edit-cancel-btn {
+    background-color: #cccccc; /* Gray for cancel */
+    color: #000000;
+}
+
+.edit-confirm-btn:hover, .edit-cancel-btn:hover {
+    opacity: 0.8;
+}
+/* Success Popup Styles */
+.success-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex; /* Center the box */
+    align-items: center;
+    justify-content: center;
+    z-index: 999; /* Ensure it appears on top of other elements */
+}
+
+.success-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px; /* Adjust width as needed */
+}
+
+.success-box h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333333;
+}
+
+.success-box p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #666666;
+}
+
+.success-confirm-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    background-color: #000000; /* Black for success confirm */
+    color: #ffffff;
+}
+
+.success-confirm-btn:hover, .success-cancel-btn:hover {
+    opacity: 0.8;
+}
+
+/* Error Message */
+.error-message {
+    color: #cc0000; /* Red color for error messages */
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Success Message */
+.success-message {
+    color: #00cc00; /* Green color for success messages */
+    text-align: center;
+    
+    margin: 10px 0;
+}
+
+
+.request-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .request-item {
+    display: flex;
+    justify-content: space-between; /* Space between text and button */
+    align-items: center; /* Center items vertically */
+    padding: 10px;
+    border: 1px solid #bdc3c7; /* Light gray border */
+    margin-bottom: 10px;
+    border-radius: 5px; /* Rounded corners */
+    background-color: #ecf0f1; /* Light gray background */
+  }
+  
+  .request-product {
+    font-weight: bold; /* Make product name bold */
+  }
+  
+  .request-by {
+    color: #7f8c8d; /* Gray color for requested by */
+  }
+  
+  .supply-button {
+    padding: 5px 10px;
+    background-color: black; /* black background for button */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .supply-button:hover {
+    background-color: grey; /* Darker green on hover */
+  }
+/* End of Styles.css */
