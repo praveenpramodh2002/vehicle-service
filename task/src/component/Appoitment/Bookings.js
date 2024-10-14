@@ -118,7 +118,6 @@ const Bookings = () => {
       {error && <p className="error">{error}</p>}
 
       <div className="filter-container">
-        <button onClick={handlePrint} className='downloadBtn'>Print Report</button>
         <button onClick={generatePDF} className='downloadBtn'>Download PDF</button>
         <label htmlFor="month-filter">Filter by Month: </label>
         
@@ -133,9 +132,7 @@ const Bookings = () => {
       <div ref={ComponentsRef}>
         <div className='microService'>
           <h1>Micro Service 
-            <div className='logoImage'>
-              <img src='/microLogo.png' width={200} height={200} alt='Micro Service Logo'/>
-            </div>
+          
           </h1>
         </div>
         
