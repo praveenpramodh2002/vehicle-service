@@ -31,6 +31,20 @@ import SupplierReport from './component/SupplierManagement/SupplierReports';
 import ViewSup from './component/SupplierManagement/view_sup';
 import ProductRequest from './component/SupplierManagement/ProductRequests';
 
+import Services from './component/Appoitment/services';
+import Header from './component/Appoitment/Header';
+import AddService from './component/Appoitment/addService';
+import Booking from './component/Appoitment/Booking';
+import Bookings from './component/Appoitment/Bookings';
+import CreateBooking from './component/Appoitment/createBooking';
+import CustomerRegistration from './component/Appoitment/CustomerRegistration';
+import Login from './component/Appoitment/Login';
+import PrivateRoute from './component/Appoitment/PrivateRoute';
+import Register from './component/Appoitment/Register';
+import NavBar from './component/Appoitment/SideNav';
+import UpdateBooking from './component/Appoitment/updateBooking';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -61,6 +75,18 @@ root.render(
       <Route path="/ProductRequests" element={<ProductRequest/>} />
       <Route path="/report" element={<SupplierReport />} />
       
+      <Route path='/Services' element={<Services />} />
+      <Route path='/Header' element={<Header />} />
+      <Route path='/AddService' element={<AddService />} />
+      <Route path='/Booking' element={<Booking />} />
+      <Route path='/Bookings' element={<Bookings />} />
+      <Route path='/CreateBooking' element={<CreateBooking />} />
+      <Route path='/newCustomer' element={<CustomerRegistration />} />
+      <Route path='/Login' element={<Login />} />
+      <Route path='/PrivateRoute' element={<PrivateRoute />} />
+      <Route path='/Register' element={<Register />} />
+      <Route path='/NavBar' element={<NavBar />} />
+      <Route path='/UpdateBooking/:id' element={<UpdateBooking />} />
 
       </Routes>
   </BrowserRouter>
