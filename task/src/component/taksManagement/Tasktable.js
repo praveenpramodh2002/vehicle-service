@@ -41,7 +41,6 @@ const Tasktable = ({ rows, onEditTask, onDeleteTask }) => {
         // Add the first logo using Base64 string
         doc.addImage(logoBase64, 'PNG', 14, 10, 50, 30); // Adjust position and size as needed
 
-
         // Add the company name with custom font size and color
         doc.setFontSize(24);
         doc.setTextColor(40, 114, 178);
