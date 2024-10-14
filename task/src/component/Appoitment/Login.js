@@ -1,8 +1,8 @@
+// Login.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Import Link for navigation
 import axios from 'axios';
-import './Login.css';
-import Header from './Header'
+import './Login.css'; // Optional CSS styling
 
 // Utility to set a cookie
 const setCookie = (name, value, days) => {
@@ -23,7 +23,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setErrorMessage(''); // Clear error message on new login attempt
+    setErrorMessage('');
 
     try {
       const response = await axios.post('http://localhost:3001/customer/login', {
@@ -32,12 +32,9 @@ const Login = () => {
       });
 
       const { token, customerId } = response.data;
-
-      // Save token and customerId
       storeToken(token);
-      setCookie('customerId', customerId, 7); // Set customerId cookie with a 7-day expiration
+      setCookie('customerId', customerId, 7);
 
-      // Redirect to home page
       navigate('/');
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -49,34 +46,34 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Header /> {/* Include the Header component here */}
-      <div className="login-container">
-        <h2>Login</h2>
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label>Email:</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Password:</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </>
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <button type="submit">Login</button>
+      </form>
+      <p className="register-link">
+        Don’t have an account? <Link to="/newCustomer">Register here</Link>
+      </p>
+    </div>
   );
 };
 
