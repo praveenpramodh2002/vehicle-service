@@ -119,8 +119,8 @@ const Tasktable = ({ rows, onEditTask, onDeleteTask }) => {
     );
 
     return (
-        <div className="table_container">
-            <div className="TableHeader">
+        <div className="table_container12">
+            <div className="TableHeader12">
                 <h2>Task List</h2>
                 <div className="filter-box">
                     <Input
@@ -135,7 +135,7 @@ const Tasktable = ({ rows, onEditTask, onDeleteTask }) => {
                 </div>
                 <Tooltip title="Download the task report as a PDF">
                     <Button 
-                        className="btn" 
+                        className="btn12" 
                         onClick={handlePrint} 
                         icon={<DownloadOutlined />} 
                         loading={loading} // Show loading indicator
@@ -170,13 +170,13 @@ const Tasktable = ({ rows, onEditTask, onDeleteTask }) => {
                                 <td>{row.status}</td>
                                 <td>
                                     <Button
-                                        className='updateBtn'
+                                        className='updateBtn12'
                                         onClick={() => onEditTask(row)}
                                     >
                                         Update
                                     </Button>
                                     <Button
-                                        className='deleteBtn'
+                                        className='deleteBtn12'
                                         onClick={() => handleDeleteTask(row._id)}
                                     >
                                         Delete
