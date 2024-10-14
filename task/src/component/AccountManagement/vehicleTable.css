@@ -1,31 +1,31 @@
-table {
+.accounttable table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.table_container {
+.table_container1 {
     margin: 20px;
-
+    
 }
 
-table th, table td {
+.accounttable th, .accounttable table td {
     border: 2px solid #000000;
     padding: 10px;
     text-align: left;
 }
 
-table th {
+.accounttable th {
     background-color: #1c76db;
     color: #ffffff;
+    font-family: ""Trebuchet MS", Helvetica, sans-serif	";
 }
-
-table td {
+.accounttable td {
     background-color: #ecf0f1;
     border: 2px solid #000000;
 }
 
-.updateBtn {
+.updateBtn1 {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -36,11 +36,11 @@ table td {
 
 }
 
-.updateBtn:hover {
+.updateBtn1:hover {
     background-color: #45a049;
 }
 
-.deleteBtn {
+.deleteBtn1 {
     background-color: #f44336;
     color: white;
     border: none;
@@ -51,11 +51,11 @@ table td {
     align-items: center;
 }
 
-.deleteBtn:hover {
+.deleteBtn1:hover {
     background-color: #e31e10;
 }
 
-.search_container select {
+.search_container1 select {
     border: none;
     padding: 8px;
     background-color: #1c76db;
@@ -65,14 +65,16 @@ table td {
     width: 35%;
     margin-top: 2%;
     margin-bottom: 2%;
+    margin-right: 5px;
 }
 
-.search_container select option {
+.search_container1 select option {
     background-color: #fff;
     color: #000;
+    
 }
 
-.search_container input[type="text"] {
+.search_container1 input[type="text"] {
     border: none;
     padding: 10px;
     outline: none;
@@ -80,7 +82,7 @@ table td {
     height: auto;
 }
 
-.search_container {
+.search_container1 {
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -89,7 +91,7 @@ table td {
     overflow: hidden;
 }
 
-.search_box {
+.search_box1 {
     display: flex;
     align-items: center;
 }
@@ -100,16 +102,17 @@ table td {
     color: #000000;
 }
 
-.TableHeader {
+.TableHeader1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #f0f0f0;
-}
+    background-color: #cecfd1;
+    height: 100px;
+} 
 
-.btn {
+.btn1 {
     background-color: #1c76db;
     color: white;
     border: none;
@@ -118,7 +121,7 @@ table td {
     cursor: pointer;
 }
 
-.btn:hover {
+.btn1:hover {
     background-color: #000000;
 }
 

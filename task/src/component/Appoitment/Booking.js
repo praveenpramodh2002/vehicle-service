@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
 import DatePicker from "react-datepicker";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt, faClock, faDollarSign, faConciergeBell } from '@fortawesome/free-solid-svg-icons'; // Import icons
+import { faCalendarAlt, faClock, faDollarSign, faConciergeBell } from '@fortawesome/free-solid-svg-icons';
 import "react-datepicker/dist/react-datepicker.css";
 import "./Booking.css";
 
 const Booking = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // Initialize useNavigate
   const { selectedServices, totalPrice, totalTime } = location.state;
 
   const [bookingDate, setBookingDate] = useState(null);
@@ -67,6 +68,10 @@ const Booking = () => {
     }
   };
 
+  const navigateHome = () => {
+    navigate("/services"); // Navigates to the home page
+  };
+
   return (
     <div className="booking-container">
       <h2 align="center">Create Booking</h2>
@@ -110,6 +115,10 @@ const Booking = () => {
           ))}
         </select>
         <button onClick={handleBooking}>Confirm Booking</button>
+
+        {/* Button to navigate to the home page */}
+        <button onClick={navigateHome}>Continue Booking</button>
+
         {error && <p className="error">{error}</p>}
         {bookingCreated && <p className="success">Booking successfully created!</p>}
       </div>
