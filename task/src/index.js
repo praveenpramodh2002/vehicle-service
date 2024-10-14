@@ -88,6 +88,8 @@ root.render(
       <Route path='/NavBar' element={<NavBar />} />
       <Route path='/UpdateBooking/:id' element={<UpdateBooking />} />
 
+
+
       </Routes>
   </BrowserRouter>
 );
