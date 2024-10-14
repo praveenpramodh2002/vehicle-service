@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 const router1 = require('./Taskmanagement/router'); 
 const router2 = require('./AccountManagement/router'); 
 const router3 = require('./Inventorymanagement/router');
+const router23 = require('./SuppilerManagement/SupplierRoutes');
+const router21 = require('./SuppilerManagement/DeletedSupplierRoutes');
+const router22 = require ('./SuppilerManagement/ProductRequestRoutes');
 const twilio = require('twilio');
 
 // Import routes from Appointment
@@ -44,6 +47,12 @@ app.use('/api', router3); // Routes for account management
 app.use('/customer', customerRouter);
 app.use('/service', serviceRouter);
 app.use('/booking', bookingRouter);
+
+// Supplier Routes
+app.use('/booking', router23);
+app.use('/booking', router21);
+app.use('/booking', router22);
+
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

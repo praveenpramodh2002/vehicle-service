@@ -69,11 +69,11 @@ root.render(
       <Route path='/InventoryReport' element={<InventoryReport />} />
 
       <Route path='/Home3' element={<Home3 />} />
-      <Route path='/add_sup' element={<AddSupplierForm />} />
-      <Route path='/edit_sup' element={<EditSup />} />
-      <Route path='/view_sup' element={<ViewSup />} />
+      <Route path='/AddSupplierForm' element={<AddSupplierForm />} />
+      <Route path='/EditSup' element={<EditSup />} />
+      <Route path='/ViewSup' element={<ViewSup />} />
       <Route path="/ProductRequests" element={<ProductRequest/>} />
-      <Route path="/report" element={<SupplierReport />} />
+      <Route path="/SupplierReports" element={<SupplierReport />} />
       
       <Route path='/Services' element={<Services />} />
       <Route path='/Header' element={<Header />} />
