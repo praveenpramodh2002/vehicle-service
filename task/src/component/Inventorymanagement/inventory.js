@@ -93,7 +93,7 @@ const Sidebar = () => {
                 <div className="navigation">
                     <ul>
                         <li><HomeOutlined /> <a href="main">Home </a></li>
-                        <li><FileSearchOutlined /> <a href="tracking">Tracking</a></li>
+                        <li><FileSearchOutlined /> <a href="requestproducts">requestproducts</a></li>
                         <li><BarChartOutlined /> <a href="inventoryreport">inventoryReports</a></li>
                         <li><FileSearchOutlined /> <a href="inventory"> Add Inventory </a></li> {/* Updated navigation */}
                     </ul>

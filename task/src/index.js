@@ -23,6 +23,7 @@ import VehicleUpdate from './component/AccountManagement/vehicleUpdateInterface'
 import Sidebar from './component/Inventorymanagement/inventory';
 import InventoryForm from './component/Inventorymanagement/inventoryForm';
 import InventoryReport from './component/Inventorymanagement/inventoryreport';
+import RequestProducts from './component/SupplierManagement/ProductRequestForm';
 
 import Home3 from './component/SupplierManagement/home';
 import AddSupplierForm from './component/SupplierManagement/add_sup';
@@ -67,6 +68,7 @@ root.render(
       <Route path='/addinventory' element={<Sidebar />} />
       <Route path='/inventory' element={<InventoryForm />} />
       <Route path='/InventoryReport' element={<InventoryReport />} />
+      <Route path="/requestproducts" element={<RequestProducts />} />
 
       <Route path='/Home3' element={<Home3 />} />
       <Route path='/AddSupplierForm' element={<AddSupplierForm />} />
