@@ -10,6 +10,7 @@ const router3 = require('./Inventorymanagement/router');
 const supplierRoutes = require("./SuppilerManagement/SupplierRoutes");
 const deletedSupplierRoutes = require("./SuppilerManagement/DeletedSupplierRoutes");
 const productRequestRoutes = require("./SuppilerManagement/ProductRequestRoutes")
+const router50 = require('./PackageManagement/Routes/PackagesRoutes');
 
 const twilio = require('twilio');
 
@@ -54,7 +55,9 @@ app.use("/suppliers", supplierRoutes);
 app.use("/deleted-suppliers", deletedSupplierRoutes);
 app.use("/product-requests", productRequestRoutes);
 
+//Package Routes
 
+app.use("/packages", router50);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
