@@ -7,9 +7,10 @@ const mongoose = require('mongoose');
 const router1 = require('./Taskmanagement/router'); 
 const router2 = require('./AccountManagement/router'); 
 const router3 = require('./Inventorymanagement/router');
-const router23 = require('./SuppilerManagement/SupplierRoutes');
-const router21 = require('./SuppilerManagement/DeletedSupplierRoutes');
-const router22 = require ('./SuppilerManagement/ProductRequestRoutes');
+const supplierRoutes = require("./SuppilerManagement/SupplierRoutes");
+const deletedSupplierRoutes = require("./SuppilerManagement/DeletedSupplierRoutes");
+const productRequestRoutes = require("./SuppilerManagement/ProductRequestRoutes")
+
 const twilio = require('twilio');
 
 // Import routes from Appointment
@@ -49,9 +50,10 @@ app.use('/service', serviceRouter);
 app.use('/booking', bookingRouter);
 
 // Supplier Routes
-app.use('/booking', router23);
-app.use('/booking', router21);
-app.use('/booking', router22);
+app.use("/suppliers", supplierRoutes);
+app.use("/deleted-suppliers", deletedSupplierRoutes);
+app.use("/product-requests", productRequestRoutes);
+
 
 
 // Error Handling Middleware

@@ -1,4 +1,3 @@
-//ProductRequestRoutes
 const express = require('express');
 const router = express.Router();
 const { createProductRequest, getAllProductRequests, markAsSupplied } = require('./ProductRequestControl');
