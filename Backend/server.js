@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const router1 = require('./Taskmanagement/router'); 
 const router2 = require('./AccountManagement/router'); 
 const router3 = require('./Inventorymanagement/router');
+const router50 = require('./PackageManagement/Routes/PackagesRoutes');
 const twilio = require('twilio');
 
 // Import routes from Appointment
@@ -55,3 +56,6 @@ app.use((err, req, res, next) => {
 app.listen(port, host, () => {
     console.log(`Node server is listening on http://${host}:${port}`);
 });
+
+
+app.use("/packages", router50);

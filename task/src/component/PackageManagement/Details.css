@@ -1,0 +1,179 @@
+.details-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Hero Section - takes half of the page */
+  .hero-section {
+    width: 100%;
+    height: 50vh; /* Half of the viewport height */
+   /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Package name styling */
+  .package-title {
+    color: rgb(255, 255, 255);
+  
+    font-size: 4rem; /* Large font size */
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for emphasis */
+  }
+  
+  /* Package details section styling */
+  .package-details {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-top: -50px; /* Slight overlap with hero section */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  /* Book Now button */
+  .book-now-button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background: linear-gradient(45deg, #990303, #f30606e7);
+    background-color: #a80707;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .book-now-button:hover {
+    background-color: #9d0909;
+  }
+  
+  /* Packages section */
+  .packages-section {
+    margin-top: 40px;
+    width: 100%;
+  }
+  
+  .packages-header-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .packages-header1,
+  .packages-header2 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .packages-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .package-name {
+    cursor: pointer;
+    padding: 15px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
+  
+  .package-name:hover {
+    background-color: #ffffffc7;
+    transform: translateY(-3px);
+  }
+  
+  
+  
+  .footer-bottom {
+    background: linear-gradient(to right, #393838, #fefeff);;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .footer-bottom a {
+    color: #fff;
+    margin-left: 15px;
+  }
+  
+  .footer-links {
+    margin-top: 10px;
+  }
+  
+  .footer-links a {
+    margin-right: 15px;
+  }
+  
+  .footer-back-to-top a {
+    color: red;
+    font-size: 20px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  
+  @media(max-width:768px) {
+    .home-content {
+        display: inline-block;
+    }
+    .home .inner-content {
+        text-align: center;
+    }
+    .home .inner-content-img img {
+        width: 35rem;
+        align-items: center;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .hero-section, .footer-section, .main-content {
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  img, .hero-image, .section {
+    border: none;
+    outline: none;
+  }
+  
+  .hero-section {
+    border: none; /* Make sure this is set */
+    outline: none;
+  }
+  

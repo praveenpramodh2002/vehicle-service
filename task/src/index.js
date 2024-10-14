@@ -45,6 +45,16 @@ import NavBar from './component/Appoitment/SideNav';
 import UpdateBooking from './component/Appoitment/updateBooking';
 
 
+import DashboardSM from './component/PackageManagement/DashboardSM';
+import CreationSM from './component/PackageManagement/CreationSM';
+import MaintenanceSM from './component/PackageManagement/MaintenanceSM';
+import EditPackage from './component/PackageManagement/EditPackage';
+import Packages from './component/PackageManagement/Packages';
+import PDetails from './component/PackageManagement/PDetails';
+import Details from './component/PackageManagement/Details';
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -88,6 +98,14 @@ root.render(
       <Route path='/NavBar' element={<NavBar />} />
       <Route path='/UpdateBooking/:id' element={<UpdateBooking />} />
 
+
+      <Route path='/p01' element={<DashboardSM />} />
+        <Route path="/p3" element={<CreationSM />} />
+        <Route path="/p2" element={<MaintenanceSM />} />
+        <Route path="/edit-package/:id" element={<EditPackage />} />
+        <Route path="/p4" element={<Packages />} />
+        <Route path="/p6" element={<PDetails />} />
+        <Route path="/p7" element={<Details />} />
 
 
       </Routes>

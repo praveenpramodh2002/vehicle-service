@@ -1,0 +1,128 @@
+/* Logo container */
+.logo-container {
+    display: flex;
+    justify-content: center; /* Centers the logo horizontally */
+    align-items: center;
+    margin-top: 20px; /* Adds some space from the top of the page */
+  }
+  
+  /* Logo image */
+  .logo-container img {
+    max-width: 150px; /* Adjust this based on your logo size */
+    height: auto;
+  }
+  
+  /* Table container styling */
+  .table-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    overflow-x: auto;
+  }
+  
+  /* Package table styling */
+  .package-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    text-align: left;
+  }
+  
+  .package-table thead {
+    background-color: #f2f2f2;
+  }
+  
+  .package-table th, .package-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .package-table th {
+    background-color: #0056b3;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .package-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .package-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Search input and container */
+  .search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    width: 300px; /* Adjusted for better width */
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-input:focus {
+    border-color: #0056b3;
+    outline: none;
+  }
+  
+  .search-button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .search-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Print button */
+  .print-button {
+    padding: 12px 25px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s ease;
+  }
+  
+  .print-button:hover {
+    background-color: #000000c5;
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+    .package-table {
+      font-size: 0.9em;
+    }
+  
+    .search-input {
+      width: 100%;
+    }
+  
+    .table-container {
+      padding: 0 10px;
+    }
+  }
+  
+  
+  
+  
