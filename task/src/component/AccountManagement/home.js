@@ -15,13 +15,7 @@ function Home1({ vehicles = [] }) {
         navigate('/VehicleUpdateInterface'); 
     };
 
-    const handlePrintReport = () => {
-        const userId = prompt("Please enter User ID:");
-        if (userId) {
-            navigate(`/PrintReport/${userId}`);
-        }
-    };
-
+   
     useEffect(() => {
         const updateDateTime = () => {
             const now = new Date();
@@ -80,9 +74,7 @@ function Home1({ vehicles = [] }) {
                         <img src="image/edit.png" alt="Update Vehicles" className="img" />
                         <p>Update User Account</p>
                     </div>
-                    <div className="card123" onClick={handlePrintReport} style={{ cursor: 'pointer' }}>
-                        <button className="btn">Print Report</button>
-                    </div>
+                    
                 </section>
             </div>
         </div>

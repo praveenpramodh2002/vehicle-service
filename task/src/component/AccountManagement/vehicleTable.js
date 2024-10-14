@@ -104,14 +104,14 @@ const VehicleTable = ({ vehicles, onEditVehicle, onDeleteVehicle, onRestoreVehic
     };
 
     return (
-        <div className="table_container">
-            <div className="TableHeader">
+        <div className="table_container1">
+            <div className="TableHeader1">
             <div className="total-vehicles">
             <h3>{isDeletedTable ? 'Total Deleted Accounts' : 'Total Accounts'}: {filteredVehicles.length}</h3>
             </div>
 
-                <div className="search_box">
-                    <label className="search_container">
+                <div className="search_box1">
+                    <label className="search_container1">
                         <input
                             type="text"
                             placeholder="Search..."
@@ -119,7 +119,7 @@ const VehicleTable = ({ vehicles, onEditVehicle, onDeleteVehicle, onRestoreVehic
                             value={searchQuery}
                             onChange={handleInputChange}
                         />
-                        <select name="filterOption" value={filterOption} onChange={handleInputChange}>
+                        <select name="filterOption1" value={filterOption} onChange={handleInputChange}>
                             <option value="nic">NIC</option>
                             <option value="vehicleno">Vehicle No</option>
                            
@@ -128,12 +128,13 @@ const VehicleTable = ({ vehicles, onEditVehicle, onDeleteVehicle, onRestoreVehic
                 </div>
              
                 {!isDeletedTable && (
-                    <button className="btn" onClick={handlePrint}>Download Report</button>
+                    <button className="btn1" onClick={handlePrint}>Download Report</button>
                 )}
             </div>
     
             {/* User Data Table */}
             <h2>{isDeletedTable ? 'Deleted User Data' : 'User Data'}</h2>
+            <div class="accounttable">
             <table>
                 <thead>
                     <tr>
@@ -158,10 +159,10 @@ const VehicleTable = ({ vehicles, onEditVehicle, onDeleteVehicle, onRestoreVehic
                                 <td>{vehicle.address}</td>
                                 {!isDeletedTable && (
                                     <td>
-                                        <button className='updateBtn' onClick={() => onEditVehicle(vehicle)}>
+                                        <button className='updateBtn1' onClick={() => onEditVehicle(vehicle)}>
                                             Update
                                         </button>
-                                        <button className='deleteBtn' onClick={() => onDeleteVehicle(vehicle._id)}>
+                                        <button className='deleteBtn1' onClick={() => onDeleteVehicle(vehicle._id)}>
                                             Delete
                                         </button>
                                     </td>
@@ -210,10 +211,10 @@ const VehicleTable = ({ vehicles, onEditVehicle, onDeleteVehicle, onRestoreVehic
                                 <td>{vehicle.condition}</td>
                                 {!isDeletedTable && (
                                     <td>
-                                        <button className='updateBtn' onClick={() => onEditVehicle(vehicle)}>
+                                        <button className='updateBtn1' onClick={() => onEditVehicle(vehicle)}>
                                             Update
                                         </button>
-                                        <button className='deleteBtn' onClick={() => onDeleteVehicle(vehicle._id)}>
+                                        <button className='deleteBtn1' onClick={() => onDeleteVehicle(vehicle._id)}>
                                             Delete
                                         </button>
                                     </td>
@@ -227,6 +228,7 @@ const VehicleTable = ({ vehicles, onEditVehicle, onDeleteVehicle, onRestoreVehic
                     )}
                 </tbody>
             </table>
+    </div>
         </div>
     );
     

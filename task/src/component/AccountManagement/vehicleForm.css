@@ -1,5 +1,5 @@
-.form-container {
-    background-color: #ecf0f1;
+.form-container1 {
+    background-color: #d8dddf;
     padding: 20px;
     border-radius: 10px;
     width: 500px;
@@ -28,26 +28,27 @@ input, select {
     border-radius: 5px;
 }
 
-.form-buttons {
+.form-buttons1 {
     display: flex;
     justify-content: flex-end;
 }
 
-.form-buttons .cancel,
-.form-buttons .save {
+.form-buttons1 .cancelbtn,
+.form-buttons1 .savebtn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
+    width: 100px;
 }
 
-.cancel {
+.cancelbtn {
     background-color: #95a5a6;
     color: white;
 }
 
-.save {
+.savebtn {
     background-color: #007bff;
     color: white;
 }
