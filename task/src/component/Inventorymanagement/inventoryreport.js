@@ -80,8 +80,8 @@ const InventoryReport = () => {
                 <nav className="navigation">
                     <ul>
                         <li><HomeOutlined /> <a href="main">Home</a></li>
-                        <li><FileSearchOutlined /> <a href="tracking">Tracking</a></li>
-                        <li><BarChartOutlined /> <a href="report">Reports</a></li>
+                        <li><FileSearchOutlined /> <a href="requestproducts">Request Products</a></li>
+                        <li><BarChartOutlined /> <a href="inventoryreport">Inventory Reports</a></li>
                         <li><FileSearchOutlined /><a href="Addinventory"> Add Inventory </a></li>
                     </ul>
                 </nav>

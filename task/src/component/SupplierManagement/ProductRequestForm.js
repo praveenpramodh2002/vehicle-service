@@ -1,7 +1,44 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import './ProductRequestForm.css'; // Your unique CSS styles
+import './ProductRequestForm.css';
+import { 
+    HomeOutlined, 
+    FileSearchOutlined, 
+    BarChartOutlined, 
+    MailOutlined, 
+    QuestionCircleOutlined, 
+    SettingOutlined 
+} from '@ant-design/icons';
+
+const Sidebar = () => (
+  <aside className="sidebar">
+    <div className="logo">
+      <img src="image/logo2.jpeg" alt="Micro Automotive" />
+    </div>
+    <div className="navigation">
+      <ul>
+        <li><HomeOutlined /> <a href="">Home </a></li>
+        <li><FileSearchOutlined /> <a href="requestproducts">Request Products</a></li>
+        <li><BarChartOutlined /> <a href="inventoryreport">Inventory Reports</a></li>
+        <li><FileSearchOutlined /> <a href="Addinventory"> Add Inventory </a></li>
+      </ul>
+    </div>
+    <div className="tools">
+      <p>Tools</p>
+      <ul>
+        <li><MailOutlined /><span>Inbox</span></li>
+        <li><SettingOutlined /> <a href="#">Settings</a></li>
+        <li><QuestionCircleOutlined /> <a href="#">Help</a></li>
+      </ul>
+    </div>
+    <div className="user-profile">
+      <img src="user2.jpeg" alt="User" />
+      <span>Joe Max</span>
+      <button className="logout-button">Log Out</button>
+    </div>
+  </aside>
+);
 
 const ProductRequestForm = () => {
   const navigate = useNavigate();
@@ -40,26 +77,31 @@ const ProductRequestForm = () => {
   };
 
   return (
-    <div className="product-request-container">
+    <div className="container">
+      <Sidebar />
+      <div className="main-content">
       <h1 className="product-request-title">Request a Product</h1>
-      <form className="product-request-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="product-request-input"
-          placeholder="Product Name"
-          value={productName}
-          onChange={(e) => setProductName(e.target.value)} // Update state on input change
-        />
-        <input
-          type="text"
-          className="product-request-input"
-          placeholder="Requested By"
-          value={requestedBy}
-          onChange={(e) => setRequestedBy(e.target.value)} // Update state on input change
-        />
-        <button type="submit" className="product-request-button">Submit Request</button>
-        {errorMessage && <div className="product-request-error">{errorMessage}</div>} {/* Display error messages */}
-      </form>
+        <div className="product-request-container">
+          <form className="product-request-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="product-request-input"
+              placeholder="Product Name"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)} // Update state on input change
+            />
+            <input
+              type="text"
+              className="product-request-input"
+              placeholder="Requested By"
+              value={requestedBy}
+              onChange={(e) => setRequestedBy(e.target.value)} // Update state on input change
+            />
+            <button type="submit" className="product-request-button">Submit Request</button>
+            {errorMessage && <div className="product-request-error">{errorMessage}</div>} {/* Display error messages */}
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
