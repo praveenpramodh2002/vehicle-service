@@ -120,6 +120,7 @@ const AddEmployee = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
+        console.log("Submitting employee data:", employeeData);
         const response = await axios.post("http://localhost:3001/employees", employeeData);
         console.log(response.data);
         alert("Employee added successfully");

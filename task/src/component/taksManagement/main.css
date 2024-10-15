@@ -1,11 +1,11 @@
 /* Ensure your container occupies the full viewport height */
 .container {
-    display: flex;
-    height: 100vh;
+    
+    height: 130vh;
   }
   
-  .sidebar {
-    height: 300vh;
+  .sidebar12 {
+    height: 150vh;
     width: 350px;
     background: linear-gradient(to right, #14dccb, #3036ea);
     color: white;
@@ -16,11 +16,11 @@
     transition: width 0.3s ease;
 }
 
-.sidebar:hover {
+.sidebar12:hover {
     width: 280px;
 }
 
-.sidebar .logo1{
+.sidebar12 .logo1{
     width: 150px;
     height: 150px;
     margin-bottom: 30px;
@@ -33,7 +33,7 @@
     
 }
 
-.sidebar .logo img{
+.sidebar12 .logo img{
     width: 100%;
     height: 90%;
     border-radius: 50%;
@@ -41,33 +41,33 @@
     transition: transform 0.3s ease;
 }
 
-.sidebar:hover .logo img {
+.sidebar12:hover .logo img {
     transform: scale(1.1);
 }
 
-.sidebar .navigation ul,
-.sidebar .tools ul {
+.sidebar12 .navigation ul,
+.sidebar12 .tools ul {
     list-style: none;
     padding: 0;
     margin: 10px 0;
 }
 
-.sidebar .navigation ul li,
-.sidebar .tools ul li {
+.sidebar12 .navigation ul li,
+.sidebar12 .tools ul li {
     margin: 20px 0;
     position: relative;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.sidebar .navigation ul li:hover,
-.sidebar .tools ul li:hover {
+.sidebar12 .navigation ul li:hover,
+.sidebar12 .tools ul li:hover {
     transform: translateX(10px);
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
 }
 
-.sidebar .navigation ul li a,
-.sidebar .tools ul li a {
+.sidebar12 .navigation ul li a,
+.sidebar12 .tools ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -78,17 +78,17 @@
     transition: color 0.3s ease;
 }
 
-.sidebar .navigation ul li a:hover,
-.sidebar .tools ul li a:hover {
+.sidebar12 .navigation ul li a:hover,
+.sidebar12 .tools ul li a:hover {
     color: #FFD700;
 }
 
-.sidebar .tools p {
+.sidebar12 .tools p {
     margin-top: 40px;
     font-size: 18px;
 }
 
-.sidebar .user-profile {
+.sidebar12 .user-profile {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -99,11 +99,11 @@
     transition: background-color 0.3s ease;
 }
 
-.sidebar .user-profile:hover {
+.sidebar12 .user-profile:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.sidebar .user-profile img {
+.sidebar12 .user-profile img {
     width: 40px;
     height: 40px;
     border-radius: 50%;

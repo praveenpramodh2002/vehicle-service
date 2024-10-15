@@ -18,7 +18,7 @@ const NavigationSidebar = () => {
             <nav className="sidebar-navigation">
                 <ul>
                     <li>
-                        <Link to="/hrmdb" className='sidebar-link'>Dashboard</Link>
+                        <Link to="/main" className='sidebar-link'>Dashboard</Link>
                     </li>
                     <li>
                         <Link to="/profile" className='sidebar-link'>Your Account</Link>

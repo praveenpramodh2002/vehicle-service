@@ -36,7 +36,7 @@ const Sidebar = () => {
         setSubmitted(true);
 
         const payload = {
-            itemId: data.itemId, // Updated keys to match your inventory model
+            itemId: data.itemId,
             itemName: data.itemName,
             quantity: data.quantity,
             supplier: data.supplier,
@@ -95,7 +95,7 @@ const Sidebar = () => {
                         <li><HomeOutlined /> <a href="">Home </a></li>
                         <li><FileSearchOutlined /> <a href="requestproducts">Request Products</a></li>
                         <li><BarChartOutlined /> <a href="inventoryreport">Inventory Reports</a></li>
-                        <li><FileSearchOutlined /> <a href="Addinventory"> Add Inventory </a></li> {/* Updated navigation */}
+                        <li><FileSearchOutlined /> <a href="Addinventory"> Add Inventory </a></li>
                     </ul>
                 </div>
                 <div className="tools">
@@ -113,14 +113,21 @@ const Sidebar = () => {
                 </div>
             </aside>
             <div className="main-content">
-                <div className="inventory-section"> {/* Updated section name */}
+                <div className="inventory-section">
                     <InventoryForm
                         addInventory={addInventory}
                         submitted={submitted}
                         data={selectedInventory}
                         isEdit={isEdit}
                     />
-                   
+                   <InventoryTable
+                        rows={inventory}
+                        onEditInventory={(inventory) => {
+                            setSelectedInventory(inventory);
+                            setIsEdit(true);
+                        }}
+                        onDeleteInventory={deleteInventory}
+                    />
                 </div>
             </div>
         </div>

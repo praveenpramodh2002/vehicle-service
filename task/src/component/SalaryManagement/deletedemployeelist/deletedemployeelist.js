@@ -38,7 +38,7 @@ const DeletedEmployeeList = () => {
 
   return (
     <div className="deleted-employee-container">
-      <div className="sidebar">
+      <div className="sidebar17">
         <Sidebar />
       </div>
       <div className="deleted-employee-content">

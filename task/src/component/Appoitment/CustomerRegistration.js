@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./CustomerRegistration.css";
 
 const initialFormData = {
@@ -24,6 +24,19 @@ function CustomerRegistration() {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState(initialErrors);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Set the background image for the webpage
+    document.body.style.backgroundImage = "url('image/loginback2.jpeg')"; // Update with the correct path to your image
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+
+    // Clean up the background image when the component is unmounted
+    return () => {
+      document.body.style.backgroundImage = "";
+    };
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -176,6 +189,9 @@ function CustomerRegistration() {
         {renderField("Password", "password", "password")}
         {renderField("Confirm Password", "confirmPassword", "password")}
         <button type="submit">Register</button>
+        <p className="register-link">
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
       </form>
     </div>
   );
