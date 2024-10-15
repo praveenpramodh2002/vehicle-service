@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './taskForm.css';
 
 // Form Input Component without Labels
-const FormInput = ({ type, name, value, onChange, error, placeholder, required, min, maxLength }) => (
+const FormInput = ({ type, name, value, onChange, placeholder, required, min, maxLength }) => (
     <div className="form-group">
         <input
             type={type}
@@ -14,12 +14,11 @@ const FormInput = ({ type, name, value, onChange, error, placeholder, required, 
             min={min}
             maxLength={maxLength}
         />
-        {error && <div className="error">{error}</div>}
     </div>
 );
 
 // Form TextArea Component without Labels
-const FormTextArea = ({ name, value, onChange, placeholder, required, error }) => (
+const FormTextArea = ({ name, value, onChange, placeholder, required }) => (
     <div className="form-group">
         <textarea
             name={name}
@@ -28,7 +27,6 @@ const FormTextArea = ({ name, value, onChange, placeholder, required, error }) =
             placeholder={placeholder}
             required={required}
         />
-        {error && <div className="error">{error}</div>}
     </div>
 );
 
@@ -64,7 +62,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
             setFormState({
                 ...data,
                 date: data.date ? data.date.split('T')[0] : '',
-                completionTime: data.completionTime || '' 
+                completionTime: data.completionTime || ''
             });
         }
     }, [data]);
@@ -77,32 +75,38 @@ const TaskForm = ({ addTask, data, isEdit }) => {
         }
     };
 
-    const validateTaskId = (tId) => {
-        if (tId < 0) {
-            setErrors((prevState) => ({ ...prevState, tId: 'Task ID must be a positive number' }));
-        } else {
-            setErrors((prevState) => ({ ...prevState, tId: '' }));
-        }
-    };
-
     const handleChange = (e) => {
         const { name, value } = e.target;
 
         if (name === 'phoneNumber') {
-            if (value.length <= 10) {
+            const sanitizedValue = value.replace(/[^0-9]/g, ''); // Allow only numbers
+            if (sanitizedValue.length <= 10) {
                 setFormState((prevState) => ({
                     ...prevState,
-                    [name]: value.replace(/[^0-9]/g, '')
+                    [name]: sanitizedValue
                 }));
             }
-        } else if (name === 'tId') {
-            if (value >= 0) {
-                setFormState((prevState) => ({
-                    ...prevState,
-                    [name]: value
-                }));
-                validateTaskId(value);
-            }
+            return;
+        }
+
+        // Prevent numbers in specific fields
+        const isTextField = ["title", "description", "employee"].includes(name);
+        if (isTextField) {
+            // Allow only alphabetic characters and spaces
+            const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, ''); // Remove all non-alphabetic characters
+            setFormState((prevState) => ({
+                ...prevState,
+                [name]: sanitizedValue
+            }));
+            return;
+        }
+
+        if (name === 'tId') {
+            const sanitizedValue = Math.max(0, parseInt(value) || 0); // Prevent negative IDs
+            setFormState((prevState) => ({
+                ...prevState,
+                [name]: sanitizedValue.toString()
+            }));
         } else {
             setFormState((prevState) => ({
                 ...prevState,
@@ -114,9 +118,8 @@ const TaskForm = ({ addTask, data, isEdit }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         validatePhoneNumber(formState.phoneNumber);
-        validateTaskId(formState.tId);
 
-        if (!errors.phoneNumber && !errors.tId && !errors.description && formState.phoneNumber.length === 10) {
+        if (!errors.phoneNumber && formState.phoneNumber.length === 10) {
             try {
                 await addTask(formState);
                 setNotification(isEdit ? 'Task updated successfully!' : 'Task added successfully!');
@@ -174,9 +177,9 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                 <>
                     {notification && <div className="notification">{notification}</div>}
                     <form onSubmit={handleSubmit} className="form-content" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '30px' }}>
-                        <FormInput type="number" name="tId" value={formState.tId} onChange={handleChange} placeholder="Task ID" required min="0" error={errors.tId} />
+                        <FormInput type="number" name="tId" value={formState.tId} onChange={handleChange} placeholder="Task ID" required min="0" />
                         <FormInput type="text" name="title" value={formState.title} onChange={handleChange} placeholder="Task Title" required />
-                        <FormTextArea name="description" value={formState.description} onChange={handleChange} placeholder="Task Description" required error={errors.description} />
+                        <FormTextArea name="description" value={formState.description} onChange={handleChange} placeholder="Task Description" required />
                         <FormInput type="text" name="employee" value={formState.employee} onChange={handleChange} placeholder="Assigned Employee" required />
                         <div className="form-group">
                             <select name="designation" value={formState.designation} onChange={handleChange} required>
@@ -186,7 +189,7 @@ const TaskForm = ({ addTask, data, isEdit }) => {
                                 <option value="Fleet Manager">Fleet Manager</option>
                             </select>
                         </div>
-                        <FormInput type="tel" name="phoneNumber" value={formState.phoneNumber} onChange={handleChange} placeholder="Phone Number" required error={errors.phoneNumber} />
+                        <FormInput type="tel" name="phoneNumber" value={formState.phoneNumber} onChange={handleChange} placeholder="Phone Number" required />
                         <FormInput type="text" name="type" value={formState.type} onChange={handleChange} placeholder="Task Type" required />
                         <FormInput type="date" name="date" value={formState.date} onChange={handleChange} min={minDate} required />
                         <FormInput type="time" name="completionTime" value={formState.completionTime} onChange={handleChange} required />
