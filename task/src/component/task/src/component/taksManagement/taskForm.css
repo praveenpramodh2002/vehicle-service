@@ -1,0 +1,122 @@
+.form-frame {
+    max-width: 800px; /* Set the frame width to 500px */
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.form-frame.minimized {
+    height: 50px;
+    width: 200px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: linear-gradient(to right, #0056b3, #8e44ad);
+    color: #fff;
+    border-bottom: 1px solid #0056b3;
+    cursor: pointer;
+}
+
+.form-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.minimize-btn, .close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.notification {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    text-align: center;
+}.form-group label {
+    /* Change this to 'underline', 'line-through', 'overline', or 'none' as needed */
+    color: #100f0f; /* Optional: change the color of the label */
+    font-weight: bold; /* Optional: make the label bold */
+    margin-bottom: 5px; /* Optional: add space below the label */
+}
+
+/* You may want to adjust these styles if they conflict with existing ones */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%; /* Ensure inputs take the full width */
+    padding: 10px; /* Optional: add padding for better spacing */
+    border: 1px solid #ccc; /* Optional: add a border */
+    border-radius: 4px; /* Optional: round corners */
+}
+
+.error {
+    color: red; /* Style for error messages */
+    font-size: 12px; /* Optional: make error messages smaller */
+}
+
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

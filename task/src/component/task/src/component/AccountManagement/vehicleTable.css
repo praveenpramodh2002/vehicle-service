@@ -1,0 +1,125 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table_container {
+    margin: 20px;
+
+}
+
+table th, table td {
+    border: 2px solid #000000;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #1c76db;
+    color: #ffffff;
+}
+
+table td {
+    background-color: #ecf0f1;
+    border: 2px solid #000000;
+}
+
+.updateBtn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+
+}
+
+.updateBtn:hover {
+    background-color: #45a049;
+}
+
+.deleteBtn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    align-items: center;
+}
+
+.deleteBtn:hover {
+    background-color: #e31e10;
+}
+
+.search_container select {
+    border: none;
+    padding: 8px;
+    background-color: #1c76db;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    width: 35%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.search_container select option {
+    background-color: #fff;
+    color: #000;
+}
+
+.search_container input[type="text"] {
+    border: none;
+    padding: 10px;
+    outline: none;
+    width: 200px;
+    height: auto;
+}
+
+.search_container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.search_box {
+    display: flex;
+    align-items: center;
+}
+
+.total-vehicles {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.TableHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+}
+
+.btn {
+    background-color: #1c76db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #000000;
+}
+
+

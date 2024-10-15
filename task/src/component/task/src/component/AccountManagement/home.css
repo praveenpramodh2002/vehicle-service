@@ -1,0 +1,194 @@
+.container {
+    display: flex;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.signoutbtn {
+    background:#000000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: flex;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.signoutbtn:hover {
+    background:#1f2d5e;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.main-content h1 {
+    font-size: 45px;
+    margin-bottom: 30px;
+    text-align: center; 
+}
+
+.main-content header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.main-content header img {
+    width: 225px;
+    height: 285px;
+    margin-right: 20px;
+}
+
+.dashboard-cardsss{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card123 {
+    background-color: white;
+    border: 1px solid #429DFF;
+    padding: 30px;
+    width: 250px;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card123 p{
+    font-size: 20px;
+    font-weight: bold;
+}
+.card123 .circle-chart {
+    width: 60px;
+    height: 60px;
+    background: conic-gradient(#1E90FF 70%, #ddd 70%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px;
+    font-size: 20px;
+}
+
+.card123 .icon  {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.card123 .img {
+    width:15%;
+    height: 30%;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+header img {
+    width: 250px; 
+    height: 200px;
+}
+
+
+.card123:hover {
+    transform: translateX(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: color 0.3s ease;
+}
+
+
+.card123:hover {
+    color: #1b0101;
+}
+
+
+.add-button, .update-button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 10px auto;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: rgb(30, 115, 194);
+    cursor: pointer;
+  }
+  
+  .date-time {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+    padding: 20px;
+    width:auto;
+    height: 10px; /* Adjust height as needed */
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #1E90FF;
+    color: white;/* Add margin to the top and bottom */
+}
+
+.current-date-time {
+    margin-left: auto;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.modal-content input {
+    margin-bottom: 10px;
+}
+
+.modal-content button {
+    margin-right: 10px;
+}

@@ -1,0 +1,132 @@
+.page-container88 {
+  display: flex;
+}
+/* Sidebar Styles */
+.sidebarManu23 {
+  width: 250px;
+  background-color: #3f8ded;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.logo1 img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Sidebar Menu */
+.sidebarManu23 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarManu23 li {
+  margin-bottom: 20px;
+}
+
+.sidebarManu23 li a {
+  display: block;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 2px solid #000000;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebarManu23 li a.active {
+  color: #b30000;
+}
+
+.sidebarManu23 li a:hover {
+  background-color: #e6e6e6;
+  color: #000000;
+}
+/* Edit Page Container */
+.edit-container88 {
+  padding: 40px; /* Increase padding for more spacing around the form */
+    max-width: 900px; /* Make the form wider */
+    margin: 40px auto; /* Center the form vertically and horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #f9f9f9; /* Optional: Add a light background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
+}
+
+/* Title for Edit Page */
+.edit-title88 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Edit Form Fields */
+.edit-form88 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between form elements */
+}
+
+/* Input Fields */
+.input-field88 {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.1rem; /* Slightly larger font for readability */
+  width: 100%;
+  background-color: white; /* Keep the input fields clean and white */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow around inputs */
+}
+
+/* Flex Container for Multiple Inputs */
+.flex-wrap88-container88 {
+  display: flex;
+  gap: 20px; /* Space between multiple input fields */
+  justify-content: space-between;
+}
+
+.flex-item88 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: start;
+}
+
+/* Submit Button */
+.submit-button88 {
+  padding: 15px;
+  background: linear-gradient(to right, #14dccb, #3036ea); /* Matching gradient like the creation page */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width for uniformity */
+}
+
+.submit-button88:hover {
+  background: linear-gradient(to right, #0dbbb7, #282dca); /* Darker hover gradient */
+}
+
+/* Optional: Add Error Message Styles */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}

@@ -1,0 +1,226 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Container for the whole layout */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    height: 300vh;
+    width: 250px;
+    background: linear-gradient(to right, #14dccb, #3036ea);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 280px;
+}
+
+.sidebar .logo1{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #e5e6e8f4, #258383);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    
+}
+
+.sidebar .logo img{
+    width: 100%;
+    height: 90%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.sidebar:hover .logo img {
+    transform: scale(1.1);
+}
+
+.sidebar .navigation ul,
+.sidebar .tools ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.sidebar .navigation ul li,
+.sidebar .tools ul li {
+    margin: 20px 0;
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar .navigation ul li:hover,
+.sidebar .tools ul li:hover {
+    transform: translateX(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.sidebar .navigation ul li a,
+.sidebar .tools ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.sidebar .navigation ul li a:hover,
+.sidebar .tools ul li a:hover {
+    color: #FFD700;
+}
+
+.sidebar .tools p {
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+.sidebar .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .user-profile:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.search-notification-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notification-icon {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 600px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+.date-display .date {
+    background-color: #E0E0E0;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.task-section {
+    padding: 20px;
+    flex: 1;
+}
+
+.add-task-header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.add-task-button {
+    background: linear-gradient(to right, #007AFF, #BB6BD9);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease;
+}
+
+.add-task-button:hover {
+    background: linear-gradient(to right, #0056b3, #8e44ad);
+}
+
+.add-task-button .add-icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.user-profile {
+    text-align: center;
+    padding: 10px;
+}
+
+.user-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-profile span {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.logout-button {
+    background-color: #ff4d4f; /* Red background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #d9363e; /* Darker red on hover */
+}

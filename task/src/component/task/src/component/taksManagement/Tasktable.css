@@ -1,0 +1,268 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    text-align: center;
+}
+
+
+
+.table_container {
+    padding: 20px;
+}
+
+.table_container_2 {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.64);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.TableHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f3f3f3;
+    border-bottom: 2px solid #c1bbbb;
+    
+}
+
+.TableHeader h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.TableHeader .btn {
+    background-color: #6b79d2;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.TableHeader .btn:hover {
+    background-color: #222;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead tr {
+    background-color: #2023d7;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    text-align: center;
+}
+
+
+
+.table_container {
+    padding: 20px;
+}
+
+.table_container_2 {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.64);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.TableHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f3f3f3;
+    border-bottom: 2px solid #c1bbbb;
+    
+}
+
+.TableHeader h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.TableHeader .btn {
+    background: linear-gradient(to right, #0056b3, #8e44ad);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.TableHeader .btn:hover {
+    background-color: #222;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead tr {
+    background-color: #2023d7;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.updateBtn{
+
+    background: #0dc538;
+    width: 60px;
+    height: 35px;
+    border: none;
+    color: #dddddd;
+    font-size: 15px;
+}
+
+.updateBtn:hover{
+
+    background: #09a42d;
+    cursor: pointer;
+}
+
+.deleteBtn{
+
+    background: #e91515;
+    width: 60px;
+    height: 35px;
+    border: none;
+    color: #dddddd;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.deleteBtn:hover{
+
+    background: #cb1313;
+    cursor: pointer;
+}.report-options {
+    margin: 10px 0;
+}
+
+.report-options label {
+    margin-right: 20px;
+}
+
+.report-options select {
+    margin-left: 10px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.table_container .TableHeader {
+    margin-bottom: 20px;
+}
+
+
+.updateBtn{
+
+    background: #0dc538;
+    width: 60px;
+    height: 35px;
+    border: none;
+    color: #dddddd;
+    font-size: 15px;
+}
+
+.updateBtn:hover{
+
+    background: #09a42d;
+    cursor: pointer;
+}
+
+.deleteBtn{
+
+    background: #ffffff;
+    width: 60px;
+    height: 35px;
+    border: none;
+    color: #dddddd;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.deleteBtn:hover{
+
+    background: #cb1313;
+    cursor: pointer;
+}.report-options {
+    margin: 10px 0;
+}
+
+.report-options label {
+    margin-right: 20px;
+}
+
+.report-options select {
+    margin-left: 10px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.table_container .TableHeader {
+    margin-bottom: 20px;
+}

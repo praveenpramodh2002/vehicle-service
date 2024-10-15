@@ -57,6 +57,17 @@ import DeletedEmployeeList from './component/SalaryManagement/deletedemployeelis
 import PaysheetList from './component/SalaryManagement/paysheetlist/paysheetlist';   
 
 
+
+import DashboardSM from './component/PackageManagement/DashboardSM';
+import CreationSM from './component/PackageManagement/CreationSM';
+import MaintenanceSM from './component/PackageManagement/MaintenanceSM';
+import EditPackage from './component/PackageManagement/EditPackage';
+import Packages from './component/PackageManagement/Packages';
+import PDetails from './component/PackageManagement/PDetails';
+import Details from './component/PackageManagement/Details';
+import Bookk from './component/PackageManagement/Bookk';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -111,6 +122,16 @@ root.render(
       <Route path='/generatepayroll/:nic' element={<GeneratePayroll/>}/>
       <Route path='/deletedemployees' element={<DeletedEmployeeList/>}/>
       <Route path="/paysheets" element={<PaysheetList />} />
+
+      <Route path='/p01' element={<DashboardSM />} />
+        <Route path="/p3" element={<CreationSM />} />
+        <Route path="/p2" element={<MaintenanceSM />} />
+        <Route path="/edit-package/:id" element={<EditPackage />} />
+        <Route path="/p4" element={<Packages />} />
+        <Route path="/p6" element={<PDetails />} />
+        <Route path="/p7" element={<Details />} />
+        <Route path="/p8" element={<Bookk />} />
+
 
 
       </Routes>

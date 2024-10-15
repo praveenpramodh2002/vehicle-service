@@ -1,0 +1,178 @@
+/* Ensure your container occupies the full viewport height */
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    height: 300vh;
+    width: 350px;
+    background: linear-gradient(to right, #14dccb, #3036ea);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 280px;
+}
+
+.sidebar .logo1{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #e5e6e8f4, #258383);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    
+}
+
+.sidebar .logo img{
+    width: 100%;
+    height: 90%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.sidebar:hover .logo img {
+    transform: scale(1.1);
+}
+
+.sidebar .navigation ul,
+.sidebar .tools ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.sidebar .navigation ul li,
+.sidebar .tools ul li {
+    margin: 20px 0;
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar .navigation ul li:hover,
+.sidebar .tools ul li:hover {
+    transform: translateX(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.sidebar .navigation ul li a,
+.sidebar .tools ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.sidebar .navigation ul li a:hover,
+.sidebar .tools ul li a:hover {
+    color: #FFD700;
+}
+
+.sidebar .tools p {
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+.sidebar .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .user-profile:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+  
+  .dashboard {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+  }
+  
+ 
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    width: calc(100% - 200px);
+    margin-bottom: 0%;
+  }
+  
+  .card-row {
+    display: flex;
+    justify-content: space-around; /* Evenly distribute space between cards */
+    margin-bottom: 20px; /* Add some space below the row */
+  }
+  
+  .card {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+    background-color: #fff;
+  }
+  
+  .card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Ensure the image covers the entire area while maintaining aspect ratio */
+    background-color: #ffffff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px;
+  }
+  
+  .card p {
+    margin-top: 10px;
+  }
+  
+  .circle {
+    width: 10opx;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #2196F3;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    margin: 0 auto 10px;
+  }
+  

@@ -1,0 +1,80 @@
+/* inventorytable.css */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff; /* Header background color */
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for rows */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Row hover color */
+}
+
+button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.edit {
+    background-color: #28a745; /* Green for Edit */
+    color: white;
+}
+
+button.edit:hover {
+    background-color: #218838; /* Darker Green on Hover */
+}
+
+button.delete {
+    background-color: #dc3545; /* Red for Delete */
+    color: white;
+}
+
+button.delete:hover {
+    background-color: #c82333; /* Darker Red on Hover */
+}.generate-report {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    margin: 20px 0; /* Margin */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.generate-report:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.search-input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Adjust width as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

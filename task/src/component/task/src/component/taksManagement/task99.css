@@ -1,0 +1,38 @@
+/* Navigation Bar Styling */
+.navigation {
+    flex: 1;
+    padding: 10px 0;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.navigation ul li:hover {
+    background-color: #005BB5;
+}
+
+.navigation ul li span {
+    margin-left: 10px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .navigation ul li span {
+    opacity: 0;
+}
+
+.sidebar.collapsed .navigation ul li {
+    justify-content: center;
+}
