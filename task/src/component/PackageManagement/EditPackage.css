@@ -1,149 +1,114 @@
-.page-container {
+.page-container88 {
   display: flex;
 }
-
 /* Sidebar Styles */
-.sidebar {
-  height: 100vh;
+.sidebarManu23 {
   width: 250px;
-  background: linear-gradient(to right, #14dccb, #3036ea);
-  color: white;
+  background-color: #3f8ded;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
-  transition: width 0.3s ease;
+  height: 100vh;
+  overflow-y: auto;
 }
 
-.sidebar:hover {
-  width: 280px;
+.logo1 img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-.sidebar .logo {
-  width: 150px;
-  height: 150px;
-  margin-bottom: 30px;
-  background: linear-gradient(to right, #e5e6e8f4, #258383);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.sidebar .logo img {
-  width: 100%;
-  height: 90%;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.sidebar:hover .logo img {
-  transform: scale(1.1);
-}
-
-.sidebar .navigation ul,
-.sidebar .tools ul {
+/* Sidebar Menu */
+.sidebarManu23 ul {
   list-style: none;
   padding: 0;
-  margin: 10px 0;
+  margin: 0;
 }
 
-.sidebar .navigation ul li,
-.sidebar .tools ul li {
-  margin: 20px 0;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+.sidebarManu23 li {
+  margin-bottom: 20px;
 }
 
-.sidebar .navigation ul li:hover,
-.sidebar .tools ul li:hover {
-  transform: translateX(10px);
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-.sidebar .navigation ul li a,
-.sidebar .tools ul li a {
-  color: white;
+.sidebarManu23 li a {
+  display: block;
   text-decoration: none;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 15px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 2px solid #000000;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar .tools p {
-  margin-top: 40px;
-  font-size: 18px;
+.sidebarManu23 li a.active {
+  color: #b30000;
 }
 
-.sidebar .user-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+.sidebarManu23 li a:hover {
+  background-color: #e6e6e6;
+  color: #000000;
+}
+/* Edit Page Container */
+.edit-container88 {
+  padding: 40px; /* Increase padding for more spacing around the form */
+    max-width: 900px; /* Make the form wider */
+    margin: 40px auto; /* Center the form vertically and horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #f9f9f9; /* Optional: Add a light background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
 }
 
-.sidebar .user-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-/* Existing Edit Package Styles */
-.edit-container {
-  padding: 20px;
-  max-width: 700px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.edit-title {
+/* Title for Edit Page */
+.edit-title88 {
   font-size: 2.5rem;
   font-weight: 600;
   text-align: center;
   margin-bottom: 30px;
 }
 
-.edit-form {
+/* Edit Form Fields */
+.edit-form88 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px; /* Space between form elements */
 }
 
-.input-field {
+/* Input Fields */
+.input-field88 {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem; /* Slightly larger font for readability */
   width: 100%;
+  background-color: white; /* Keep the input fields clean and white */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow around inputs */
 }
 
-.flex-wrap-container {
+/* Flex Container for Multiple Inputs */
+.flex-wrap88-container88 {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Space between multiple input fields */
   justify-content: space-between;
 }
 
-.flex-item {
+.flex-item88 {
   display: flex;
   flex-direction: column;
   flex: 1;
   align-items: start;
 }
 
-.submit-button {
+/* Submit Button */
+.submit-button88 {
   padding: 15px;
-  background-color: #045efa;
+  background: linear-gradient(to right, #14dccb, #3036ea); /* Matching gradient like the creation page */
   color: white;
   border: none;
   border-radius: 8px;
@@ -151,8 +116,17 @@
   cursor: pointer;
   text-transform: uppercase;
   margin-top: 20px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width for uniformity */
 }
 
-.submit-button:hover {
-  background-color: #1055df;
+.submit-button88:hover {
+  background: linear-gradient(to right, #0dbbb7, #282dca); /* Darker hover gradient */
+}
+
+/* Optional: Add Error Message Styles */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
 }

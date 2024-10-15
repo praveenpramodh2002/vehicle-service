@@ -37,7 +37,7 @@ const MyComponent = () => {
                 </div>
             </div>
             <a href="appointments.html">About Us</a>
-          <a href="employees.html">Packages</a>
+          <li><a href="/p6">Packages</a></li>
           <a href="#contact-us">Contact</a>
           <a href="services" className="book-now-btn">Book Now </a>
           <a href="Login

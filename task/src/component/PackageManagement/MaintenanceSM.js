@@ -20,8 +20,8 @@ export default function MaintenanceSM() {
   const [loading, setLoading] = useState(true);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [packageToDelete, setPackageToDelete] = useState(null);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState(''); // State for success message
+  const [errorMessage, setErrorMessage] = useState(''); // State for error message
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,23 +38,24 @@ export default function MaintenanceSM() {
   };
 
   const handleDelete = (id) => {
-    setPackageToDelete(id);
-    setConfirmDelete(true);
+    setPackageToDelete(id); // Set the package to delete
+    setConfirmDelete(true); // Open the confirmation dialog
   };
 
   const confirmDeletePackage = async () => {
     try {
       await axios.delete(`${URL}/${packageToDelete}`);
       setPackages(prevPackages => prevPackages.filter(pkg => pkg._id !== packageToDelete));
-      setSuccessMessage("Package deleted successfully!");
+      setSuccessMessage("Package deleted successfully!"); // Set success message
     } catch (error) {
       console.error("Error deleting package", error);
-      setErrorMessage("Error deleting package. Please try again.");
+      setErrorMessage("Error deleting package. Please try again."); // Set error message
     } finally {
-      setConfirmDelete(false);
-      setPackageToDelete(null);
+      setConfirmDelete(false); // Close the confirmation dialog
+      setPackageToDelete(null); // Reset package to delete
     }
 
+    // Clear messages after a few seconds
     setTimeout(() => {
       setSuccessMessage('');
       setErrorMessage('');
@@ -62,44 +63,45 @@ export default function MaintenanceSM() {
   };
 
   const cancelDelete = () => {
-    setConfirmDelete(false);
-    setPackageToDelete(null);
+    setConfirmDelete(false); // Close the confirmation dialog
+    setPackageToDelete(null); // Reset package to delete
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>; // Loading indicator
   }
 
+
   return (
-    <div className="page-container">
-      <div className="sidebar">
-        <div className="logo">
-          {/* Sidebar Logo (Uncomment if you have a logo) */}
-          {/* <img src={logo} alt="Company Logo" /> */}
+    <div className="page-container55">
+
+         <aside className="sidebar">
+        <div className="logo1">
+          <img src="/image/logo1.jpeg" alt="Logo" />
         </div>
-        <div className="navigation">
+        <nav className="navigation">
           <ul>
-            <li><a href="/p01">Dashboard</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/p4">Packages</a></li>
+            <li><a href="/p3">Create</a></li>
+          </ul>
+        </nav>
+        <div className="tools">
+          <ul>
             <li><a href="/settings">Settings</a></li>
           </ul>
         </div>
-        <div className="tools">
-          <ul>
-            <li><a href="/support">Support</a></li>
-          </ul>
-        </div>
         <div className="user-profile">
-          <img src="https://via.placeholder.com/40" alt="User" />
-          <span>User Name</span>
+          <img src="path_to_profile_image" alt="User" />
+          <span>John Doe</span>
         </div>
-      </div>
+      </aside>
 
-      <div className="maintenance-container">
+      <div className="maintenance-container55">
         <h1>Service Package Maintenance</h1>
-        {successMessage && <div className="success-message">{successMessage}</div>}
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
-        <table className="packages-table">
+        {successMessage && <div className="success-message55">{successMessage}</div>}
+        {errorMessage && <div className="error-message55">{errorMessage}</div>}
+        <table className="packages-table55">
           <thead>
             <tr>
               <th>Package Name</th>
@@ -113,10 +115,10 @@ export default function MaintenanceSM() {
                 <tr key={_id}>
                   <td>{packageName}</td>
                   <td>
-                    <button className="edit-button" onClick={() => handleEdit(_id)}>Edit</button>
+                    <button className="edit-button55" onClick={() => handleEdit(_id)}>Edit</button>
                   </td>
                   <td>
-                    <button className="delete-button" onClick={() => handleDelete(_id)}>Delete</button>
+                    <button className="delete-button55" onClick={() => handleDelete(_id)}>Delete</button>
                   </td>
                 </tr>
               ))
@@ -129,12 +131,12 @@ export default function MaintenanceSM() {
         </table>
 
         {confirmDelete && (
-          <div className="modal">
-            <div className="modal-content">
+          <div className="modal55">
+            <div className="modal-content55">
               <h2>Confirm Delete</h2>
               <p>Are you sure you want to delete this package?</p>
-              <button className="confirm-button" onClick={confirmDeletePackage}>Yes</button>
-              <button className="cancel-button" onClick={cancelDelete}>No</button>
+              <button className="confirm-button55" onClick={confirmDeletePackage}>Yes</button>
+              <button className="cancel-button55" onClick={cancelDelete}>No</button>
             </div>
           </div>
         )}

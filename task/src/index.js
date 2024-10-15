@@ -52,7 +52,7 @@ import EditPackage from './component/PackageManagement/EditPackage';
 import Packages from './component/PackageManagement/Packages';
 import PDetails from './component/PackageManagement/PDetails';
 import Details from './component/PackageManagement/Details';
-
+import Bookk from './component/PackageManagement/Bookk';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -106,7 +106,7 @@ root.render(
         <Route path="/p4" element={<Packages />} />
         <Route path="/p6" element={<PDetails />} />
         <Route path="/p7" element={<Details />} />
-
+        <Route path="/p8" element={<Bookk />} />
 
       </Routes>
   </BrowserRouter>

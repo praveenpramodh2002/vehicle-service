@@ -1,0 +1,73 @@
+/* Bookk.css */
+
+/* Container for the entire booking confirmation page */
+.booking-confirmation2 {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Title of the page */
+  .booking-confirmation2 h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #3f8ded;
+    margin-bottom: 20px;
+  }
+  
+  /* Container for the booking details */
+  .booking-details2 {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  /* Package name styling */
+  .booking-details2 h2 {
+    font-size: 24px;
+    color: #b30000;
+    margin-bottom: 10px;
+  }
+  
+  /* General paragraph styling */
+  .booking-details2 p {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  /* Bold styling for labels (Description, Services, etc.) */
+  .booking-details2 p strong {
+    color: #3f8ded;
+  }
+  
+  /* Footer text at the bottom of the page */
+  .booking-footer2 {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 16px;
+    color: #777777;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .booking-confirmation2 {
+      width: 90%;
+      margin: 20px auto;
+    }
+  
+    .booking-details2 p {
+      font-size: 16px;
+    }
+  
+    .booking-details2 h2 {
+      font-size: 20px;
+    }
+  }
+  

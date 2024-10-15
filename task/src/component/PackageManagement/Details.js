@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Details.css';
-
+import heroBg from './hero-bg.jpg';
+ 
 export default function Details() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,12 +39,19 @@ export default function Details() {
     <div className="details-container">
       {/* Hero Section */}
 
+      <section 
+  className="hero-section" 
+  style={{ backgroundImage: `url(${heroBg})` }}>
 
-
-      
-      <div className="hero-section">
+<div className="hero-section">
         <h2 className="package-title">{selectedPackage.packageName}</h2>
       </div>
+
+
+</section>
+
+      
+     
 
       {/* Package Details */}
       <div className="package-details">
@@ -52,10 +60,14 @@ export default function Details() {
         <p><strong>Price:</strong> ₨{selectedPackage.price}</p>
         <p><strong>Special Offer:</strong> ₨{selectedPackage.specialOffer}</p>
         <p><strong>Total Price:</strong> ₨{selectedPackage.price - selectedPackage.specialOffer}</p>
-        <button className="book-now-button" onClick={handleBookNow}>
-          Book Now
+
+
+        <button className="book-now-button44" onClick={handleBookNow}>
+     Book Now
         </button>
+
       </div>
+
 
       {/* Packages Section */}
       <div className="packages-section">

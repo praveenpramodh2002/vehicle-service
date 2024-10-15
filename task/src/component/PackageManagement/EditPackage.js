@@ -16,7 +16,7 @@ export default function EditPackage({ onPackageUpdated }) {
   useEffect(() => {
     const fetchPackage = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/packages/${id}`);
+        const response = await axios.get(`http://localhost:3001/packages/${id}`);
         const fetchedPackage = response.data.package;  
         setPackageData({
           ...fetchedPackage,
@@ -91,96 +91,94 @@ export default function EditPackage({ onPackageUpdated }) {
       console.log("Error updating package", error);
     }
   };
-  
   return (
-    <div className="page-container">
-      <div className="sidebar">
-        <div className="logo">
-          {/* Sidebar Logo (Uncomment if you have a logo) */}
-          {/* <img src={logo} alt="Company Logo" /> */}
+    <div className="page-container88">
+     <aside className="sidebarManu23">
+      <div className="logo1">
+        <img src="/image/logo1.jpeg" alt="Logo" />
+      </div>
+      <nav className="navigation23">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/p4">Packages</a></li>
+          <li><a href="/p3">Create</a></li>
+        </ul>
+      </nav>
+      <div className="tools23">
+        <ul>
+          <li><a href="/settings">Settings</a></li>
+        </ul>
+      </div>
+      <div className="user-profile23">
+        <img src="path_to_profile_image" alt="User" />
+        <span>John Doe</span>
+      </div>
+    </aside>
+
+      <main className="edit-container88">
+    <h1 className="edit-title88">Edit Package</h1>
+    
+    <form className="edit-form88" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Package Name"
+        className="input-field88"
+        id="packageName"
+        value={packageData.packageName}
+        onChange={handleChange}
+        maxLength="62"
+        minLength="5"
+        required
+      />
+      <textarea
+        placeholder="Description"
+        className="input-field88"
+        id="description"
+        value={packageData.description}
+        onChange={handleChange}
+        required
+      />
+      <textarea
+        placeholder="Services Included"
+        className="input-field88"
+        id="servicesIncluded"
+        value={packageData.servicesIncluded}
+        onChange={handleChange}
+        required
+      />
+      <div className="flex-wrap-container88">
+        <div className="flex-item88">
+          <input
+            type="text"
+            id="price"
+            value={packageData.price}
+            onChange={handleChange}
+            maxLength="7"
+            required
+            className="input-field88"
+            placeholder="Price (₨)"
+          />
+          <p>Price (₨ / package)</p>
         </div>
-        <div className="navigation">
-          <ul>
-            <li><a href="/p01">Dashboard</a></li>
-            <li><a href="/p4">Packages</a></li>
-            <li><a href="/settings">Settings</a></li>
-          </ul>
-        </div>
-        <div className="tools">
-          <ul>
-            <li><a href="/support">Support</a></li>
-          </ul>
-        </div>
-        <div className="user-profile">
-          <img src="https://via.placeholder.com/40" alt="User" />
-          <span>User Name</span>
+        <div className="flex-item88">
+          <input
+            type="text"
+            id="specialOffer"
+            value={packageData.specialOffer}
+            onChange={handleChange}
+            maxLength="7"
+            className="input-field88"
+            placeholder="Special Offer (optional)"
+          />
+          <p>Special Offer (₨ / package)</p>
         </div>
       </div>
 
-      <main className="edit-container">
-        <h1 className="edit-title">Edit Package</h1>
-        
-        <form className="edit-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Package Name"
-            className="input-field"
-            id="packageName"
-            value={packageData.packageName}
-            onChange={handleChange}
-            maxLength="62"
-            minLength="5"
-            required
-          />
-          <textarea
-            placeholder="Description"
-            className="input-field"
-            id="description"
-            value={packageData.description}
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            placeholder="Services Included"
-            className="input-field"
-            id="servicesIncluded"
-            value={packageData.servicesIncluded}
-            onChange={handleChange}
-            required
-          />
-          <div className="flex-wrap-container">
-            <div className="flex-item">
-              <input
-                type="text"
-                id="price"
-                value={packageData.price}
-                onChange={handleChange}
-                maxLength="7"
-                required
-                className="input-field"
-                placeholder="Price (₨)"
-              />
-              <p>Price (₨ / package)</p>
-            </div>
-            <div className="flex-item">
-              <input
-                type="text"
-                id="specialOffer"
-                value={packageData.specialOffer}
-                onChange={handleChange}
-                maxLength="7"
-                className="input-field"
-                placeholder="Special Offer (optional)"
-              />
-              <p>Special Offer (₨ / package)</p>
-            </div>
-          </div>
-
-          <button className="submit-button" type="submit">
-            Update Package
-          </button>
-        </form>
-      </main>
-    </div>
+      <button className="submit-button88" type="submit">
+        Update Package
+      </button>
+    </form>
+  </main>
+</div>
   );
 }

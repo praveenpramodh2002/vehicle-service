@@ -91,7 +91,7 @@ doc.text("Available Packages", 10, 80); // x=10, y=80
 
 
     // Define the columns for the table
-    const tableColumn = ['Package Name', 'Description', 'Services Included', 'Price (₨)', 'Special Offer (₨)', 'Total Price (₨)'];
+    const tableColumn = ['Package Name', 'Description', 'Services Included', 'Price (â‚¨)', 'Special Offer (â‚¨)', 'Total Price (â‚¨)'];
 
     // Define the rows for the table
     const tableRows = filteredPackages.map(pkg => {
@@ -151,9 +151,9 @@ doc.text("Available Packages", 10, 80); // x=10, y=80
                 <th>Package Name</th>
                 <th>Description</th>
                 <th>Services Included</th>
-                <th>Price (₨)</th>
-                <th>Special Offer (₨)</th>
-                <th>Total Price (₨)</th>
+                <th>Price (â‚¨)</th>
+                <th>Special Offer (â‚¨)</th>
+                <th>Total Price (â‚¨)</th>
               </tr>
             </thead>
             <tbody>

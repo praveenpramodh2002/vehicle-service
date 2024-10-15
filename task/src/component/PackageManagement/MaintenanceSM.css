@@ -1,10 +1,10 @@
-.page-container {
+.page-container55 {
   display: flex;
 }
 
 /* Sidebar Styles */
 .sidebar {
-  height: 100vh;
+  height: 100vh; /* Adjusted to 100vh for full-screen height */
   width: 250px;
   background: linear-gradient(to right, #14dccb, #3036ea);
   color: white;
@@ -19,7 +19,7 @@
   width: 280px;
 }
 
-.sidebar .logo {
+.sidebar .logo1 {
   width: 150px;
   height: 150px;
   margin-bottom: 30px;
@@ -31,7 +31,7 @@
   margin: 0 auto;
 }
 
-.sidebar .logo img {
+.sidebar .logo1 img {
   width: 100%;
   height: 90%;
   border-radius: 50%;
@@ -39,7 +39,7 @@
   transition: transform 0.3s ease;
 }
 
-.sidebar:hover .logo img {
+.sidebar:hover .logo1 img {
   transform: scale(1.1);
 }
 
@@ -72,11 +72,12 @@
   align-items: center;
   gap: 10px;
   padding: 10px 15px;
+  transition: color 0.3s ease;
 }
 
-.sidebar .tools p {
-  margin-top: 40px;
-  font-size: 18px;
+.sidebar .navigation ul li a:hover,
+.sidebar .tools ul li a:hover {
+  color: #FFD700;
 }
 
 .sidebar .user-profile {
@@ -87,6 +88,11 @@
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .user-profile:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .sidebar .user-profile img {
@@ -96,8 +102,8 @@
   border: 2px solid white;
 }
 
-/* Existing Maintenance Page Styles */
-.maintenance-container {
+/* Maintenance Page Styles */
+.maintenance-container55 {
   padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -108,44 +114,45 @@
   flex-grow: 1;
 }
 
-.packages-table {
+.packages-table55 {
   width: 100%;
   margin: 0 auto;
   border-collapse: collapse;
-  background-color: #fff;
+  background-color: #000000;
   border-radius: 10px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 8px rgb(0, 0, 0);
+
 }
 
-.packages-table th, .packages-table td {
+.packages-table55 th, .packages-table55 td {
   padding: 20px 15px;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #1e1b1b;
 }
 
-.packages-table th {
-  background-color: #f2f2f2;
+.packages-table55 th {
+  background-color: #233cca;
   font-size: 1.2rem;
 }
 
-.edit-button, .delete-button {
+.edit-button55, .delete-button55 {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
 }
 
-.edit-button {
+.edit-button55 {
   background-color: #000000;
   color: white;
 }
 
-.delete-button {
+.delete-button55 {
   background-color: #ff0000;
   color: white;
 }
 
 /* Modal Styles */
-.modal {
+.modal55 {
   position: fixed;
   top: 0;
   left: 0;
@@ -155,5 +162,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
+}
+
+.modal-content55 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-button55, .cancel-button55 {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-button55 {
+  background-color: green;
+  color: white;
+}
+
+.cancel-button55 {
+  background-color: red;
+  color: white;
+  margin-left: 10px;
 }
