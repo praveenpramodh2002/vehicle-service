@@ -7,20 +7,18 @@ table {
     text-align: center;
 }
 
-
-
-.table_container {
+.table_container12 {
     padding: 20px;
 }
 
-.table_container_2 {
+.table_container12_2 {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.64);
     border-radius: 10px;
     overflow: hidden;
-    background: #fff;
+    background: #000000;
 }
 
-.TableHeader {
+.TableHeader12 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,12 +28,12 @@ table {
     
 }
 
-.TableHeader h2 {
+.TableHeader12 h2 {
     margin: 0;
     font-size: 24px;
 }
 
-.TableHeader .btn {
+.TableHeader12 .btn {
     background-color: #6b79d2;
     color: #ffffff;
     padding: 10px 20px;
@@ -44,7 +42,7 @@ table {
     transition: background-color 0.3s ease;
 }
 
-.TableHeader .btn:hover {
+.TableHeader12 .btn:hover {
     background-color: #222;
 }
 
@@ -93,7 +91,7 @@ table tbody tr:nth-of-type(even) {
     background: #fff;
 }
 
-.TableHeader {
+.TableHeader12 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,12 +101,12 @@ table tbody tr:nth-of-type(even) {
     
 }
 
-.TableHeader h2 {
+.TableHeader12 h2 {
     margin: 0;
     font-size: 24px;
 }
 
-.TableHeader .btn {
+.TableHeader12 .btn {
     background: linear-gradient(to right, #0056b3, #8e44ad);
     color: #ffffff;
     padding: 10px 20px;
@@ -117,7 +115,7 @@ table tbody tr:nth-of-type(even) {
     transition: background-color 0.3s ease;
 }
 
-.TableHeader .btn:hover {
+.TableHeader12 .btn:hover {
     background-color: #222;
 }
 
@@ -128,18 +126,26 @@ table {
 
 table thead tr {
     background-color: #2023d7;
-    color: #ffffff;
+    color: #000000;
     text-align: left;
     font-weight: bold;
 }
 
-table th, table td {
+table td {
     padding: 12px 15px;
-    border: 1px solid #dddddd;
+    border: 1px solid #000000;
+    color: #000000;
 }
 
+table th{
+    background-color: #1c76db;
+    color: #ffffff;
+    font-family: ""Trebuchet MS", Helvetica, sans-serif	";
+}
+
+
 table tbody tr {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #000000;
 }
 
 table tbody tr:nth-of-type(even) {
@@ -189,7 +195,7 @@ table tbody tr:nth-of-type(even) {
     margin-left: 10px;
 }
 
-.btn {
+.btn12 {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -200,14 +206,15 @@ table tbody tr:nth-of-type(even) {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    height: 50px;
 }
 
-.table_container .TableHeader {
+.table_container12 .TableHeader12 {
     margin-bottom: 20px;
 }
 
 
-.updateBtn{
+.updateBtn12{
 
     background: #0dc538;
     width: 60px;
@@ -217,15 +224,15 @@ table tbody tr:nth-of-type(even) {
     font-size: 15px;
 }
 
-.updateBtn:hover{
+.updateBtn12:hover{
 
-    background: #09a42d;
+    background: #0dc538;
     cursor: pointer;
 }
 
-.deleteBtn{
+.deleteBtn12{
 
-    background: #ffffff;
+    background: #ff0000;
     width: 60px;
     height: 35px;
     border: none;
@@ -234,10 +241,11 @@ table tbody tr:nth-of-type(even) {
     margin-left: 5px;
 }
 
-.deleteBtn:hover{
+.deleteBtn12:hover{
 
     background: #cb1313;
     cursor: pointer;
+
 }.report-options {
     margin: 10px 0;
 }
@@ -250,8 +258,8 @@ table tbody tr:nth-of-type(even) {
     margin-left: 10px;
 }
 
-.btn {
-    background-color: #4CAF50;
+.btn12 {
+    background-color: #0d42e2;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -263,6 +271,6 @@ table tbody tr:nth-of-type(even) {
     cursor: pointer;
 }
 
-.table_container .TableHeader {
+.table_container12 .TableHeader12 {
     margin-bottom: 20px;
 }

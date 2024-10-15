@@ -92,10 +92,10 @@ const Sidebar = () => {
                 </div>
                 <div className="navigation">
                     <ul>
-                        <li><HomeOutlined /> <a href="main">Home </a></li>
-                        <li><FileSearchOutlined /> <a href="tracking">Tracking</a></li>
-                        <li><BarChartOutlined /> <a href="inventoryreport">inventoryReports</a></li>
-                        <li><FileSearchOutlined /> <a href="inventory"> Add Inventory </a></li> {/* Updated navigation */}
+                        <li><HomeOutlined /> <a href="">Home </a></li>
+                        <li><FileSearchOutlined /> <a href="requestproducts">Request Products</a></li>
+                        <li><BarChartOutlined /> <a href="inventoryreport">Inventory Reports</a></li>
+                        <li><FileSearchOutlined /> <a href="Addinventory"> Add Inventory </a></li> {/* Updated navigation */}
                     </ul>
                 </div>
                 <div className="tools">
@@ -114,25 +114,13 @@ const Sidebar = () => {
             </aside>
             <div className="main-content">
                 <div className="inventory-section"> {/* Updated section name */}
-                    <div className="add-inventory-header">
-                        <button className="add-inventory-button">
-                            <span className="add-icon">+</span> Add new inventory item
-                        </button>
-                    </div>
                     <InventoryForm
                         addInventory={addInventory}
                         submitted={submitted}
                         data={selectedInventory}
                         isEdit={isEdit}
                     />
-                    <InventoryTable
-                        rows={inventory}
-                        onEditInventory={(inventory) => {
-                            setSelectedInventory(inventory);
-                            setIsEdit(true);
-                        }}
-                        onDeleteInventory={deleteInventory}
-                    />
+                   
                 </div>
             </div>
         </div>
