@@ -1,0 +1,52 @@
+.add-employee-container {
+  display: flex;
+}
+
+.add-employee-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  background-color: #f5f5f5;
+}
+
+.add-employee-form-container {
+  width: 80%; /* Adjust as needed */
+  padding: 20px;
+}
+h2 {
+  text-align: left;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  color: #1f4f92;
+}
+.form-row {
+  display: flex;
+  max-width: 100%;
+  width: 1000px;
+  justify-content: space-between; /* Spaces out the columns */
+  margin-bottom: 15px; /* Space between rows */
+}
+
+.form-group {
+  width: 100%; /* Each column takes up nearly half of the row */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; /* Makes the input take full width of the parent */
+  max-width: 400px; /* Set your desired maximum width */
+  padding: 8px; /* Add some padding for better appearance */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+}

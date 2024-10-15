@@ -1,0 +1,54 @@
+/* paysheetlist.css */
+
+.paysheet-container {
+    display: flex;
+}
+
+.paysheet-sidebar {
+    width: 15%;
+    height: 100%;
+    background-color: #429DFF;
+    padding: 20px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.paysheet-content {
+    margin-left: 15%;
+    width: 85%;
+    padding: 40px 60px;
+    background-color: #f9f9f9;
+}
+
+.paysheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.paysheet-table th,
+.paysheet-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.paysheet-table th {
+    background-color: #f4f4f4;
+}
+
+.paysheet-view-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.paysheet-view-button:hover {
+    background-color: #0056b3;
+}

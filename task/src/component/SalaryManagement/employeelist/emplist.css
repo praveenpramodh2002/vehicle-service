@@ -1,0 +1,47 @@
+.filter-search {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  height: fit-content;
+}
+
+.employee-content {
+  margin-left: 20vw;
+  width: 80vw;
+}
+
+.filter-search input,
+.filter-search select {
+  padding: 0px;
+  font-size: 1em;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.employee-table th {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.employee-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.employee-table button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #429dff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

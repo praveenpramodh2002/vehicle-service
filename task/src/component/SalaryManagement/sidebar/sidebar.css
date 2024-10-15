@@ -1,0 +1,78 @@
+/* sidebar.css */
+
+.navigation-sidebar {
+  width: 15%;
+  height: 100vh; /* Ensure it takes full height of the viewport */
+  background-color: #3287ff;
+  padding: 20px;
+  color: white;
+  position: fixed; /* Make sure it stays on the side */
+  top: 0;
+  left: 0;
+}
+
+.logo15 {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  margin: 20px auto 30px;
+}
+
+.sidebar-signout-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #357ae8; /* Slightly darker shade for button */
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sidebar-signout-button:hover {
+  background-color: #285bb5; /* Darker shade on hover */
+}
+
+.sidebar-link {
+  text-decoration: none; /* Remove underline from links */
+}
+
+.sidebar-navigation {
+  flex: 1;
+  padding: 10px 0;
+}
+
+.sidebar-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-navigation ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.sidebar-navigation ul li:hover {
+  background-color: #005BB5;
+}
+
+.sidebar-navigation ul li span {
+  margin-left: 10px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.navigation-sidebar.collapsed .sidebar-navigation ul li span {
+  opacity: 0;
+}
+
+.navigation-sidebar.collapsed .sidebar-navigation ul li {
+  justify-content: center;
+}
