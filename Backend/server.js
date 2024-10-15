@@ -11,6 +11,10 @@ const supplierRoutes = require("./SuppilerManagement/SupplierRoutes");
 const deletedSupplierRoutes = require("./SuppilerManagement/DeletedSupplierRoutes");
 const productRequestRoutes = require("./SuppilerManagement/ProductRequestRoutes")
 
+const router10 = require("./SalaryManagement/Routes/EmployeeRoute");
+const router30 = require("./SalaryManagement/Routes/PaySheetRoute");
+
+
 const twilio = require('twilio');
 
 // Import routes from Appointment
@@ -54,7 +58,9 @@ app.use("/suppliers", supplierRoutes);
 app.use("/deleted-suppliers", deletedSupplierRoutes);
 app.use("/product-requests", productRequestRoutes);
 
-
+// Add salary management routes
+app.use("/employees", router10);
+app.use("/paysheet", router30);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

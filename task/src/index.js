@@ -46,6 +46,17 @@ import NavBar from './component/Appoitment/SideNav';
 import UpdateBooking from './component/Appoitment/updateBooking';
 
 
+
+import Hrmdb from './component/SalaryManagement/hrmdb/hrmdb';
+import AddEmployee from './component/SalaryManagement/addemployee/addemployee';
+import EmployeeList from './component/SalaryManagement/employeelist/employeelist';
+import EmployeeProfile from './component/SalaryManagement/employeeprofile/employeeprofile';
+import UpdateEmployee from './component/SalaryManagement/updateemployee/updateemployee';
+import GeneratePayroll from './component/SalaryManagement/generatepayroll/generatepayroll';
+import DeletedEmployeeList from './component/SalaryManagement/deletedemployeelist/deletedemployeelist';
+import PaysheetList from './component/SalaryManagement/paysheetlist/paysheetlist';   
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -90,6 +101,16 @@ root.render(
       <Route path='/NavBar' element={<NavBar />} />
       <Route path='/UpdateBooking/:id' element={<UpdateBooking />} />
 
+      
+      <Route path='/hrmdb' element={<Hrmdb/>}/>
+      <Route path='/addemployee' element={<AddEmployee/>}/>
+      <Route path='/employeelist' element={<EmployeeList/>}/>
+      <Route path='/employee/:id' element={<EmployeeProfile/>}/>
+      <Route path="/update-employee/:id" element={<UpdateEmployee />} />
+      <Route path='/generatepayroll' element={<GeneratePayroll/>}/>
+      <Route path='/generatepayroll/:nic' element={<GeneratePayroll/>}/>
+      <Route path='/deletedemployees' element={<DeletedEmployeeList/>}/>
+      <Route path="/paysheets" element={<PaysheetList />} />
 
 
       </Routes>

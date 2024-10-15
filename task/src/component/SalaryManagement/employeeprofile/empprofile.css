@@ -1,0 +1,59 @@
+.employee-profile-container {
+  padding: 20px;
+  margin-left: 20%;
+  margin-top: 20px;
+  width: 75%;
+}
+
+.employee-profile-content {
+  margin-bottom: 20px;
+  
+}
+
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-column {
+  flex: 1;
+}
+
+.profile-column p{
+  padding: 10px;
+}
+
+.profile-actions {
+  margin-top: 20px;
+}
+
+.btn-update, .btn-delete {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-update {
+  background-color: #4285F4;
+  color: white;
+}
+
+.btn-update:hover {
+  background-color: #357ae8;
+}
+
+.btn-delete {
+  background-color: #ea4335;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c1351d;
+}
