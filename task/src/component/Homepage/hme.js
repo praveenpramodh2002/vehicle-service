@@ -72,7 +72,7 @@ const MyComponent = () => {
 
 <div className="services-section">
       <h2 className="services-header">OUR SERVICES</h2>
-      <p className="services-subheader">
+      <p className="services-subheader1">
         Committed to provide <span className="highlight">the best care</span> with supervision and trust.
       </p>
       <div className="services-cards">

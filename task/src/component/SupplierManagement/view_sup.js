@@ -1,10 +1,7 @@
-
-//ViewSup.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './Styles.css';
-
 import { Link } from "react-router-dom";
 
 const ViewSup = () => {
@@ -32,6 +29,17 @@ const ViewSup = () => {
 
   const handleSearchChange = (e) => {
     const { name, value } = e.target;
+
+    // Basic validation: Ensure no invalid characters are entered
+    const isValidInput = /^[A-Za-z0-9\s.,'-]*$/.test(value);
+
+    if (!isValidInput) {
+      setError("Search input may only include letters, digits, spaces, dots, commas, apostrophes, and hyphens.");
+      return;
+    } else {
+      setError(null); // Clear error if input is valid
+    }
+
     if (name === "name") {
       setNameSearchTerm(value);
     } else if (name === "product") {
@@ -49,10 +57,10 @@ const ViewSup = () => {
   };
 
   const confirmDelete = async () => {
-    console.log('Deleting supplier:', supplierToDelete); // Add this line for debugging
+    console.log('Deleting supplier:', supplierToDelete); // For debugging
     try {
       const response = await axios.delete(`http://localhost:3001/suppliers/${supplierToDelete._id}`);
-      console.log('Delete response:', response); // Add this line for debugging
+      console.log('Delete response:', response); // For debugging
       setSuppliers(suppliers.filter((supplier) => supplier._id !== supplierToDelete._id));
       setShowConfirm(false);
     } catch (error) {
@@ -79,7 +87,7 @@ const ViewSup = () => {
           <img src="image/logo2.jpeg" alt="Micro Automotive" className="profile-pic" />
         </div>
         <ul className="sidebar-menu">
-        <li>
+          <li>
             <Link to="/Home3">Home</Link>
           </li>
           <li>
@@ -98,8 +106,8 @@ const ViewSup = () => {
         <button className="signout-btn">Sign out</button>
       </aside>
       <main className="main-content">
-        <h1 >Available Suppliers</h1>
-        {error && <p className="error-message">{error}</p>}
+        <h1>Available Suppliers</h1>
+        {error && <p className="error-message">{error}</p>} {/* Display error message */}
         <div className="search-bars">
           <div className="search-bar2">
             <input
@@ -169,4 +177,3 @@ const ViewSup = () => {
 };
 
 export default ViewSup;
-
