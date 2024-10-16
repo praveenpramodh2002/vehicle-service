@@ -24,18 +24,18 @@ const departments = [
 
 const AddEmployee = () => {
   const [employeeData, setEmployeeData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     nic: "",
-    dateOfBirth: "",
+    dateofbirth: "",
     address: "",
     email: "",
-    phoneNo: "",
+    phoneno: "",
     gender: "",
     position: "",
     department: "",
-    basicSalary: "",
-    workingHours: "",
+    basic_salary: "",
+    working_hours: "",
     description: "",
   });
 
@@ -44,36 +44,34 @@ const AddEmployee = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "firstName" || name === "lastName") {
-      const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, "");
-      setEmployeeData((prevData) => ({ ...prevData, [name]: sanitizedValue }));
-    } else if (name === "phoneNo") {
-      const sanitizedValue = value.replace(/[^0-9]/g, "");
-      setEmployeeData((prevData) => ({ ...prevData, [name]: sanitizedValue }));
-    } else {
-      setEmployeeData((prevData) => ({ ...prevData, [name]: value }));
-    }
+    setEmployeeData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const validateForm = () => {
     const newErrors = {};
     const today = new Date();
-    const dob = new Date(employeeData.dateOfBirth);
-    let age = today.getFullYear() - dob.getFullYear();
-    const m = today.getMonth() - dob.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-      age--;
-    }
-
-    // Age Validation
-    if (age < 18) {
-      newErrors.dateOfBirth = "Employee must be at least 18 years old";
+    const dob = new Date(employeeData.dateofbirth);
+  
+    if (!employeeData.dateofbirth) {
+      newErrors.dateofbirth = "Date of birth is required";
+    } else if (dob > today) {
+      newErrors.dateofbirth = "Date of birth cannot be in the future";
+    } else {
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+  
+      if (age < 18) {
+        newErrors.dateofbirth = "Employee must be at least 18 years old";
+      }
     }
 
     // Name Validation
     const nameRegex = /^[A-Za-z\s]+$/;
-    if (!nameRegex.test(employeeData.firstName)) newErrors.firstName = "First Name is required";
-    if (!nameRegex.test(employeeData.lastName)) newErrors.lastName = "Last Name is required";
+    if (!nameRegex.test(employeeData.first_name)) newErrors.first_name = "First Name is required";
+    if (!nameRegex.test(employeeData.last_name)) newErrors.last_name = "Last Name is required";
 
     // NIC Validation
     const nicRegex = /^(?:\d{12}|\d{9}[vx])$/i;
@@ -93,10 +91,10 @@ const AddEmployee = () => {
 
     // Phone Number Validation
     const phoneRegex = /^\d{10}$/;
-    if (!employeeData.phoneNo) {
-      newErrors.phoneNo = "Phone number is required";
-    } else if (!phoneRegex.test(employeeData.phoneNo)) {
-      newErrors.phoneNo = "Phone number must be exactly 10 digits";
+    if (!employeeData.phoneno) {
+      newErrors.phoneno = "Phone number is required";
+    } else if (!phoneRegex.test(employeeData.phoneno)) {
+      newErrors.phoneno = "Phone number must be exactly 10 digits";
     }
 
     // Gender Validation
@@ -109,8 +107,8 @@ const AddEmployee = () => {
     if (!employeeData.department) newErrors.department = "Department is required";
 
     // Salary and Hours Validation
-    if (!employeeData.basicSalary || employeeData.basicSalary <= 0) newErrors.basicSalary = "Valid Basic Salary is required";
-    if (!employeeData.workingHours || employeeData.workingHours <= 0) newErrors.workingHours = "Valid Working Hours are required";
+    if (!employeeData.basic_salary || employeeData.basic_salary <= 0) newErrors.basic_salary = "Valid Basic Salary is required";
+    if (!employeeData.working_hours || employeeData.working_hours <= 0) newErrors.working_hours = "Valid Working Hours are required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -118,19 +116,25 @@ const AddEmployee = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (validateForm()) {
+      console.log("Employee data:", employeeData);  // This will log the whole employee object
+      console.log("Date of Birth:", employeeData.dateofbirth);  // Specifically log the dateofbirth value
+
       try {
-        console.log("Submitting employee data:", employeeData);
         const response = await axios.post("http://localhost:3001/employees", employeeData);
         console.log(response.data);
         alert("Employee added successfully");
-        navigate("/hrmdb");
+        navigate("/main");
       } catch (error) {
         console.error("There was an error adding the employee!", error);
         alert("Failed to add employee");
       }
+    } else {
+      alert("Please fix the errors in the form");
     }
-  };
+};
+
 
   return (
     <div className="add-employee-container">
@@ -138,28 +142,28 @@ const AddEmployee = () => {
         <Sidebar />
       </div>
       <div className="add-employee-form-container">
-      <h2>Add Employee</h2>
+        <h2>Add Employee</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="form-group">
               <label>First Name</label>
               <input
                 type="text"
-                name="firstName"
-                value={employeeData.firstName}
+                name="first_name"
+                value={employeeData.first_name}
                 onChange={handleChange}
               />
-              {errors.firstName && <p className="error">{errors.firstName}</p>}
+              {errors.first_name && <p className="error">{errors.first_name}</p>}
             </div>
             <div className="form-group">
               <label>Last Name</label>
               <input
                 type="text"
-                name="lastName"
-                value={employeeData.lastName}
+                name="last_name"
+                value={employeeData.last_name}
                 onChange={handleChange}
               />
-              {errors.lastName && <p className="error">{errors.lastName}</p>}
+              {errors.last_name && <p className="error">{errors.last_name}</p>}
             </div>
           </div>
           <div className="form-row">
@@ -177,13 +181,13 @@ const AddEmployee = () => {
             <div className="form-group">
               <label>Date of Birth</label>
               <input
-                type="date"
-                name="dateOfBirth"
-                value={employeeData.dateOfBirth}
-                onChange={handleChange}
-                max={new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split("T")[0]}
-              />
-              {errors.dateOfBirth && <p className="error">{errors.dateOfBirth}</p>}
+  type="date"
+  name="dateofbirth"
+  value={employeeData.dateofbirth}
+  onChange={handleChange}
+  max={new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split("T")[0]}
+/>
+              {errors.dateofbirth && <p className="error">{errors.dateofbirth}</p>}
             </div>
           </div>
           <div className="form-row">
@@ -191,12 +195,12 @@ const AddEmployee = () => {
               <label>Phone Number</label>
               <input
                 type="text"
-                name="phoneNo"
-                value={employeeData.phoneNo}
+                name="phoneno"
+                value={employeeData.phoneno}
                 onChange={handleChange}
                 maxLength={10}
               />
-              {errors.phoneNo && <p className="error">{errors.phoneNo}</p>}
+              {errors.phoneno && <p className="error">{errors.phoneno}</p>}
             </div>
             <div className="form-group">
               <label>Address</label>
@@ -272,34 +276,32 @@ const AddEmployee = () => {
               <label>Basic Salary</label>
               <input
                 type="number"
-                name="basicSalary"
-                value={employeeData.basicSalary}
+                name="basic_salary"
+                value={employeeData.basic_salary}
                 onChange={handleChange}
               />
-              {errors.basicSalary && <p className="error">{errors.basicSalary}</p>}
+              {errors.basic_salary && <p className="error">{errors.basic_salary}</p>}
             </div>
             <div className="form-group">
               <label>Working Hours</label>
               <input
                 type="number"
-                name="workingHours"
-                value={employeeData.workingHours}
+                name="working_hours"
+                value={employeeData.working_hours}
                 onChange={handleChange}
               />
-              {errors.workingHours && <p className="error">{errors.workingHours}</p>}
+              {errors.working_hours && <p className="error">{errors.working_hours}</p>}
             </div>
           </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Description</label>
-              <textarea
-                name="description"
-                value={employeeData.description}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+          <div className="form-group">
+            <label>Description</label>
+            <textarea
+              name="description"
+              value={employeeData.description}
+              onChange={handleChange}
+            ></textarea>
           </div>
-          <button type="submit">Add Employee</button>
+          <button type="submit" className="submit-btn">Add Employee</button>
         </form>
       </div>
     </div>
