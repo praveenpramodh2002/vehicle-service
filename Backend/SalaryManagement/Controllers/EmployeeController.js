@@ -44,11 +44,6 @@ const addEmployees = async (req, res) => {
         description,
     } = req.body;
 
-    // Check if phoneno is provided
-    if (!phoneno) {
-        return res.status(400).json({ message: 'Phone number is required' });
-    }
-
     const newEmployee = new Employee({
         first_name,
         last_name,

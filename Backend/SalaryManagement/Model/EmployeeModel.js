@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema; 
 
+
 const employeeSchema = new Schema({
     first_name: {
         type: String,
@@ -16,7 +17,7 @@ const employeeSchema = new Schema({
     },
     
     dateofbirth: {
-        type: String,
+        type: Date,
         required: true
     },
     address: {
@@ -29,7 +30,7 @@ const employeeSchema = new Schema({
     },
     phoneno: {
         type: String,
-        required: true
+        required: false
     },
     gender: {
         type: String,
