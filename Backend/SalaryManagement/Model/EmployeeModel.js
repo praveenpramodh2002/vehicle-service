@@ -12,11 +12,12 @@ const employeeSchema = new Schema({
     },
     nic: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     
     dateofbirth: {
-        type: String,
+        type: Date,
         required: true
     },
     address: {

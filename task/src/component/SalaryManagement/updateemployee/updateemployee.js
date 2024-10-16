@@ -34,13 +34,13 @@ const UpdateEmployee = () => {
     dateofbirth: "",
     address: "",
     email: "",
+    phoneno: "", // Changed from phone_no to phoneno
     gender: "",
     position: "",
     department: "",
     basic_salary: "",
     working_hours: "",
     description: "",
-    phone_no: "", // Added phone number field
   });
 
   const [errors, setErrors] = useState({});
@@ -50,7 +50,7 @@ const UpdateEmployee = () => {
     const fetchEmployee = async () => {
       try {
         const response = await axios.get(`${URL}/${id}`);
-        // Make sure to set employee data correctly
+        // Set employee data correctly
         setEmployee(response.data.employee || {});
       } catch (error) {
         console.error("Error fetching employee data:", error);
@@ -67,7 +67,7 @@ const UpdateEmployee = () => {
     if (name === "first_name" || name === "last_name") {
       const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, "");
       setEmployee({ ...employee, [name]: sanitizedValue });
-    } else if (name === "phone_no") {
+    } else if (name === "phoneno") { // Updated from phone_no to phoneno
       const sanitizedValue = value.replace(/[^0-9]/g, "");
       setEmployee({ ...employee, [name]: sanitizedValue });
     } else {
@@ -87,20 +87,25 @@ const UpdateEmployee = () => {
     }
 
     // Age Validation
-    if (age < 18) {
+    if (!employee.dateofbirth) {
+      newErrors.dateofbirth = "Date of birth is required";
+    } else if (dob > today) {
+      newErrors.dateofbirth = "Date of birth cannot be in the future";
+    } else if (age < 18) {
       newErrors.dateofbirth = "Employee must be at least 18 years old";
     }
 
     // Name Validation
     const nameRegex = /^[A-Za-z\s]+$/;
-    if (!nameRegex.test(employee.first_name))
-      newErrors.first_name = "First Name is required";
-    if (!nameRegex.test(employee.last_name))
-      newErrors.last_name = "Last Name is required";
+    if (!employee.first_name || !nameRegex.test(employee.first_name))
+      newErrors.first_name = "Valid First Name is required";
+    if (!employee.last_name || !nameRegex.test(employee.last_name))
+      newErrors.last_name = "Valid Last Name is required";
 
     // NIC Validation
-    const nicRegex = /^(?:\d{12}|\d{9}[vx])$/i;
-    if (!nicRegex.test(employee.nic)) newErrors.nic = "Valid NIC is required";
+    const nicRegex = /^(?:\d{12}|\d{9}[vxVX])$/;
+    if (!employee.nic || !nicRegex.test(employee.nic))
+      newErrors.nic = "Valid NIC is required";
     if (employee.nic.length > 12)
       newErrors.nic = "NIC must be 12 digits or less";
 
@@ -117,10 +122,10 @@ const UpdateEmployee = () => {
 
     // Phone Number Validation
     const phoneRegex = /^\d{10}$/;
-    if (!employee.phone_no) {
-      newErrors.phone_no = "Phone number is required";
-    } else if (!phoneRegex.test(employee.phone_no)) {
-      newErrors.phone_no = "Phone number must be exactly 10 digits";
+    if (!employee.phoneno) { // Updated from phone_no to phoneno
+      newErrors.phoneno = "Phone number is required";
+    } else if (!phoneRegex.test(employee.phoneno)) {
+      newErrors.phoneno = "Phone number must be exactly 10 digits";
     }
 
     // Gender Validation
@@ -149,11 +154,13 @@ const UpdateEmployee = () => {
         const response = await axios.put(`${URL}/${id}`, employee);
         console.log(response.data);
         alert("Employee updated successfully");
-        navigate("/hrmdb");
+        navigate("/main");
       } catch (error) {
         console.error("There was an error updating the employee!", error);
         alert("Failed to update employee");
       }
+    } else {
+      alert("Please fix the errors in the form");
     }
   };
 
@@ -211,6 +218,9 @@ const UpdateEmployee = () => {
                 value={employee.dateofbirth}
                 onChange={handleChange}
                 required
+                max={new Date(new Date().setFullYear(new Date().getFullYear() - 18))
+                  .toISOString()
+                  .split("T")[0]}
               />
               {errors.dateofbirth && (
                 <p className="error">{errors.dateofbirth}</p>
@@ -322,12 +332,20 @@ const UpdateEmployee = () => {
             <label>Phone Number:</label>
             <input
               type="text"
-              name="phone_no"
-              value={employee.phone_no}
+              name="phoneno" // Updated from phone_no to phoneno
+              value={employee.phoneno} // Updated from employee.phone_no to employee.phoneno
               onChange={handleChange}
               required
             />
-            {errors.phone_no && <p className="error">{errors.phone_no}</p>}
+            {errors.phoneno && <p className="error">{errors.phoneno}</p>}
+          </div>
+          <div className="form-group15">
+            <label>Description:</label>
+            <textarea
+              name="description"
+              value={employee.description}
+              onChange={handleChange}
+            />
           </div>
           <button type="submit" className="submit-button">Update Employee</button>
         </form>
