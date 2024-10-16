@@ -114,7 +114,7 @@ const Dashboard1 = () => {
             </div>
             <div className="card">
               <Link to="/report" className="hrmdb-link">
-                <img src="image/task.jpeg" alt="Employee List" />
+                <img src="report.jpg" alt="Employee List" />
 
                 <p>Task Reports</p>
               </Link>

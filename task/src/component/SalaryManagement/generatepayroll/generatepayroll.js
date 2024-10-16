@@ -85,8 +85,8 @@ const GeneratePayroll = () => {
                 ).toFixed(2);
     
                 const totalDeductions = parseFloat(response.data.epfDeduction || 0) +
-                                        parseFloat(response.data.etfDeduction || 0) +
-                                        parseFloat(response.data.additionalDeductions || 0);
+                parseFloat(response.data.etfDeduction || 0) +
+                 parseFloat(response.data.additionalDeductions || 0);
                                         
                 const netSalary = (grossSalary - totalDeductions).toFixed(2);
     
@@ -265,11 +265,12 @@ const GeneratePayroll = () => {
                         />
                         {errors.totalDeductions && <p className="error">{errors.totalDeductions}</p>}
                     </div>
-
+                    
+                    <button type="submit" className="btn16">Generate Pay Sheet</button>
                     
                 </div>
 
-                <button type="submit">Generate Pay Sheet</button>
+                
             </form>
 
 

@@ -47,7 +47,6 @@ import UpdateBooking from './component/Appoitment/updateBooking';
 
 
 
-import Hrmdb from './component/SalaryManagement/hrmdb/hrmdb';
 import AddEmployee from './component/SalaryManagement/addemployee/addemployee';
 import EmployeeList from './component/SalaryManagement/employeelist/employeelist';
 import EmployeeProfile from './component/SalaryManagement/employeeprofile/employeeprofile';
@@ -113,7 +112,7 @@ root.render(
       <Route path='/UpdateBooking/:id' element={<UpdateBooking />} />
 
       
-      <Route path='/hrmdb' element={<Hrmdb/>}/>
+      <Route path='/hrmdb' element={<Main/>}/>
       <Route path='/addemployee' element={<AddEmployee/>}/>
       <Route path='/employeelist' element={<EmployeeList/>}/>
       <Route path='/employee/:id' element={<EmployeeProfile/>}/>

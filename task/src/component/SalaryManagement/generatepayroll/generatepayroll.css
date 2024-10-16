@@ -64,7 +64,7 @@
     margin-top: 5px;
 }
 
-button[type="submit"] {
+.btn16[type="submit"] {
     padding: 12px 20px;
     background-color: #429DFF;
     color: white;
@@ -75,7 +75,7 @@ button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.btn16[type="submit"]:hover {
     background-color: #357ae8;
 }
 
