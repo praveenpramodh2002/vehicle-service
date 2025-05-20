@@ -1,46 +1,382 @@
 /* src/components/Register.css */
 
+/* Modern Register Page Styles */
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Circular Background Elements */
+.circle-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: transparent;
+  border: 4px solid rgba(238, 14, 14, 0.15);
+  animation: rotate 20s linear infinite;
+}
+
+.circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  border: 4px solid rgba(238, 14, 14, 0.15);
+  border-radius: 50%;
+}
+
+.circle:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  left: 80%;
+  animation-delay: -5s;
+}
+
+.circle:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 30%;
+  left: 85%;
+  animation-delay: -10s;
+}
+
+.circle:nth-child(4) {
+  width: 180px;
+  height: 180px;
+  top: 70%;
+  left: 15%;
+  animation-delay: -15s;
+}
+
+.circle:nth-child(5) {
+  width: 120px;
+  height: 120px;
+  top: 85%;
+  left: 70%;
+  animation-delay: -7s;
+}
+
+.register-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(238, 14, 14, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(238, 14, 14, 0.1) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
 .register-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    /* background: url('/path/to/background-image.jpg') no-repeat center center fixed; */
-    background-size: cover;
+  width: 100%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.register-header h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.register-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.form-section {
+  background: rgba(248, 249, 250, 0.5);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-section h3 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.form-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #ee0e0e, #ff6b6b);
+  border-radius: 3px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e1e1e1;
+  border-radius: 10px;
+  background: #fff;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.form-group input:focus {
+  border-color: #ee0e0e;
+  box-shadow: 0 0 0 4px rgba(238, 14, 14, 0.1);
+  outline: none;
+}
+
+.vehicle-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e1e1e1;
+}
+
+.vehicle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.vehicle-header h4 {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.remove-vehicle {
+  background: none;
+  border: none;
+  color: #ee0e0e;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.remove-vehicle:hover {
+  color: #ff6b6b;
+  transform: scale(1.05);
+}
+
+.add-vehicle-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #f8f9fa;
+  border: 2px dashed #e1e1e1;
+  border-radius: 10px;
+  color: #666;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.add-vehicle-btn:hover {
+  background: #e9ecef;
+  border-color: #ee0e0e;
+  color: #ee0e0e;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.submit-btn {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem;
+  background: linear-gradient(90deg, #ee0e0e, #ff6b6b);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(238, 14, 14, 0.3);
+}
+
+.login-link {
+  margin-top: 1.5rem;
+  color: #666;
+}
+
+.login-link a {
+  color: #ee0e0e;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+  color: #ff6b6b;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .register-container h1 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .register-header h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
   }
-  
-  .form-group {
-    margin-bottom: 15px;
+
+  .form-section {
+    padding: 1rem;
   }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
+
+  .circle:nth-child(1) {
+    width: 150px;
+    height: 150px;
   }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+
+  .circle:nth-child(2) {
+    width: 100px;
+    height: 100px;
   }
-  
-  .register-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .circle:nth-child(3) {
+    width: 80px;
+    height: 80px;
   }
-  
-  .register-button:hover {
-    background-color: #0056b3;
+
+  .circle:nth-child(4) {
+    width: 120px;
+    height: 120px;
   }
+
+  .circle:nth-child(5) {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Scrollbar Styling */
+.register-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.register-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.register-container::-webkit-scrollbar-thumb {
+  background: #ee0e0e;
+  border-radius: 4px;
+}
+
+.register-container::-webkit-scrollbar-thumb:hover {
+  background: #ff6b6b;
+}
   

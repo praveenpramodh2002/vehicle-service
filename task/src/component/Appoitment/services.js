@@ -3,23 +3,26 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Header from "./Header"
-import { faSearch, faCalendarPlus, faCheckCircle } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
+import { faSearch, faCalendarPlus, faCheckCircle, faClock, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 import './Services.css';
 
 const Services = () => {
   const [services, setServices] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
-  
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get("http://localhost:3001/service")
       .then((response) => {
         setServices(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching services:", error);
+        setIsLoading(false);
       });
   }, []);
 
@@ -56,68 +59,95 @@ const Services = () => {
 
   return (
     <>
-    <Header/>
-    <div
-      className="services-container"
-      style={{
-        backgroundImage: "url('/image/back2.jpg')", // Add the path to your background image
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        minHeight: "70vh", // Full page height
-        padding: "20px"
-      }}
-    >
-      <div className="services-top-bar">
-        <div className="search-input-container">
-          <FontAwesomeIcon icon={faSearch} className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search services..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="services-search-input"
-          />
+      <Header />
+      <div className="services-container">
+        <div className="services-top-bar">
+          <div className="search-input-container">
+            <FontAwesomeIcon icon={faSearch} className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search services..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="services-search-input"
+            />
+          </div>
+
+          {selectedServices.length > 0 && (
+            <Link
+              to="/booking"
+              state={{
+                selectedServices: selectedServices.map((service) => ({
+                  serviceId: service._id,
+                  name: service.name,
+                })),
+                totalPrice: calculateTotal(),
+                totalTime: calculateTotalTime(),
+              }}
+            >
+              <button className="services-create-booking-button">
+                <FontAwesomeIcon icon={faCalendarPlus} />
+                Create Booking ({selectedServices.length} services)
+              </button>
+            </Link>
+          )}
         </div>
 
-        {selectedServices.length > 0 && (
-          <Link
-            to="/booking"
-            state={{
-              selectedServices: selectedServices.map((service) => ({
-                serviceId: service._id,
-                name: service.name,
-              })),
-              totalPrice: calculateTotal(),
-              totalTime: calculateTotalTime(),
-            }}
-          >
-            <button className="services-create-booking-button">
-              <FontAwesomeIcon icon={faCalendarPlus} /> Create Booking
-            </button>
-          </Link>
+        {isLoading ? (
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Loading services...</p>
+          </div>
+        ) : (
+          <div className="services-service-grid">
+            {filteredServices.map((service) => (
+              <div key={service._id} className="services-service-card">
+                <input
+                  type="checkbox"
+                  id={`service-${service._id}`}
+                  value={service._id}
+                  checked={selectedServices.some(s => s._id === service._id)}
+                  onChange={handleServiceChange}
+                />
+                <label htmlFor={`service-${service._id}`}>
+                  <div className="card-header">
+                    <div className="card-icon">
+                      <FontAwesomeIcon icon={faCheckCircle} />
+                    </div>
+                    <h3>{service.name}</h3>
+                  </div>
+                  <div className="card-details">
+                    <div className="detail-item">
+                      <FontAwesomeIcon icon={faMoneyBillWave} />
+                      <span>Price: Rs.{service.price}</span>
+                    </div>
+                    <div className="detail-item">
+                      <FontAwesomeIcon icon={faClock} />
+                      <span>Duration: {service.duration} mins</span>
+                    </div>
+                  </div>
+                  <div className="card-footer">
+                    <div className="price-tag">
+                      Rs.{service.price}
+                    </div>
+                    <div className="duration">
+                      <FontAwesomeIcon icon={faClock} />
+                      {service.duration} mins
+                    </div>
+                  </div>
+                </label>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!isLoading && filteredServices.length === 0 && (
+          <div className="no-results">
+            <h3>No services found</h3>
+            <p>Try adjusting your search term</p>
+          </div>
         )}
       </div>
-
-      <div className="services-service-grid">
-        {filteredServices.map((service) => (
-          <div key={service._id} className="services-service-card">
-            <input
-              type="checkbox"
-              id={`service-${service._id}`}
-              value={service._id}
-              checked={selectedServices.some(s => s._id === service._id)}
-              onChange={handleServiceChange}
-            />
-            <label htmlFor={`service-${service._id}`}>
-              <h3><FontAwesomeIcon icon={faCheckCircle} /> {service.name}</h3>
-              <p>Price: Rs.{service.price}</p>
-              <p>Time: {service.duration} mins</p>
-            </label>
-          </div>
-        ))}
-      </div>
-    </div>
     </>
   );
 };

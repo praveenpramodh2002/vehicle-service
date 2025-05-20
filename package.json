@@ -4,13 +4,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js" 
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "mui": "^0.0.1",
     "plotly.js": "^2.35.2",
     "react-plotly.js": "^2.6.0",

@@ -1,6 +1,8 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import './Home.css'; // Import your CSS file here
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   const location = useLocation(); // Get the current route path
@@ -33,92 +35,30 @@ const Header = () => {
         <img src="image/lnew.jpeg" alt="Vehicle Service Station Logo" />
       </div>
       <nav className="navbar">
-        {/* Regular header for the "/" route */}
-        {location.pathname === '/' && (
-          <>
-            <a href="/">Home</a>
-            <div className="dropdown">
-              {!isLoggedIn && <a href="/newCustomer" className="dropdown-btn">Register</a>}
-            </div>
-            <a href="#about-us" onClick={(e) => scrollToSection(e, 'about-us')}>About Us</a>
-            <a href="">Packages</a>
-            <a href="/bookings">Bookings</a>
-
-            <a href="#contact-us" onClick={(e) => scrollToSection(e, 'contact-us')}>Contact</a>
-            <a href="/services" className="book-now-btn">Book Now</a>
-
-            {isLoggedIn && (
-              <button onClick={handleLogout} className="logout-btn">
-                Logout
-              </button>
-            )}
-          </>
+        <Link to="/">Home</Link>
+        <div className="dropdown">
+          <span>Services</span>
+          <div className="dropdown-content">
+            <a href="#diagnostic">Diagnostic Test</a>
+            <a href="#engine">Engine Servicing</a>
+            <a href="#tires">Tires Replacement</a>
+            <a href="#cleaning">Vacuum Cleaning</a>
+          </div>
+        </div>
+        <Link to="#about-us" onClick={(e) => scrollToSection(e, 'about-us')}>About Us</Link>
+        <Link to="/packages">Packages</Link>
+        <Link to="/bookings">Bookings</Link>
+        <Link to="#contact-us" onClick={(e) => scrollToSection(e, 'contact-us')}>Contact</Link>
+        <Link to="/book" className="book-now-btn">Book Now</Link>
+        {isLoggedIn ? (
+          <button onClick={handleLogout} className="logout-btn">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login" className="login-btn">
+            <FontAwesomeIcon icon={faUser} /> Login
+          </Link>
         )}
-
-        {/* Header for the "/newCustomer" route */}
-        {location.pathname === '/newCustomer' && (
-          <>
-             <a href="#about-us" onClick={(e) => scrollToSection(e, 'about-us')}>About Us</a>
-             <a href="">Packages</a>
-            <a href="/bookings">Bookings</a>
-            <a href="#contact-us" onClick={(e) => scrollToSection(e, 'contact-us')}>Contact</a>
-            <a href="/services" className="book-now-btn">Book Now</a>
-          </>
-        )}
-
-        {location.pathname === '/bookings' && (
-          <>
-            <a href="/">Home</a>
-            <a href="#about-us" onClick={(e) => scrollToSection(e, 'about-us')}>About Us</a>
-            <a href="">Packages</a>
-            <a href="/bookings">Bookings</a>
-            <a href="/services">Services</a>
-            <a href="/services" className="book-now-btn">Book Now</a>
-            {isLoggedIn && (
-              <button onClick={handleLogout} className="logout-btn">
-                Logout
-              </button>
-            )}
-          </>
-        )}
-
-        {location.pathname === '/services' && (
-          <>
-            <a href="/">Home</a>
-            <a href="#about-us" onClick={(e) => scrollToSection(e, 'about-us')}>About Us</a>
-            <a href="">Packages</a>
-            <a href="/bookings">Bookings</a>
-            <a href="/services" className="book-now-btn">Book Now</a>
-            {isLoggedIn && (
-              <button onClick={handleLogout} className="logout-btn">
-                Logout
-              </button>
-            )}
-          </>
-        )}
-
-      {location.pathname === '/booking' && (
-          <>
-           <a href="/">Home</a>
-             <a href="#about-us" onClick={(e) => scrollToSection(e, 'about-us')}>About Us</a>
-            <a href="/bookings">Bookings</a>
-            <a href="#contact-us" onClick={(e) => scrollToSection(e, 'contact-us')}>Contact</a>
-            <a href="/services" className="book-now-btn">Book Now</a>
-            {isLoggedIn && (
-              <button onClick={handleLogout} className="logout-btn">
-                Logout
-              </button>
-            )}
-          </>
-        )}
-
-        {location.pathname === '/login' && (
-          <>
-            <a href="/">Home</a>
-            <a href="/newCustomer">Register</a>
-          </>
-        )}
-
       </nav>
     </header>
   );
